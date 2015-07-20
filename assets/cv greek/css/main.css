@@ -1,0 +1,136 @@
+* {
+   -moz-box-sizing:    border-box;   /* Firefox 1, probably can drop this */
+   -webkit-box-sizing: border-box;   /* Safari 3-4, also probably droppable */
+    box-sizing:        border-box;   /* Everything else */
+}
+
+body, html {
+	padding: 0;
+	font-family: 'Roboto Slab', serif;
+	font-weight: 400;
+	font-size: 17px;
+	color: #555;
+	margin: 0;
+	background-color: rgba(227,227,227, 0.45);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #575757;
+	text-transform: capitalize;
+	font-weight: 400;
+	margin-top: 0;
+}
+
+h2 {
+	margin: 0 0 14px 0;
+}
+
+a, a:visited {
+	color: #2980b9;
+	text-decoration: none;
+}
+
+section.outer {
+	margin: 42px 0;
+}
+
+section.inner {
+	padding-left: 42px;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+p, li {
+	margin: 14px 0;
+}
+
+#page-wrap {
+	padding: 28px;
+}
+
+.label {
+	color: #636363;
+	margin-right: 14px;
+	font-weight: 300;
+}
+
+.name, .title, .organization {
+	text-transform: capitalize;
+	padding-left: 42px;
+}
+
+.title, .organization {
+	color: rgba(87, 87, 87, 0.8);
+}
+
+.name {
+	font-size: 1.05em;
+}
+
+.title {
+	margin: 0 0 7px 0;
+}
+
+li {
+/*	padding-left: 100px; */
+	position: relative; /* offset parent */
+	cursor: default;
+}
+
+#personal-information li {
+	padding-left: 221px;
+}
+
+#education li {
+	padding-left: 121px;
+}
+
+#internship li {
+	padding-left: 198px;
+}
+
+#seminars li {
+	padding-left: 95px;
+}
+
+#langs li {
+	padding-left: 97px;
+}
+
+#projects li {
+	padding-left: 100px;
+}
+
+#skills li {
+	padding-left: 321px;
+}
+
+li > span.label {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+li:hover span.label {
+	color: #34495e;
+	left: -3px;
+	text-shadow: 0 0 3px rgba(52, 73, 94, 0.5);
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+
+.cv-icon {
+	margin-right: 7px;
+	position: relative;
+	top: 7px;
+}
+
+#header h1 {
+	font-size: 1.8em;
+	font-weight: 600;
+	margin-bottom: 7px;
+}

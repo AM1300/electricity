@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <h2 class="center-alignment">Line Chart for {{ date }} for Central Transformer </h2>
+<!--   <p class="center-alignment">You can see the data for Transformer either in Line Diagram or in Radar Diagram,
+    pressing the following buttons
+  </p> -->
+  <div class="center-alignment">
+    <a href="#/transformer/line-chart/{{date}}" class="button-center-alignment myButton btn btn-default"
+      role="button">Line Diagram</a>
+<!--     <a href="#/transformer/radar-chart/{{date}}" class="button-center-alignment myButton btn btn-default"
+      role="button">Radar Diagram</a> -->
+  </div>
+  <div ng-controller="transformer-line-chart">
+      <div class="center-alignment">
+        <span>Total Load<button class="buyersQuantity btn"></button></span>
+        <span>Reactive Power<button class="sellersQuantity btn"></button></span>
+      </div>
+    <canvas id="transformer-line-chart"></canvas>
+  </div>
+</div>

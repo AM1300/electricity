@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <h2 class="center-alignment">Line Chart for {{ date }} for Central Triplex Meter of node {{ nodeID }} </h2>
+  <div class="center-alignment">
+    <a href="#/triplex-meter/line-chart/{{date}}/{{nodeID}}" class="button-center-alignment myButton btn btn-default"
+      role="button">Line Diagram</a>
+  </div>
+  <div ng-controller="triplex-meter-line-chart">
+      <div class="center-alignment">
+        <span>Real Power<button class="buyersQuantity btn"></button></span>
+        <span>Reactive Power<button class="sellersQuantity btn"></button></span>
+      </div>
+    <canvas id="triplex-meter-line-chart"></canvas>
+  </div>
+</div>

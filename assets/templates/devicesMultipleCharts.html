@@ -1,0 +1,16 @@
+<div class="container">
+  <h2 class="center-alignment">Synchronized Charts for {{ date }} for {{ newType }} which belongs to node {{ nodeID }}</h2>
+  <p class="center-alignment">You can see the data for Devices either in Synchronized
+    Diagrams or in multiple Axes Diagram, pressing the following buttons
+  </p>
+  <div class="center-alignment">
+    <a href="#/devices/multiple-line-chart/{{date}}/{{type}}/{{nodeID}}/{{houseID}}"
+      class="button-center-alignment myButton btn btn-default"
+      role="button">Synchronized Diagrams</a>
+    <a href="#/devices/multiple-axes/{{date}}/{{type}}/{{nodeID}}/{{houseID}}"
+      class="button-center-alignment myButton btn btn-default"
+      role="button">Multiple Axes Diagram</a>
+  </div>
+  <div ng-controller="devices-multiple-charts">
+    <div id="containerMultipleCharts"></div>
+</div>

@@ -1,0 +1,308 @@
+body {
+	background-color: #E3E3E3;
+	font-family: 'Merriweather Sans', sans-serif;
+  padding-top: 55px;
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src:  url('libs/bootstrap/fonts/glyphicons-halflings-regular.eot');
+  src:  url('libs/bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+        url('libs/bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'),
+        url('libs/bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+        url('libs/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+.navbar, .navbar-default {
+	background-color: #898984;
+	border-color: #898984;
+	margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+
+.navbar-shadow {
+	box-shadow: 0 5px 19px 0 rgba(0, 0, 0, 0.4);
+}
+
+.navbar-default .navbar-brand {
+	color: white;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: white;
+}
+
+.carousel-inner > .item > img {
+	margin-bottom: 20px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 10px;
+	height: 500px;
+	max-height: 500px;
+}
+
+.carousel-caption {
+	color: red;
+}
+
+.col-lg-4 > img {
+	display: block;
+	width: 45%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.col-lg-4 > h2 {
+	text-align: center;
+}
+
+.col-lg-4 {
+	padding-top: 14px;
+	padding-bottom: 7px;
+}
+
+.active-tab-color {
+	background-color: #E3E3E3;
+}
+
+.list-group > .list-group-item {
+	border: 0px;
+}
+
+a.active-tab-color {
+    color: #555555;
+    margin-left: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+a.active-tab-color:hover {
+	background-color: rgba(87, 87, 87, 0.15);
+	border-radius: 7px;
+}
+
+a.active-tab-color:focus {
+	background-color: rgba(87, 87, 87, 0.15);
+	color: #555555;
+	border-radius: 7px;
+	border: 0px;
+	outline: none;
+}
+
+.back-to-top {
+	display: none;
+	margin: 0;
+	position: fixed;
+	bottom: 7px;
+	right: 24px;
+	text-decoration: none;
+	float: right;
+	background-color: #e67e22;
+	border-color: rgba(87,87,87, 0.45);
+}
+
+.back-to-top:hover {
+	background-color: rgba(230, 126, 34, 0.85);
+}
+
+.back-to-top:visited {
+	background-color: rgba(230, 126, 34, 1)
+}
+
+.back-to-top:focus {
+  border: 0px;
+  outline: none;
+}
+
+.my-image {
+	width: 150px;
+	height: 145px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	border-radius: 50%;
+	margin: auto;
+}
+
+.button-center-align {
+    text-align: center;
+    margin-top: 21px;
+    margin-bottom: 28px;
+}
+/* ---------------------------------------- */
+.dark {
+	background-color: #E3E3E3;
+	color: #555555;
+}
+
+.light {
+	background-color: #ececec;
+	color: #555555;
+}
+
+.light-background {
+	background-color: #ECECEC;
+	color: #575757;
+	border-color:  #575757;
+}
+
+.light-background:hover {
+	background-color: rgba(87, 87, 87, 0.4);
+	border-color: rgba(227, 227, 227, 0.4);
+	color: #3D3D3D;
+}
+
+.dark-background {
+	background-color: #E3E3E3;
+	color: #575757;
+	border-color: #575757;
+}
+
+.dark-background:hover {
+  background-color: rgba(87, 87, 87, 0.4);
+  border-color: rgba(227, 227, 227, 0.4);
+  color: #3D3D3D;
+}
+
+.header-padding {
+	padding-top: 21px;
+	padding-bottom: 35px;
+	text-align: center;
+}
+
+.photo-padding {
+	padding-top: 35px;
+	padding-bottom: 21px;
+}
+
+.carousel-image {
+	width: auto;
+	height: 500px;
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-bottom: 82px;
+	margin-top: 30px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.footer-list-group {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#market-line-chart {
+  width: 100%;
+  height: 500px;
+}
+
+#market-radar-chart {
+  width: 100%;
+  height: 500px;
+}
+
+#devices-line-chart {
+  width: 100%;
+  height: 500px;
+}
+
+#devices-radar-chart {
+  width: 100%;
+  height: 500px;
+}
+
+#energy-sources-line-chart {
+  width: 100%;
+  height: 500px;
+}
+
+#energy-sources-radar-chart {
+  width: 100%;
+  height: 500px;
+}
+
+#triplex-meter-line-chart {
+  width: 100%;
+  height: 500px;
+}
+
+#house-line-chart {
+  width: 100%;
+  height: 500px;
+}
+
+.myButton {
+  background-color: #E3E3E3;
+  color: #444;
+  border-color: #444;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 15px;
+}
+
+.myButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: #444;
+  color:#444;
+}
+
+.myButton:focus {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: #444;
+  color:#444;
+/*  border: 0px;*/
+  outline: none;
+}
+
+.clearingPrice {
+  background-color: rgba(231, 76, 60, 1);
+  margin-left: 10px;
+  margin-right: 30px;
+}
+
+.clearingQuantity {
+  background-color: rgba(255, 217, 51, 1);
+  margin-left: 10px;
+  margin-right: 30px;
+}
+
+.sellersQuantity {
+  background-color: rgba(170, 170, 170, 1);
+  margin-left: 10px;
+  margin-right: 30px;
+}
+
+.buyersQuantity {
+  background-color: rgba(25, 151, 205, 1);
+  margin-left: 10px;
+  margin-right: 30px;
+}
+
+.center-alignment {
+  text-align: center;
+}
+
+.button-center-alignment {
+  display: inline-table;
+  text-align: center;
+}
+
+.chart {
+  width: 100%;
+  height: 300px;
+  margin: 0 auto;
+}
+
+/*#containerMultipleCharts {
+  width: 100%;
+  height: 100%;
+  margin: 1em auto;
+}*/
+
+#containerMultipleAxes {
+  width: 100%;
+  height: 100%;
+  margin: 1em auto;
+}

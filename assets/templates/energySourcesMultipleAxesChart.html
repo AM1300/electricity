@@ -1,0 +1,17 @@
+<div class="container">
+  <h2 class="center-alignment">Multiple Axes Diagram for {{ date }} for {{ type }}  for node {{ nodeID }}</h2>
+<!--   <p class="center-alignment">You can see the data for Energy Sources either in Line Diagram or in Radar Diagram,
+    pressing the following buttons
+  </p> -->
+  <div class="center-alignment">
+    <a href="#/energy-sources/multiple-axes/{{date}}/{{type}}/{{nodeID}}"
+      class="button-center-alignment myButton btn btn-default"
+      role="button">Multiple Axes Diagram</a>
+<!--     <a href="#/energy-sources/radar-chart/{{date}}/{{type}}/{{nodeID}}"
+      class="button-center-alignment myButton btn btn-default"
+      role="button">Radar Diagram</a> -->
+  </div>
+  <div ng-controller="energy-sources-multiple-axes-chart">
+    <div id="containerMultipleAxesEnergySources"></div>
+  </div>
+</div>
