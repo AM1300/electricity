@@ -42,7 +42,7 @@ function devicesMultipleCharts (activity, timestampActivity) {
       // console.log(JSON.stringify(dataset.data));
 
       var timestampsNew = timestampActivity.map(function(entry, index) {
-        return (index % 4 === 0) ? moment(entry).format('DD-MM, HH:mm') : '';
+        return (index % 4 === 0) ? moment(entry).format('HH:mm') : '';
       });
 
       // console.log(timestampsNew);
@@ -65,11 +65,8 @@ function devicesMultipleCharts (activity, timestampActivity) {
                 enabled: false
             },
             legend: {
-              layout: 'vertical',
-              align: 'left',
-              x: 80,
+              align: 'center',
               verticalAlign: 'top',
-              y: 55,
               floating: true,
               backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#ECECEC'                    },
             xAxis: {
@@ -77,7 +74,10 @@ function devicesMultipleCharts (activity, timestampActivity) {
                 events: {
                     setExtremes: syncExtremes
                 },
-                categories: timestampsNew
+                categories: timestampsNew,
+                // labels: {
+                //   padding: 0
+                // }
             },
             yAxis: {
                 labels: {
@@ -90,8 +90,8 @@ function devicesMultipleCharts (activity, timestampActivity) {
             tooltip: {
                 positioner: function () {
                     return {
-                        x: this.chart.chartWidth - this.label.width, // right aligned
-                        y: -1 // align to title
+                        x: this.chart.chartWidth - this.label.width -45, // right aligned
+                        y: 12
                     };
                 },
                 borderWidth: 0,

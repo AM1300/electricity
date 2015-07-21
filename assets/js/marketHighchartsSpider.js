@@ -1,6 +1,10 @@
 function marketHighchartsSpider(response) {
     var timestamps = response.map(function(entry, index) {
-      return (index % 4 === 0) ? moment(entry.timestamp).format('DD-MM, HH:mm') : '';
+      return moment(entry.timestamp).format('HH:mm');
+    });
+
+    var date = response.map(function(entry, index) {
+      return moment(entry.timestamp).format('MMMM Do YYYY');
     });
 
     var clearingPrices = response.map(function(entry) {
@@ -19,6 +23,8 @@ function marketHighchartsSpider(response) {
       return entry.buyerTotalQuantity;
     });
 
+    var dateTitle = date[0];
+
     $(function () {
 
         $('#containerSpiderMarket').highcharts({
@@ -26,18 +32,28 @@ function marketHighchartsSpider(response) {
             chart: {
                 backgroundColor:'#ECECEC',
                 polar: true,
-                type: 'area'
+                type: 'area',
+                margin: [20, 0, 0, 0],
+                spacingTop: 0,
+                spacingBottom: 0,
+                spacingLeft: 0,
+                spacingRight: 0
+            },
+            plotOptions: {
+                polygon: {
+                    size:'100%'
+                }
             },
 
             title: {
-                text: 'SpiderWeb',
-                // x: -80
+                text: 'Market Pool for ' +dateTitle,
             },
 
             xAxis: {
                 categories: timestamps,
                 // tickmarkPlacement: 'on',
-                lineWidth: 0
+                lineWidth: 0,
+                tickInterval: 4,
             },
 
             yAxis: {
@@ -51,11 +67,12 @@ function marketHighchartsSpider(response) {
                 pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
             },
 
-            legend: {
-                align: 'right',
-                verticalAlign: 'top',
-                y: 70,
+           legend: {
                 layout: 'vertical',
+                align: 'left',
+                x: 50,
+                verticalAlign: 'middle',
+                floating: false,
                 backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#ECECEC'
             },
 

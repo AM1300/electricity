@@ -1,9 +1,12 @@
 function triplexMeterMultipleAxesChart(data) {
 
     var timestamps = data.map(function(entry, index) {
-      return (index % 4 === 0) ? moment(entry.timestamp).format('DD-MM, HH:mm') : '';
+      return moment(entry.timestamp).format('HH:mm');
     });
 
+    var date = data.map(function(entry, index) {
+      return moment(entry.timestamp).format('MMMM Do YYYY');
+    });
     var realPowers = data.map(function(entry) {
       return entry.realPower;
     });
@@ -12,18 +15,48 @@ function triplexMeterMultipleAxesChart(data) {
       return entry.reactivePower;
     });
 
+    var dateTitle = date[0];
+
     $(function () {
         $('#containerMultipleAxesTriplex').highcharts({
             chart: {
-                zoomType: 'xy',
-                backgroundColor:'#ECECEC'
+                backgroundColor:'#ECECEC',
+                zoomType: 'x',
+                resetZoomButton: {
+                  position: {
+                    x: -40,
+                    y: -40
+                  },
+                  theme: {
+                      fill: '#E3E3E3',
+                      stroke: '#222',
+                      style: {
+                          color: '#222'
+                      },
+                      r: 3,
+                      states: {
+                          hover: {
+                              fill: 'rgba(137, 137, 132, 0.5)',
+                              stroke: '#222',
+                              style: {
+                                  color: '#222'
+                              }
+                          }
+                      }
+                  }
+                }
             },
             title: {
-                text: 'Real and Reactive Power at Central Triplex Meter'
+                text: 'Central Triplex Meter ' +dateTitle
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                        'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
             },
             xAxis: [{
                 categories: timestamps,
-                crosshair: true
+                crosshair: true,
+                tickInterval: 4
             }],
             yAxis: [{ // Primary yAxis
                 labels: {
@@ -65,12 +98,9 @@ function triplexMeterMultipleAxesChart(data) {
                 itemStyle: {
                     color: '#333',
                 },
-                layout: 'vertical',
-                align: 'left',
-                x: 100,
-                verticalAlign: 'top',
-                y: 25,
-                floating: true,
+                align: 'center',
+                verticalAlign: 'bottom',
+                floating: false,
                 backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#ECECEC'
             },
             series: [{

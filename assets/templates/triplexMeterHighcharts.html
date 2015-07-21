@@ -1,15 +1,22 @@
 <div class="container">
   <h2 class="center-alignment">Line Chart for {{ date }} for Central Triplex Meter of node {{ nodeID }} </h2>
-  <p class="center-alignment">You can see the data for Central Triplex Meter in Multiple
-    Axes Diagrams, Line Chart or Spider Chart, pressing the following buttons
-  </p>
-  <div class="center-alignment">
-    <a href="#/triplex-meter/multiple-axes/{{date}}/{{nodeID}}" class="button-center-alignment myButton btn btn-default"
-      role="button">Multiple Axes Diagrams</a>
-    <a href="#/triplex-meter/highcharts/{{date}}/{{nodeID}}" class="button-center-alignment myButton btn btn-default"
-      role="button">Line Diagram</a>
-    <a href="#/triplex-meter/highcharts-spider/{{date}}/{{nodeID}}" class="button-center-alignment myButton btn btn-default"
-      role="button">Spider Diagram</a>
+  <input type="hidden" name="option" value="" id="btn-input" />
+  <div class="btn-group pull-right" data-toggle="buttons-radio" style="margin-bottom:25px; margin-top:10px;">
+    <a href="#/triplex-meter/multiple-axes/{{date}}/{{nodeID}}"
+        class="button btn btn-primary" id="btn-one" type="button" data-toggle="button"
+        name="option" value="1">
+      Multiple Axes Diagrams
+    </a>
+    <a href="#/triplex-meter/highcharts/{{date}}/{{nodeID}}"
+        class="button btn btn-primary active" id="btn-two" type="button" data-toggle="button"
+        name="option" value="2" checked>
+      Line Diagram
+    </a>
+    <a href="#/triplex-meter/highcharts-spider/{{date}}/{{nodeID}}"
+        class="button btn btn-primary" id="btn-three" type="button" data-toggle="button"
+        name="option" value="3">
+      Spider Diagram
+    </a>
   </div>
   <div ng-controller="triplex-meter-highcharts">
       <div id="containerTriplex"></div>

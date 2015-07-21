@@ -370,15 +370,15 @@ app.controller('devices-multiple-charts', function($scope, $http, $route, $route
     var info = {
       loads: {
         name: 'Total Load',
-        unit: 'Watt'
+        unit: 'kW'
       },
       bidPrices: {
         name: 'Bid Price',
-        unit: ' $ USD'
+        unit: ' ¢'
       },
       bidQuantities: {
         name: 'Bid Quantity',
-        unit: 'Watt'
+        unit: 'kW'
       }
     };
     _.each(newData.indicators, function(value, key){

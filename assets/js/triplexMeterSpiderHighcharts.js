@@ -1,6 +1,10 @@
 function triplexMeterSpiderHighcharts(data) {
     var timestamps = data.map(function(entry, index) {
-      return (index % 4 === 0) ? moment(entry.timestamp).format('DD-MM, HH:mm') : '';
+      return moment(entry.timestamp).format('HH:mm');
+    });
+
+    var date = data.map(function(entry, index) {
+      return moment(entry.timestamp).format('MMMM Do YYYY');
     });
 
     var realPowers = data.map(function(entry) {
@@ -11,6 +15,8 @@ function triplexMeterSpiderHighcharts(data) {
       return entry.reactivePower;
     });
 
+    var dateTitle = date[0];
+
     $(function () {
 
         $('#containerSpiderTriplex').highcharts({
@@ -18,18 +24,22 @@ function triplexMeterSpiderHighcharts(data) {
             chart: {
                 backgroundColor:'#ECECEC',
                 polar: true,
-                type: 'area'
+                type: 'area',
+                margin: [20, 0, 0, 0],
+                spacingTop: 0,
+                spacingBottom: 0,
+                spacingLeft: 0,
+                spacingRight: 0
+            },
+            plotOptions: {
+                polygon: {
+                    size:'100%'
+                }
             },
 
             title: {
-                text: 'Real and Reactive Power',
-                // x: -80
+                text: 'Central Triplex Meter for ' +dateTitle,
             },
-
-            // pane: {
-            //     size: '80%'
-            // },
-
             xAxis: {
                 categories: timestamps,
                 tickmarkPlacement: 'on',
@@ -37,7 +47,7 @@ function triplexMeterSpiderHighcharts(data) {
                 labels: {
                   align: "center"
                 },
-                // tickInterval: 2,
+                tickInterval: 4,
             },
 
             yAxis: {
@@ -52,10 +62,11 @@ function triplexMeterSpiderHighcharts(data) {
             },
 
             legend: {
-                // align: 'left',
-                verticalAlign: 'top',
-                y: 70,
-                layout: 'horizontal',
+                layout: 'vertical',
+                align: 'left',
+                x: 50,
+                verticalAlign: 'middle',
+                floating: false,
                 backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#ECECEC'
             },
 

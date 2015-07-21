@@ -1,6 +1,10 @@
 function marketHighcharts(response) {
     var timestamps = response.map(function(entry, index) {
-      return (index % 4 === 0) ? moment(entry.timestamp).format('DD-MM, HH:mm') : '';
+      return moment(entry.timestamp).format('HH:mm');
+    });
+
+    var date = response.map(function(entry, index) {
+      return moment(entry.timestamp).format('MMMM Do YYYY');
     });
 
     var clearingPrices = response.map(function(entry) {
@@ -19,18 +23,48 @@ function marketHighcharts(response) {
       return entry.buyerTotalQuantity;
     });
 
+    var dateTitle = date[0];
+
     $(function () {
         $('#container').highcharts({
             chart: {
-                backgroundColor:'#ECECEC'
+                backgroundColor:'#ECECEC',
+                zoomType: 'x',
+                resetZoomButton: {
+                  position: {
+                    x: -40,
+                    y: -40
+                  },
+                  theme: {
+                      fill: '#E3E3E3',
+                      stroke: '#222',
+                      style: {
+                          color: '#222'
+                      },
+                      r: 3,
+                      states: {
+                          hover: {
+                              fill: 'rgba(137, 137, 132, 0.5)',
+                              stroke: '#222',
+                              style: {
+                                  color: '#222'
+                              }
+                          }
+                      }
+                  }
+                }
             },
             title: {
-                text: 'Market Pool Per Day',
-                x: -20 //center
+                text: 'Market Pool for ' +dateTitle,
+            },
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                        'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
             },
 
             xAxis: {
-                categories: timestamps
+                categories: timestamps,
+                tickInterval: 4
             },
             yAxis: {
                 plotLines: [{
@@ -43,12 +77,9 @@ function marketHighcharts(response) {
                 shared: true
             },
             legend: {
-                layout: 'vertical',
-                align: 'left',
-                x: 80,
-                verticalAlign: 'top',
-                y: 30,
-                floating: true,
+                align: 'center',
+                verticalAlign: 'bottom',
+                floating: false,
                 backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#ECECEC'
             },
             series: [{

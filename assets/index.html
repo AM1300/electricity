@@ -102,6 +102,14 @@
   <script type="text/javascript" src="/js/triplexMeterHighcharts.js" ></script>
   <script type="text/javascript" src="/js/triplexMeterSpiderHighcharts.js" ></script>
   <script type="text/javascript" src="/js/back-to-top-button.js"></script>
-
+<script>
+  var btns = ['btn-one', 'btn-two', 'btn-three'];
+  var input = document.getElementById('btn-input');
+  for(var i = 0; i < btns.length; i++) {
+    document.getElementById(btns[i]).addEventListener('click', function() {
+      input.value = this.value;
+    });
+  }
+</script>
 </body>
 </html>

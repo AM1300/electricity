@@ -1,14 +1,19 @@
 <div class="container-fluid">
   <h2 class="center-alignment">Market Pool Example in Radar Chart for {{ date }}</h2>
-  <p class="center-alignment">You can see the data for market pool either in Line Diagram or in Radar Diagram,
-    pressing the following buttons
-  </p>
-  <div class="center-alignment">
-    <a href="#/market/line-chart/{{date}}" class="myButton btn btn-default"
-      role="button">Line Diagram</a>
-    <a href="#/market/radar-chart/{{date}}" class="myButton btn btn-default"
-      role="button">Radar Diagram</a>
+  <input type="hidden" name="option" value="" id="btn-input" />
+  <div class="btn-group pull-right" data-toggle="buttons-radio" style="margin-bottom:25px; margin-top:10px;">
+    <a href="#/market/line-chart/{{date}}"
+        class="button btn btn-primary" id="btn-one" type="button" data-toggle="button"
+        name="option" value="1">
+      Line Diagram
+    </a>
+    <a href="#/market/radar-chart/{{date}}"
+        class="button btn btn-primary active" id="btn-two" type="button" data-toggle="button"
+        name="option" value="2" checked>
+      Radar Diagram
+    </a>
   </div>
+
   <div ng-controller="market-radar-chart">
     <div class="center-alignment" style="margin-bottom:25px;">
       <span>Clearing Price <button class="clearingPrice btn"></button></span>

@@ -1,7 +1,7 @@
 function houseChart(data) {
 
     var timestamps = data.map(function(entry, index) {
-      return (index % 4 === 0) ? moment(entry.timestamp).format('DD-MM, HH:mm') : '';
+      return (index % 4 === 0) ? moment(entry.timestamp).format('HH:mm') : '';
     });
 
     var totalLoadNew = data.map(function(entry) {

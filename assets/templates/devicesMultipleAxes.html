@@ -1,16 +1,19 @@
 <div class="container">
   <h2 class="center-alignment">Multiple Axes for {{ date }} for {{ newType }} which belongs to node {{ nodeID }}</h2>
-  <p class="center-alignment">You can see the data for Devices either in Synchronized
-    Diagrams or in multiple Axes Diagram, pressing the following buttons
-  </p>
-  <div class="center-alignment">
+  <input type="hidden" name="option" value="" id="btn-input" />
+  <div class="btn-group pull-right" data-toggle="buttons-radio" style="margin-bottom:25px; margin-top:10px;">
     <a href="#/devices/multiple-line-chart/{{date}}/{{type}}/{{nodeID}}/{{houseID}}"
-      class="button-center-alignment myButton btn btn-default"
-      role="button">Synchronized Diagrams</a>
+        class="button btn btn-primary" id="btn-one" type="button" data-toggle="button"
+        name="option" value="1">
+      Synchronized Diagrams
+    </a>
     <a href="#/devices/multiple-axes/{{date}}/{{type}}/{{nodeID}}/{{houseID}}"
-      class="button-center-alignment myButton btn btn-default"
-      role="button">Multiple Axes Diagram</a>
+        class="button btn btn-primary active" id="btn-two" type="button" data-toggle="button"
+        name="option" value="2" checked>
+      Multiple Axes Diagram
+    </a>
   </div>
+
   <div ng-controller="devices-multiple-axes-chart">
     <div id="containerMultipleAxes"></div>
   </div>
