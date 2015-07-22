@@ -5,6 +5,8 @@ var energySourcesDailyRecordsPerType = require(path.join(__dirname, '../api/cont
 var triplexMeterDailyRecords = require(path.join(__dirname, '../api/controllers', 'triplexMeter'));
 var houseDailyRecords = require(path.join(__dirname, '../api/controllers', 'housesPerHouseID'));
 var transformerDailyRecords = require(path.join(__dirname, '../api/controllers', 'transformer'));
+var deviceAllRecords = require(path.join(__dirname, '../api/controllers', 'devicesForAllDays'));
+
 
 module.exports.routes = {
 
@@ -18,6 +20,10 @@ module.exports.routes = {
 
   'get /devices/:date/:type/:nodeID/:houseID' : function(req, res, next) {
     deviceDailyRecords.getDeviceRecordsForTypeAndNodeID(req, res, next);
+  },
+
+  'get /devices/:type/:nodeID/:houseID' : function(req, res, next) {
+    deviceAllRecords.getAllDeviceRecords(req, res, next);
   },
 
   'get /energy-sources/:date/:type/:nodeID' : function(req, res, next) {

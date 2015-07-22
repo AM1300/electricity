@@ -58,7 +58,7 @@ function triplexMeterSpiderHighcharts(data) {
 
             tooltip: {
                 shared: true,
-                pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+                pointFormat: '<span style="color:{series.color}">{series.name}: <b>{point.y:,.0f} Watt</b><br/>'
             },
 
             legend: {
@@ -72,6 +72,7 @@ function triplexMeterSpiderHighcharts(data) {
 
             series: [{
                 name: 'Real Power',
+                color: Highcharts.getOptions().colors[2],
                 data: realPowers,
                 marker: {
                     enabled: false
@@ -79,6 +80,7 @@ function triplexMeterSpiderHighcharts(data) {
                 // pointPlacement: 'on'
             }, {
                 name: 'Reactive Power',
+                color: Highcharts.getOptions().colors[0],
                 data: reactivePowers,
                 marker: {
                     enabled: false

@@ -1,0 +1,25 @@
+<div class="container">
+  <h2 class="center-alignment"> Bid Price for {{ newType }} which belongs to node {{ nodeID }}</h2>
+  <input type="hidden" name="option" value="" id="btn-input" />
+  <div class="btn-group pull-right" data-toggle="buttons-radio" style="margin-bottom:25px; margin-top:10px;">
+    <a href="#/devices/heatmap-price/{{type}}/{{nodeID}}/{{houseID}}"
+        class="button btn btn-primary active" id="btn-one" type="button" data-toggle="button"
+        name="option" value="1" checked>
+      Bid Price
+    </a>
+    <a href="#/devices/heatmap-quantity/{{type}}/{{nodeID}}/{{houseID}}"
+        class="button btn btn-primary" id="btn-two" type="button" data-toggle="button"
+        name="option" value="2">
+      Bid Quantity
+    </a>
+    <a href="#/devices/heatmap-load/{{type}}/{{nodeID}}/{{houseID}}"
+        class="button btn btn-primary" id="btn-three" type="button" data-toggle="button"
+        name="option" value="3">
+      Consumed Load
+    </a>
+  </div>
+
+  <div ng-controller="devices-heatmap-price">
+    <div id="containerHeatmap"></div>
+  </div>
+</div>

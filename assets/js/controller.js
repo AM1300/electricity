@@ -70,6 +70,21 @@ app.config(function($locationProvider, $routeProvider) {
           controller  : 'devices-multiple-axes-chart'
         })
 
+        .when('/devices/heatmap-load/:type/:nodeID/:houseID', {
+            templateUrl : '/templates/devicesHeatmapLoad.html',
+            controller  : 'devices-heatmap-load'
+        })
+
+        .when('/devices/heatmap-price/:type/:nodeID/:houseID', {
+            templateUrl : '/templates/devicesHeatmapPrice.html',
+            controller  : 'devices-heatmap-price'
+        })
+
+        .when('/devices/heatmap-quantity/:type/:nodeID/:houseID', {
+            templateUrl : '/templates/devicesHeatmapQuantity.html',
+            controller  : 'devices-heatmap-quantity'
+        })
+
         .when('/market/highcharts-line/:date', {
           templateUrl : '/templates/marketHighcharts.html',
           controller  : 'market-line-highcharts'
@@ -480,6 +495,103 @@ app.controller('market-spider-highcharts', function($scope, $http, $route, $rout
 
     $scope.data = response;
     $scope.date = date;
+  });
+});
+
+
+app.controller('devices-heatmap-load', function($scope, $http, $route, $routeParams) {
+  var type = $routeParams.type;
+  var nodeID = $routeParams.nodeID;
+  var houseID = $routeParams.houseID;
+
+
+  $http ({
+    url : '/devices/' + type + '/' + nodeID + '/' + houseID,
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+
+    devicesHeatmapLoad(response);
+
+    var newType;
+
+    if(type=='wh') {
+      newType = 'Waterheater';
+    }
+
+    if(type=='ac') {
+      newType = 'Air Condition';
+    }
+
+    $scope.type = type;
+    $scope.newType = newType;
+    $scope.nodeID = nodeID;
+    $scope.houseID = houseID;
+  });
+});
+
+app.controller('devices-heatmap-price', function($scope, $http, $route, $routeParams) {
+  var type = $routeParams.type;
+  var nodeID = $routeParams.nodeID;
+  var houseID = $routeParams.houseID;
+
+
+  $http ({
+    url : '/devices/' + type + '/' + nodeID + '/' + houseID,
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+
+    devicesHeatmapPrice(response);
+
+    var newType;
+
+    if(type=='wh') {
+      newType = 'Waterheater';
+    }
+
+    if(type=='ac') {
+      newType = 'Air Condition';
+    }
+
+    $scope.type = type;
+    $scope.newType = newType;
+    $scope.nodeID = nodeID;
+    $scope.houseID = houseID;
+  });
+});
+
+app.controller('devices-heatmap-quantity', function($scope, $http, $route, $routeParams) {
+  var type = $routeParams.type;
+  var nodeID = $routeParams.nodeID;
+  var houseID = $routeParams.houseID;
+
+
+  $http ({
+    url : '/devices/' + type + '/' + nodeID + '/' + houseID,
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+
+    devicesHeatmapQuantity(response);
+
+    var newType;
+
+    if(type=='wh') {
+      newType = 'Waterheater';
+    }
+
+    if(type=='ac') {
+      newType = 'Air Condition';
+    }
+
+    $scope.type = type;
+    $scope.newType = newType;
+    $scope.nodeID = nodeID;
+    $scope.houseID = houseID;
   });
 });
 

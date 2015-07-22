@@ -75,7 +75,7 @@ function triplexMeterHighcharts(data) {
             },
             series: [{
                 name: 'Real Power',
-                // color: Highcharts.getOptions().colors[2],
+                color: Highcharts.getOptions().colors[2],
                 data: realPowers,
                 marker: {
                     enabled: false
@@ -85,7 +85,7 @@ function triplexMeterHighcharts(data) {
                 }
             }, {
                 name: 'Reactive Power',
-                // color: Highcharts.getOptions().colors[1],
+                color: Highcharts.getOptions().colors[0],
                 data: reactivePowers,
                 marker: {
                     enabled: false
