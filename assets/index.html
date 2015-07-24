@@ -3,9 +3,9 @@
 <head>
   <title>Watch Electricity</title>
   <meta charset="utf-8">
-  <link href="/css/libs/bootstrap.min.css" rel="stylesheet">
-  <link href="/css/libs/bootstrap-switch.min.css" rel="stylesheet">
-  <link href="/css/main.css" rel="stylesheet">
+  <link href="/styles/libs/bootstrap.min.css" rel="stylesheet">
+  <link href="/styles/libs/bootstrap-switch.min.css" rel="stylesheet">
+  <link href="/styles/main.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Days+One|Merriweather+Sans:400,300,700' rel='stylesheet' type='text/css'>
 </head>
 
@@ -105,14 +105,25 @@
   <script type="text/javascript" src="/js/triplexMeterHighcharts.js" ></script>
   <script type="text/javascript" src="/js/triplexMeterSpiderHighcharts.js" ></script>
   <script type="text/javascript" src="/js/back-to-top-button.js"></script>
-<script>
-  var btns = ['btn-one', 'btn-two', 'btn-three'];
-  var input = document.getElementById('btn-input');
-  for(var i = 0; i < btns.length; i++) {
-    document.getElementById(btns[i]).addEventListener('click', function() {
-      input.value = this.value;
+  <script>
+    var btns = ['btn-one', 'btn-two', 'btn-three'];
+    var input = document.getElementById('btn-input');
+    for(var i = 0; i < btns.length; i++) {
+      document.getElementById(btns[i]).addEventListener('click', function() {
+        input.value = this.value;
+      });
+    }
+  </script>
+<!--   <script>
+    $('#open').click(function() {
+        var URLToBackend = '/triplex-meter/',
+            slace = '/',
+            firstUserEntry = $('#firstForm').val(),
+            secondUserEntry = $('#secondForm').val();
+
+        var newWindow = window.open(URLToBackend + firstUserEntry + slace + secondUserEntry, '_blank');
+        newWindow.focus();
     });
-  }
-</script>
+  </script> -->
 </body>
 </html>

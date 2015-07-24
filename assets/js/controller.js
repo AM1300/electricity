@@ -113,6 +113,11 @@ app.config(function($locationProvider, $routeProvider) {
         .when('/triplex-meter/highcharts-spider/:date/:nodeID', {
             templateUrl : '/templates/triplexMeterSpiderHighcharts.html',
             controller  : 'triplex-meter-spider-highcharts'
+        })
+
+        .when('/triplex-meter/test', {
+            templateUrl : '/templates/test.html',
+            controller  : 'triplex-meter-multiple-axes-chart'
         });
 
         // $locationProvider.html5Mode({

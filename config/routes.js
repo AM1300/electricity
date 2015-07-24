@@ -6,6 +6,7 @@ var triplexMeterDailyRecords = require(path.join(__dirname, '../api/controllers'
 var houseDailyRecords = require(path.join(__dirname, '../api/controllers', 'housesPerHouseID'));
 var transformerDailyRecords = require(path.join(__dirname, '../api/controllers', 'transformer'));
 var deviceAllRecords = require(path.join(__dirname, '../api/controllers', 'devicesForAllDays'));
+var triplexMeterPerDate = require(path.join(__dirname, '../api/controllers', 'triplexMeterPerDate'));
 
 
 module.exports.routes = {
@@ -40,6 +41,10 @@ module.exports.routes = {
 
   'get /transformer/:date' : function(req, res, next) {
     transformerDailyRecords.getTransformerRecords(req, res, next);
-  }
-  // 'get/devices/:date/:type/:nodeID' : "devicesPerTypeAndNodeID.getDeviceRecordsForTypeAndNodeID"
+  },
+
+  'get /triplex-meter/:date' : function(req, res, next) {
+    triplexMeterPerDate.getTriplexMeterRecordsPerDate(req, res, next);
+  },
+
 };

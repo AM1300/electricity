@@ -1,0 +1,23 @@
+<div class="container">
+  <input id="firstForm"><input id="secondForm">
+  <button id="open">Find</button>
+
+  <div ng-controller="triplex-meter-multiple-axes-chart">
+      <div id="containerMultipleAxesTriplex"></div>
+  </div>
+
+  <script>
+    $('#open').click(function() {
+        var URL = '#/triplex-meter/multiple-axes/',
+            slace = '/',
+            firstUserEntry = $('#firstForm').val(),
+            secondUserEntry = $('#secondForm').val();
+
+        var newWindow = window.open(URL + firstUserEntry + slace + secondUserEntry, '_blank');
+        newWindow.focus();
+    });
+  </script>
+
+
+
+</div>
