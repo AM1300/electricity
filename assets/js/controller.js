@@ -1,4 +1,4 @@
-var app = angular.module('watchElectricity', ['ngRoute']);
+var app = angular.module('watchElectricity', ['ngRoute', 'ui.bootstrap']);
 
 // configure our routes
 app.config(function($locationProvider, $routeProvider) {
@@ -118,9 +118,44 @@ app.config(function($locationProvider, $routeProvider) {
         .when('/triplex-meter/test', {
             templateUrl : '/templates/test.html',
             controller  : 'triplex-meter-multiple-axes-chart'
+        })
+
+        .when('/triplex-meter-select', {
+            templateUrl : '/templates/triplexMeterSelect.html',
+            // controller  : 'triplex-meter-multiple-axes-chart'
+        })
+
+        .when('/devices-select', {
+            templateUrl : '/templates/devicesSelect.html',
+            controller  : 'date-picker-controller'
+        })
+
+        .when('/energy-sources-select', {
+            templateUrl : '/templates/energySourcesSelect.html',
+            // controller  : 'triplex-meter-multiple-axes-chart'
+        })
+
+         .when('/houses-select', {
+            templateUrl : '/templates/housesSelect.html',
+            // controller  : 'triplex-meter-multiple-axes-chart'
+        })
+
+        .when('/market-pool-select', {
+            templateUrl : '/templates/marketPoolSelect.html',
+            // controller  : 'triplex-meter-multiple-axes-chart'
+        })
+
+        .when('/nodes-select', {
+            templateUrl : '/templates/nodesSelect.html',
+            // controller  : 'triplex-meter-multiple-axes-chart'
+        })
+
+        .when('/transformer-select', {
+            templateUrl : '/templates/transformerSelect.html',
+            // controller  : 'triplex-meter-multiple-axes-chart'
         });
 
-        // $locationProvider.html5Mode({
+         // $locationProvider.html5Mode({
         //   enabled: true,
         //   requireBase: false
         // });
@@ -674,3 +709,95 @@ app.controller('triplex-meter-spider-highcharts', function($scope, $http, $route
     $scope.nodeID = nodeID;
   });
 });
+
+app.controller('date-picker-controller', ['$scope', function ($scope) {
+
+  var vm = this;
+
+  vm.valuationDate = new Date();
+  vm.valuationDatePickerIsOpen = false;
+  vm.opens = [];
+
+  $scope.$watch(function () {
+       return vm.valuationDatePickerIsOpen;
+   },function(value){
+      vm.opens.push("valuationDatePickerIsOpen: " + value + " at: " + new Date());
+   });
+
+  vm.valuationDatePickerOpen = function ($event) {
+
+      if ($event) {
+          $event.preventDefault();
+          $event.stopPropagation(); // This is the magic
+      }
+      this.valuationDatePickerIsOpen = true;
+  };
+}]);
+
+// app.controller('date-picker-controller', function($scope) {
+//     $scope.today = function() {
+//       $scope.dt = new Date();
+//     };
+//     $scope.today();
+
+//     $scope.clear = function () {
+//       $scope.dt = null;
+//     };
+
+//     // Disable weekend selection
+//     $scope.disabled = function(date, mode) {
+//       return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+//     };
+
+//     $scope.toggleMin = function() {
+//       $scope.minDate = $scope.minDate ? null : new Date();
+//     };
+//     $scope.toggleMin();
+
+//     $scope.open = function($event) {
+//       $event.preventDefault();
+//       $event.stopPropagation();
+
+//       $scope.opened = true;
+//     };
+
+//     $scope.dateOptions = {
+//       formatYear: 'yy',
+//       startingDay: 1
+//     };
+
+//     $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+//     $scope.format = $scope.formats[0];
+
+//     var tomorrow = new Date();
+//     tomorrow.setDate(tomorrow.getDate() + 1);
+//     var afterTomorrow = new Date();
+//     afterTomorrow.setDate(tomorrow.getDate() + 2);
+//     $scope.events =
+//       [
+//         {
+//           date: tomorrow,
+//           status: 'full'
+//         },
+//         {
+//           date: afterTomorrow,
+//           status: 'partially'
+//         }
+//       ];
+
+//     $scope.getDayClass = function(date, mode) {
+//       if (mode === 'day') {
+//         var dayToCheck = new Date(date).setHours(0,0,0,0);
+
+//         for (var i=0;i<$scope.events.length;i++){
+//           var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+
+//           if (dayToCheck === currentDay) {
+//             return $scope.events[i].status;
+//           }
+//         }
+//       }
+
+//       return '';
+//     };
+// });

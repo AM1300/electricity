@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>We are in the Energy Sources</h2>
+  <p>Type in the following forms the date, the type, and the nodeID
+     and you will see the multiple axes-chart</p>
+  <input id="firstForm">
+  <input id="secondForm">
+  <input id="thirdForm">
+  <button id="open">Find</button>
+
+  <script>
+    $('#open').click(function() {
+        var URL = '#/energy-sources/multiple-axes/',
+            slace = '/',
+            firstUserEntry = $('#firstForm').val(),
+            secondUserEntry = $('#secondForm').val(),
+            thirdUserEntry = $('#thirdForm').val();
+
+        var newWindow = window.open(URL + firstUserEntry + slace + secondUserEntry + slace + thirdUserEntry, '_blank');
+        newWindow.focus();
+    });
+  </script>
+
+
+
+</div>

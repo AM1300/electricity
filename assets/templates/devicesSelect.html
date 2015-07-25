@@ -1,0 +1,88 @@
+<div class="container">
+  <div ng-controller="date-picker-controller as vm">
+    <h2 style="text-align:center;">We are in the Devices</h2>
+    <p style="text-align:center;">Type in the following forms the date, the type, the nodeID and the houseID
+       and you will see the multiple axes-chart</p>
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label for="exampleInputName2" class="col-sm-2 control-label">Date</label>
+<!--         <div class="input-group">
+          <input type="text" class="form-control"
+                 datepicker-popup="mediumDate"
+                 is-open="vm.valuationDatePickerIsOpen"
+                 ng-click="vm.valuationDatePickerOpen()"
+                 ng-model="vm.valuationDate" />
+          <span class="input-group-addon">
+              <i class="glyphicon glyphicon-calendar"></i>
+          </span>
+
+        </div> -->
+            <div class="input-group">
+              <input type="text" class="form-control"
+                     datepicker-popup="mediumDate"
+                     is-open="vm.valuationDatePickerIsOpen"
+                     ng-click="vm.valuationDatePickerOpen()"
+                     ng-model="vm.valuationDate" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default"
+                        ng-click="vm.valuationDatePickerOpen($event)">
+                  <i class="glyphicon glyphicon-calendar"></i>
+                </button>
+              </span>
+            </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputName3" class="col-sm-2 control-label">Type</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="exampleInputName3" placeholder="ac">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputName1" class="col-sm-2 control-label">Node ID</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="exampleInputName1" placeholder="611">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputName" class="col-sm-2 control-label">House ID</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="exampleInputName" placeholder="1611">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default" id="open">Search</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+<!--   <style>
+    .full button span {
+      background-color: limegreen;
+      border-radius: 32px;
+      color: black;
+    }
+    .partially button span {
+      background-color: orange;
+      border-radius: 32px;
+      color: black;
+    }
+  </style> -->
+  <script>
+    $('#open').click(function() {
+        var URL = '#/devices/multiple-axes/',
+            slace = '/',
+            firstUserEntry = $('#exampleInputName2').val(),
+            secondUserEntry = $('#exampleInputName3').val(),
+            thirdUserEntry = $('#exampleInputName1').val(),
+            fourthUserEntry = $('#exampleInputName').val();
+
+        var newWindow = window.open(URL + firstUserEntry + slace + secondUserEntry
+                            + slace + thirdUserEntry + slace + fourthUserEntry, '_blank');
+        newWindow.focus();
+    });
+  </script>
+
+</div>

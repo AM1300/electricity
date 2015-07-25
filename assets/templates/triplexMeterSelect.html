@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>We are in the Central Triplex Meter</h2>
+  <p>Type in the following forms the date and the nodeID and you will see the multiple axes-chart</p>
+  <input id="firstForm"><input id="secondForm">
+  <button id="open">Find</button>
+
+  <script>
+    $('#open').click(function() {
+        var URL = '#/triplex-meter/multiple-axes/',
+            slace = '/',
+            firstUserEntry = $('#firstForm').val(),
+            secondUserEntry = $('#secondForm').val();
+
+        var newWindow = window.open(URL + firstUserEntry + slace + secondUserEntry, '_blank');
+        newWindow.focus();
+    });
+  </script>
+
+
+
+</div>
