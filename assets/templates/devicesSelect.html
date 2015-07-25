@@ -6,19 +6,9 @@
     <form class="form-horizontal">
       <div class="form-group">
         <label for="exampleInputName2" class="col-sm-2 control-label">Date</label>
-<!--         <div class="input-group">
-          <input type="text" class="form-control"
-                 datepicker-popup="mediumDate"
-                 is-open="vm.valuationDatePickerIsOpen"
-                 ng-click="vm.valuationDatePickerOpen()"
-                 ng-model="vm.valuationDate" />
-          <span class="input-group-addon">
-              <i class="glyphicon glyphicon-calendar"></i>
-          </span>
-
-        </div> -->
             <div class="input-group">
               <input type="text" class="form-control"
+                    id="exampleInputName2"
                      datepicker-popup="mediumDate"
                      is-open="vm.valuationDatePickerIsOpen"
                      ng-click="vm.valuationDatePickerOpen()"
@@ -56,33 +46,19 @@
       </div>
     </div>
   </form>
-
-
-<!--   <style>
-    .full button span {
-      background-color: limegreen;
-      border-radius: 32px;
-      color: black;
-    }
-    .partially button span {
-      background-color: orange;
-      border-radius: 32px;
-      color: black;
-    }
-  </style> -->
-  <script>
-    $('#open').click(function() {
-        var URL = '#/devices/multiple-axes/',
-            slace = '/',
-            firstUserEntry = $('#exampleInputName2').val(),
-            secondUserEntry = $('#exampleInputName3').val(),
-            thirdUserEntry = $('#exampleInputName1').val(),
-            fourthUserEntry = $('#exampleInputName').val();
-
-        var newWindow = window.open(URL + firstUserEntry + slace + secondUserEntry
-                            + slace + thirdUserEntry + slace + fourthUserEntry, '_blank');
-        newWindow.focus();
-    });
-  </script>
-
 </div>
+
+<script>
+  $('#open').click(function() {
+      var URL = '#/devices/multiple-axes/',
+          slace = '/',
+          firstUserEntry = $('#exampleInputName2').val(),
+          secondUserEntry = $('#exampleInputName3').val(),
+          thirdUserEntry = $('#exampleInputName1').val(),
+          fourthUserEntry = $('#exampleInputName').val();
+
+      var newWindow = window.open(URL + firstUserEntry + slace + secondUserEntry
+                          + slace + thirdUserEntry + slace + fourthUserEntry, '_blank');
+      newWindow.focus();
+  });
+</script>
