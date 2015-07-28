@@ -122,7 +122,7 @@ app.config(function($locationProvider, $routeProvider) {
 
         .when('/triplex-meter-select', {
             templateUrl : '/templates/triplexMeterSelect.html',
-            // controller  : 'triplex-meter-multiple-axes-chart'
+            controller  : 'date-picker-controller'
         })
 
         .when('/devices-select', {
@@ -137,7 +137,7 @@ app.config(function($locationProvider, $routeProvider) {
 
          .when('/houses-select', {
             templateUrl : '/templates/housesSelect.html',
-            // controller  : 'triplex-meter-multiple-axes-chart'
+            controller  : 'date-picker-controller'
         })
 
         .when('/market-pool-select', {
@@ -710,7 +710,7 @@ app.controller('triplex-meter-spider-highcharts', function($scope, $http, $route
   });
 });
 
-app.controller('date-picker-controller', ['$scope', function ($scope) {
+app.controller('date-picker-controller', ['$scope', function ($scope, $filter) {
 
   var vm = this;
 
@@ -724,7 +724,10 @@ app.controller('date-picker-controller', ['$scope', function ($scope) {
       vm.opens.push("valuationDatePickerIsOpen: " + value + " at: " + new Date());
    });
 
-  $scope.initialDate = "Aug 01, 2000";
+  $scope.initialDate = 'August 2000';
+
+  // var datefilter = $filter('Aug 1, 2000');
+  // var initialDate = datefilter($scope.dt, 'yyyy/MM/dd');
 
   // var today = new Date();
   // today.setDate(initailDate.getDate());
@@ -752,3 +755,17 @@ app.controller('date-picker-controller', ['$scope', function ($scope) {
       this.valuationDatePickerIsOpen = true;
   };
 }]);
+
+// app.directive('datepickerPopup', function (dateFilter, datepickerPopupConfig) {
+//   return {
+//       restrict: 'A',
+//       priority: 1,
+//       require: 'ngModel',
+//       link: function(scope, element, attr, ngModel) {
+//           var dateFormat = attr.datepickerPopup || datepickerPopupConfig.datepickerPopup;
+//           ngModel.$formatters.push(function (value) {
+//               return dateFilter(value, dateFormat);
+//           });
+//       }
+//   };
+// });

@@ -1,8 +1,34 @@
 <div class="container">
-  <h2>We are in the Central Triplex Meter</h2>
-  <p>Type in the following forms the date and the nodeID and you will see the multiple axes-chart</p>
-  <input id="firstForm"><input id="secondForm">
-  <button id="open">Find</button>
+  <div ng-controller="date-picker-controller as vm">
+    <h2>We are in the Central Triplex Meter</h2>
+    <p>Type in the following forms the date and the nodeID and you will see the multiple axes-chart</p>
+    <form class="form-horizontal">
+        <div class="form-group has-feedback">
+          <label for="exampleInputName2" class="col-sm-2 control-label">Date</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control"
+                    id="firstForm"
+                    ui-date={ dateFormat: "dd-MM-yyyy" }
+                    datepicker-popup="dd-MM-yyyy"
+                    is-open="vm.valuationDatePickerIsOpen"
+                    ng-click="vm.valuationDatePickerOpen()"
+                    ng-model="initialDate"/>
+              <i class="form-control-feedback glyphicon glyphicon-calendar"></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputName3" class="col-sm-2 control-label">NodeID</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="secondForm" placeholder="611">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" id="open">Search</button>
+          </div>
+        </div>
+    </form>
+  </div>
 
   <script>
     $('#open').click(function() {

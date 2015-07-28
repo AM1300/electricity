@@ -7,12 +7,13 @@
       <div class="form-group has-feedback">
         <label for="exampleInputName2" class="col-sm-2 control-label">Date</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control"
+            <input type="text" class="form-control ng-pristine ng-valid ng-isolate-scope ng-valid-required ng-valid-date ng-touched"
                   id="exampleInputName2"
-                   datepicker-popup="mediumDate"
-                   is-open="vm.valuationDatePickerIsOpen"
-                   ng-click="vm.valuationDatePickerOpen()"
-                   ng-model="initialDate" />
+                  ui-date={ dateFormat: "dd-MM-yyyy" }
+                  datepicker-popup="dd-MM-yyyy"
+                  is-open="vm.valuationDatePickerIsOpen"
+                  ng-click="vm.valuationDatePickerOpen()"
+                  ng-model="initialDate"/>
             <i class="form-control-feedback glyphicon glyphicon-calendar"></i>
         </div>
       </div>
