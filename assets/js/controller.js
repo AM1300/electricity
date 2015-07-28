@@ -132,7 +132,7 @@ app.config(function($locationProvider, $routeProvider) {
 
         .when('/energy-sources-select', {
             templateUrl : '/templates/energySourcesSelect.html',
-            // controller  : 'triplex-meter-multiple-axes-chart'
+            controller  : 'date-picker-controller'
         })
 
          .when('/houses-select', {
@@ -142,17 +142,17 @@ app.config(function($locationProvider, $routeProvider) {
 
         .when('/market-pool-select', {
             templateUrl : '/templates/marketPoolSelect.html',
-            // controller  : 'triplex-meter-multiple-axes-chart'
+            controller  : 'date-picker-controller'
         })
 
         .when('/nodes-select', {
             templateUrl : '/templates/nodesSelect.html',
-            // controller  : 'triplex-meter-multiple-axes-chart'
+            controller  : 'date-picker-controller'
         })
 
         .when('/transformer-select', {
             templateUrl : '/templates/transformerSelect.html',
-            // controller  : 'triplex-meter-multiple-axes-chart'
+            controller  : 'date-picker-controller'
         });
 
          // $locationProvider.html5Mode({
@@ -724,27 +724,9 @@ app.controller('date-picker-controller', ['$scope', function ($scope, $filter) {
       vm.opens.push("valuationDatePickerIsOpen: " + value + " at: " + new Date());
    });
 
-  $scope.initialDate = 'August 2000';
-
-  // var datefilter = $filter('Aug 1, 2000');
-  // var initialDate = datefilter($scope.dt, 'yyyy/MM/dd');
-
-  // var today = new Date();
-  // today.setDate(initailDate.getDate());
-  // var lastDay = new Date();
-  // lastDay.setDate(today.getDate() + 7);
-  // $scope.events =
-  //   [
-  //     {
-  //       date: today,
-  //       status: 'full'
-  //     },
-  //     {
-  //       date: lastDay,
-  //       status: 'partially'
-  //     }
-  //   ];
-
+  $scope.initialDate = 'Aug 01, 2000';
+  // $scope.start = new Date('Aug 01, 2000');
+  // $scope.end = new Date('Aug 07, 2000');
 
   vm.valuationDatePickerOpen = function ($event) {
 
@@ -755,17 +737,3 @@ app.controller('date-picker-controller', ['$scope', function ($scope, $filter) {
       this.valuationDatePickerIsOpen = true;
   };
 }]);
-
-// app.directive('datepickerPopup', function (dateFilter, datepickerPopupConfig) {
-//   return {
-//       restrict: 'A',
-//       priority: 1,
-//       require: 'ngModel',
-//       link: function(scope, element, attr, ngModel) {
-//           var dateFormat = attr.datepickerPopup || datepickerPopupConfig.datepickerPopup;
-//           ngModel.$formatters.push(function (value) {
-//               return dateFilter(value, dateFormat);
-//           });
-//       }
-//   };
-// });
