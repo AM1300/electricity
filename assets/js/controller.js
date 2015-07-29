@@ -725,8 +725,6 @@ app.controller('date-picker-controller', ['$scope', function ($scope, $filter) {
    });
 
   $scope.initialDate = 'Aug 01, 2000';
-  // $scope.start = new Date('Aug 01, 2000');
-  // $scope.end = new Date('Aug 07, 2000');
 
   vm.valuationDatePickerOpen = function ($event) {
 
@@ -735,5 +733,12 @@ app.controller('date-picker-controller', ['$scope', function ($scope, $filter) {
           $event.stopPropagation(); // This is the magic
       }
       this.valuationDatePickerIsOpen = true;
+  };
+
+  $scope.range = function(min, max, step){
+    step = step || 1;
+    var input = [];
+    for (var i = min; i <= max; i += step) input.push(i);
+    return input;
   };
 }]);
