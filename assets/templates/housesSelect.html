@@ -1,7 +1,7 @@
 <div class="container">
   <div ng-controller="date-picker-controller as vm">
-    <h2>We are in the House</h2>
-    <p>Type in the following forms the date and the houseID and you will see the chart</p>
+    <h2 style="text-align:center;">We are in the House</h2>
+    <p style="text-align:center;">Type in the following forms the date and the houseID and you will see the chart</p>
     <form class="form-horizontal">
         <div class="form-group has-feedback">
           <label for="exampleInputName2" class="col-sm-2 control-label">Date</label>
@@ -16,9 +16,93 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleInputName3" class="col-sm-2 control-label">HouseID</label>
+          <label for="exampleInputName1" class="col-sm-2 control-label">Node ID</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control" id="secondForm" placeholder="1611">
+            <select class="form-control" id="secondForm" placeholder="611" onchange="changeHouse(value)">
+              <option value="611">611</option>
+              <option value="645">645</option>
+              <option value="646">646</option>
+              <option value="652">652</option>
+              <option value="671">671</option>
+              <option value="675">675</option>
+              <option value="692">692</option>
+              <option value="6321">6321</option>
+              <option value="6711">6711</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputName" class="col-sm-2 control-label">House ID</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="house611" placeholder="1611">
+              <option ng-repeat="houseID in range(1,26)" value="{{houseID}}611">{{houseID}}611</option>
+            </select>
+            <select class="form-control" id="house645" placeholder="1645" style="display:none">
+              <option ng-repeat="houseID in range(1,155)" value="{{houseID}}645">{{houseID}}645</option>
+            </select>
+            <select class="form-control" id="house646" placeholder="1646" style="display:none">
+              <option ng-repeat="houseID in range(1,95)" value="{{houseID}}646">{{houseID}}646</option>
+            </select>
+            <select class="form-control" id="house652" placeholder="1652" style="display:none">
+              <option ng-repeat="houseID in range(1,171)" value="{{houseID}}652">{{houseID}}652</option>
+            </select>
+            <select class="form-control" id="house671" placeholder="1671" style="display:none">
+              <option ng-repeat="houseID in range(1,191)" value="{{houseID}}671">{{houseID}}671</option>
+            </select>
+            <select class="form-control" id="house675" placeholder="1675" style="display:none">
+              <option ng-repeat="houseID in range(1,225)" value="{{houseID}}675">{{houseID}}675</option>
+            </select>
+            <select class="form-control" id="house692" placeholder="1692" style="display:none">
+              <option ng-repeat="houseID in range(1,201)" value="{{houseID}}692">{{houseID}}692</option>
+            </select>
+            <select class="form-control" id="house6321" placeholder="16321" style="display:none">
+              <option ng-repeat="houseID in range(1,27)" value="{{houseID}}6321">{{houseID}}6321</option>
+            </select>
+            <select class="form-control" id="house6711" placeholder="16711" style="display:none">
+              <option ng-repeat="houseID in range(1,19)" value="{{houseID}}6711">{{houseID}}6711</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputName1" class="col-sm-2 control-label">Phase</label>
+          <div class="col-sm-10">
+            <select class="form-control" id="phaseOf611" placeholder="C">
+              <option value="c">C</option>
+            </select>
+            <select class="form-control" id="phaseOf645" placeholder="B" style="display:none">
+              <option value="b">B</option>
+            </select>
+            <select class="form-control" id="phaseOf646" placeholder="B" style="display:none">
+              <option value="b">B</option>
+            </select>
+            <select class="form-control" id="phaseOf652" placeholder="A" style="display:none">
+              <option value="a">A</option>
+            </select>
+            <select class="form-control" id="phaseOf671" placeholder="A" style="display:none">
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+            </select>
+            <select class="form-control" id="phaseOf675" placeholder="A" style="display:none">
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+            </select>
+            <select class="form-control" id="phaseOf692" placeholder="A" style="display:none">
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+            </select>
+            <select class="form-control" id="phaseOf6321" placeholder="A" style="display:none">
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+            </select>
+            <select class="form-control" id="phaseOf6711" placeholder="A" style="display:none">
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+            </select>
           </div>
         </div>
         <div class="form-group">
@@ -28,13 +112,157 @@
         </div>
     </form>
   </div>
+</div>
 
-  <script>
+<script>
+  function changeHouse(value){
+      if(value=='611') {
+      document.getElementById('house611').style.display='block';
+      document.getElementById('phaseOf611').style.display='block';
+      }
+      else {
+        document.getElementById('house611').style.display='none';
+        document.getElementById('phaseOf611').style.display='none';
+      }
+      if(value=='645') {
+       document.getElementById('house645').style.display='block';
+       document.getElementById('phaseOf645').style.display='block';
+      }
+      else {
+       document.getElementById('house645').style.display='none';
+       document.getElementById('phaseOf645').style.display='none';
+      }
+      if(value=='646') {
+       document.getElementById('house646').style.display='block';
+       document.getElementById('phaseOf646').style.display='block';
+      }
+      else {
+       document.getElementById('house646').style.display='none';
+       document.getElementById('phaseOf646').style.display='none';
+      }
+      if(value=='652') {
+       document.getElementById('house652').style.display='block';
+       document.getElementById('phaseOf652').style.display='block';
+      }
+      else {
+       document.getElementById('house652').style.display='none';
+       document.getElementById('phaseOf652').style.display='none';
+      }
+      if(value=='671') {
+       document.getElementById('house671').style.display='block';
+       document.getElementById('phaseOf671').style.display='block';
+      }
+      else {
+       document.getElementById('house671').style.display='none';
+       document.getElementById('phaseOf671').style.display='none';
+      }
+      if(value=='675') {
+       document.getElementById('house675').style.display='block';
+       document.getElementById('phaseOf675').style.display='block';
+      }
+      else {
+       document.getElementById('house675').style.display='none';
+       document.getElementById('phaseOf675').style.display='none';
+      }
+      if(value=='692') {
+       document.getElementById('house692').style.display='block';
+       document.getElementById('phaseOf692').style.display='block';
+      }
+      else {
+       document.getElementById('house692').style.display='none';
+       document.getElementById('phaseOf692').style.display='none';
+     }
+      if(value=='6321') {
+       document.getElementById('house6321').style.display='block';
+       document.getElementById('phaseOf6321').style.display='block';
+      }
+      else {
+       document.getElementById('house6321').style.display='none';
+       document.getElementById('phaseOf6321').style.display='none';
+      }
+      if(value=='6711') {
+       document.getElementById('house6711').style.display='block';
+       document.getElementById('phaseOf6711').style.display='block';
+      }
+      else {
+       document.getElementById('house6711').style.display='none';
+       document.getElementById('phaseOf6711').style.display='none';
+      }
+    }
+
+    function chooseHouseID(value) {
+      var thirdUserEntry;
+
+      if(value=='611') {
+        thirdUserEntry = $('#house611').val();
+      }
+      if(value=='645') {
+        thirdUserEntry = $('#house645').val();
+      }
+      if(value=='646') {
+        thirdUserEntry = $('#house646').val();
+      }
+      if(value=='652') {
+        thirdUserEntry = $('#house652').val();
+      }
+      if(value=='671') {
+        thirdUserEntry = $('#house671').val();
+      }
+      if(value=='675') {
+        thirdUserEntry = $('#house675').val();
+      }
+      if(value=='692') {
+        thirdUserEntry = $('#house692').val();
+      }
+      if(value=='6321') {
+        thirdUserEntry = $('#house6321').val();
+      }
+      if(value=='6711') {
+       thirdUserEntry = $('#house6711').val();
+      }
+      return thirdUserEntry;
+    }
+
+    function choosePhase(value) {
+      var fourthUserEntry;
+
+      if(value=='611') {
+        fourthUserEntry = $('#phaseOf611').val();
+      }
+      if(value=='645') {
+        fourthUserEntry = $('#phaseOf645').val();
+      }
+      if(value=='646') {
+        fourthUserEntry = $('#phaseOf646').val();
+      }
+      if(value=='652') {
+        fourthUserEntry = $('#phaseOf652').val();
+      }
+      if(value=='671') {
+        fourthUserEntry = $('#phaseOf671').val();
+      }
+      if(value=='675') {
+        fourthUserEntry = $('#phaseOf675').val();
+      }
+      if(value=='692') {
+        fourthUserEntry = $('#phaseOf692').val();
+      }
+      if(value=='6321') {
+        fourthUserEntry = $('#phaseOf6321').val();
+      }
+      if(value=='6711') {
+       fourthUserEntry = $('#phaseOf6711').val();
+      }
+      return fourthUserEntry;
+    }
+
     $('#open').click(function() {
-        var URL = '#/houses/line-chart/',
+        var URL = '#/houses/multiple-line-chart/',
             slace = '/',
             firstUserEntry = $('#firstForm').val(),
-            secondUserEntry = $('#secondForm').val();
+            secondUserEntry = $('#secondForm').val(),
+            thirdUserEntry = chooseHouseID(secondUserEntry),
+            fourthUserEntry = choosePhase(secondUserEntry);
 
             if (firstUserEntry=='Aug 01, 2000') {
               firstUserEntry = '01-08-2000';
@@ -57,11 +285,11 @@
             if (firstUserEntry=='Aug 07, 2000') {
               firstUserEntry = '07-08-2000';
             }
-        var newWindow = window.open(URL + firstUserEntry + slace + secondUserEntry, '_blank');
+        var newWindow = window.open(URL + firstUserEntry + slace + secondUserEntry
+                                        + slace + thirdUserEntry + slace + fourthUserEntry, '_blank');
         newWindow.focus();
     });
-  </script>
+</script>
 
 
 
-</div>

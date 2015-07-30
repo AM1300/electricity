@@ -50,9 +50,19 @@ app.config(function($locationProvider, $routeProvider) {
             controller  : 'triplex-meter-line-chart'
         })
 
-        .when('/houses/line-chart/:date/:houseID', {
+        .when('/houses/line-chart/:date/:nodeID/:houseID', {
             templateUrl : '/templates/houseLineChart.html',
             controller  : 'house-line-chart'
+        })
+
+        .when('/houses/multiple-line-chart/:date/:nodeID/:houseID/:phase', {
+            templateUrl : '/templates/housesMultipleLineChart.html',
+            controller  : 'houses-multiple-charts'
+        })
+
+        .when('/houses/spider-chart/:date/:nodeID/:houseID/:phase', {
+            templateUrl : '/templates/housesSpiderChart.html',
+            controller  : 'houses-spider-chart'
         })
 
         .when('/transformer/line-chart/:date', {
@@ -363,10 +373,11 @@ app.controller('triplex-meter-line-chart', function($scope, $http, $route, $rout
 
 app.controller('house-line-chart', function($scope, $http, $route, $routeParams) {
   var date = $routeParams.date;
+  var nodeID = $routeParams.nodeID;
   var houseID = $routeParams.houseID;
 
   $http ({
-    url : '/houses/' + date + '/' + houseID,
+    url : '/houses/' + date + '/' + nodeID + '/' + houseID,
     method : 'GET'
   })
 
@@ -381,6 +392,7 @@ app.controller('house-line-chart', function($scope, $http, $route, $routeParams)
 
     $scope.rows = data;
     $scope.date = date;
+    $scope.nodeID = nodeID;
     $scope.houseID = houseID;
   });
 });
@@ -447,8 +459,6 @@ app.controller('devices-multiple-charts', function($scope, $http, $route, $route
 
     var timestampsList = newData.timestamps;
     var datasetIndicatorsList = {'datasets' : datasets};
-    // console.log(JSON.stringify(datasetIndicatorsList));
-    // console.log(JSON.stringify(timestampsList));
 
     devicesMultipleCharts(datasetIndicatorsList, timestampsList);
 
@@ -742,3 +752,47 @@ app.controller('date-picker-controller', ['$scope', function ($scope, $filter) {
     return input;
   };
 }]);
+
+app.controller('houses-multiple-charts', function($scope, $http, $route, $routeParams) {
+  var date = $routeParams.date;
+  var nodeID = $routeParams.nodeID;
+  var houseID = $routeParams.houseID;
+  var phase = $routeParams.phase;
+
+  $http ({
+    url : '/houses/' + date + '/' + nodeID + '/' + houseID + '/' + phase,
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+    housesMultipleLineChart(response);
+
+    $scope.data = response;
+    $scope.date = date;
+    $scope.nodeID = nodeID;
+    $scope.houseID = houseID;
+    $scope.phase = phase;
+  });
+});
+
+app.controller('houses-spider-chart', function($scope, $http, $route, $routeParams) {
+  var date = $routeParams.date;
+  var nodeID = $routeParams.nodeID;
+  var houseID = $routeParams.houseID;
+  var phase = $routeParams.phase;
+
+  $http ({
+    url : '/houses/' + date + '/' + nodeID + '/' + houseID + '/' + phase,
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+    housesSpiderChart(response);
+
+    $scope.data = response;
+    $scope.date = date;
+    $scope.nodeID = nodeID;
+    $scope.houseID = houseID;
+    $scope.phase = phase;
+  });
+});

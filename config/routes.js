@@ -35,7 +35,7 @@ module.exports.routes = {
     triplexMeterDailyRecords.getTriplexMeterRecords(req, res, next);
   },
 
-  'get /houses/:date/:houseID' : function(req, res, next) {
+  'get /houses/:date/:nodeID/:houseID/:phase' : function(req, res, next) {
     houseDailyRecords.getHousePerHouseIDRecords(req, res, next);
   },
 
