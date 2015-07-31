@@ -18,7 +18,7 @@
         <div class="form-group">
           <label for="exampleInputName1" class="col-sm-2 control-label">Node ID</label>
           <div class="col-sm-10">
-            <select class="form-control" id="secondForm" placeholder="611" onchange="changeHouse(value)">
+            <select class="form-control" id="node" onchange="choosePhase(value)">
               <option value="611">611</option>
               <option value="645">645</option>
               <option value="646">646</option>
@@ -32,77 +32,15 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleInputName" class="col-sm-2 control-label">House ID</label>
+          <label for="exampleInputName1" class="col-sm-2 control-label">Phase</label>
           <div class="col-sm-10">
-            <select class="form-control" id="house611" placeholder="1611">
-              <option ng-repeat="houseID in range(1,26)" value="{{houseID}}611">{{houseID}}611</option>
-            </select>
-            <select class="form-control" id="house645" placeholder="1645" style="display:none">
-              <option ng-repeat="houseID in range(1,155)" value="{{houseID}}645">{{houseID}}645</option>
-            </select>
-            <select class="form-control" id="house646" placeholder="1646" style="display:none">
-              <option ng-repeat="houseID in range(1,95)" value="{{houseID}}646">{{houseID}}646</option>
-            </select>
-            <select class="form-control" id="house652" placeholder="1652" style="display:none">
-              <option ng-repeat="houseID in range(1,171)" value="{{houseID}}652">{{houseID}}652</option>
-            </select>
-            <select class="form-control" id="house671" placeholder="1671" style="display:none">
-              <option ng-repeat="houseID in range(1,191)" value="{{houseID}}671">{{houseID}}671</option>
-            </select>
-            <select class="form-control" id="house675" placeholder="1675" style="display:none">
-              <option ng-repeat="houseID in range(1,225)" value="{{houseID}}675">{{houseID}}675</option>
-            </select>
-            <select class="form-control" id="house692" placeholder="1692" style="display:none">
-              <option ng-repeat="houseID in range(1,201)" value="{{houseID}}692">{{houseID}}692</option>
-            </select>
-            <select class="form-control" id="house6321" placeholder="16321" style="display:none">
-              <option ng-repeat="houseID in range(1,27)" value="{{houseID}}6321">{{houseID}}6321</option>
-            </select>
-            <select class="form-control" id="house6711" placeholder="16711" style="display:none">
-              <option ng-repeat="houseID in range(1,19)" value="{{houseID}}6711">{{houseID}}6711</option>
-            </select>
+            <select class="form-control" id="phase" onchange="changeHouseBasedOnPhase(value)"></select>
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleInputName1" class="col-sm-2 control-label">Phase</label>
+          <label for="exampleInputName" class="col-sm-2 control-label">House ID</label>
           <div class="col-sm-10">
-            <select class="form-control" id="phaseOf611" placeholder="C">
-              <option value="c">C</option>
-            </select>
-            <select class="form-control" id="phaseOf645" placeholder="B" style="display:none">
-              <option value="b">B</option>
-            </select>
-            <select class="form-control" id="phaseOf646" placeholder="B" style="display:none">
-              <option value="b">B</option>
-            </select>
-            <select class="form-control" id="phaseOf652" placeholder="A" style="display:none">
-              <option value="a">A</option>
-            </select>
-            <select class="form-control" id="phaseOf671" placeholder="A" style="display:none">
-              <option value="a">A</option>
-              <option value="b">B</option>
-              <option value="c">C</option>
-            </select>
-            <select class="form-control" id="phaseOf675" placeholder="A" style="display:none">
-              <option value="a">A</option>
-              <option value="b">B</option>
-              <option value="c">C</option>
-            </select>
-            <select class="form-control" id="phaseOf692" placeholder="A" style="display:none">
-              <option value="a">A</option>
-              <option value="b">B</option>
-              <option value="c">C</option>
-            </select>
-            <select class="form-control" id="phaseOf6321" placeholder="A" style="display:none">
-              <option value="a">A</option>
-              <option value="b">B</option>
-              <option value="c">C</option>
-            </select>
-            <select class="form-control" id="phaseOf6711" placeholder="A" style="display:none">
-              <option value="a">A</option>
-              <option value="b">B</option>
-              <option value="c">C</option>
-            </select>
+            <select class="form-control" id="HouseID"></select>
           </div>
         </div>
         <div class="form-group">
@@ -115,154 +53,62 @@
 </div>
 
 <script>
-  function changeHouse(value){
-      if(value=='611') {
-      document.getElementById('house611').style.display='block';
-      document.getElementById('phaseOf611').style.display='block';
-      }
-      else {
-        document.getElementById('house611').style.display='none';
-        document.getElementById('phaseOf611').style.display='none';
-      }
-      if(value=='645') {
-       document.getElementById('house645').style.display='block';
-       document.getElementById('phaseOf645').style.display='block';
-      }
-      else {
-       document.getElementById('house645').style.display='none';
-       document.getElementById('phaseOf645').style.display='none';
-      }
-      if(value=='646') {
-       document.getElementById('house646').style.display='block';
-       document.getElementById('phaseOf646').style.display='block';
-      }
-      else {
-       document.getElementById('house646').style.display='none';
-       document.getElementById('phaseOf646').style.display='none';
-      }
-      if(value=='652') {
-       document.getElementById('house652').style.display='block';
-       document.getElementById('phaseOf652').style.display='block';
-      }
-      else {
-       document.getElementById('house652').style.display='none';
-       document.getElementById('phaseOf652').style.display='none';
-      }
-      if(value=='671') {
-       document.getElementById('house671').style.display='block';
-       document.getElementById('phaseOf671').style.display='block';
-      }
-      else {
-       document.getElementById('house671').style.display='none';
-       document.getElementById('phaseOf671').style.display='none';
-      }
-      if(value=='675') {
-       document.getElementById('house675').style.display='block';
-       document.getElementById('phaseOf675').style.display='block';
-      }
-      else {
-       document.getElementById('house675').style.display='none';
-       document.getElementById('phaseOf675').style.display='none';
-      }
-      if(value=='692') {
-       document.getElementById('house692').style.display='block';
-       document.getElementById('phaseOf692').style.display='block';
-      }
-      else {
-       document.getElementById('house692').style.display='none';
-       document.getElementById('phaseOf692').style.display='none';
-     }
-      if(value=='6321') {
-       document.getElementById('house6321').style.display='block';
-       document.getElementById('phaseOf6321').style.display='block';
-      }
-      else {
-       document.getElementById('house6321').style.display='none';
-       document.getElementById('phaseOf6321').style.display='none';
-      }
-      if(value=='6711') {
-       document.getElementById('house6711').style.display='block';
-       document.getElementById('phaseOf6711').style.display='block';
-      }
-      else {
-       document.getElementById('house6711').style.display='none';
-       document.getElementById('phaseOf6711').style.display='none';
-      }
-    }
+    window.choosePhase = function (value){
+      var nodeID = $('#node').val();
 
-    function chooseHouseID(value) {
-      var thirdUserEntry;
+      $.get('/house-end-point/' +nodeID)
 
-      if(value=='611') {
-        thirdUserEntry = $('#house611').val();
-      }
-      if(value=='645') {
-        thirdUserEntry = $('#house645').val();
-      }
-      if(value=='646') {
-        thirdUserEntry = $('#house646').val();
-      }
-      if(value=='652') {
-        thirdUserEntry = $('#house652').val();
-      }
-      if(value=='671') {
-        thirdUserEntry = $('#house671').val();
-      }
-      if(value=='675') {
-        thirdUserEntry = $('#house675').val();
-      }
-      if(value=='692') {
-        thirdUserEntry = $('#house692').val();
-      }
-      if(value=='6321') {
-        thirdUserEntry = $('#house6321').val();
-      }
-      if(value=='6711') {
-       thirdUserEntry = $('#house6711').val();
-      }
-      return thirdUserEntry;
-    }
+        .done (function( data ){
 
-    function choosePhase(value) {
-      var fourthUserEntry;
+          var phases = data.map(function(entry, index) {
+            return entry.phase;
+          });
 
-      if(value=='611') {
-        fourthUserEntry = $('#phaseOf611').val();
-      }
-      if(value=='645') {
-        fourthUserEntry = $('#phaseOf645').val();
-      }
-      if(value=='646') {
-        fourthUserEntry = $('#phaseOf646').val();
-      }
-      if(value=='652') {
-        fourthUserEntry = $('#phaseOf652').val();
-      }
-      if(value=='671') {
-        fourthUserEntry = $('#phaseOf671').val();
-      }
-      if(value=='675') {
-        fourthUserEntry = $('#phaseOf675').val();
-      }
-      if(value=='692') {
-        fourthUserEntry = $('#phaseOf692').val();
-      }
-      if(value=='6321') {
-        fourthUserEntry = $('#phaseOf6321').val();
-      }
-      if(value=='6711') {
-       fourthUserEntry = $('#phaseOf6711').val();
-      }
-      return fourthUserEntry;
-    }
+          var uniquePhases = [];
+          $.each(phases, function(i, el){
+              if($.inArray(el, uniquePhases) === -1) uniquePhases.push(el);
+          });
+          $('#phase').empty();
+
+          $.each(uniquePhases, function(key, value) {
+            $('#phase')
+              .append($("<option></option>")
+              .attr("value",value)
+              .text(value));
+          });
+        });
+    };
+
+    window.changeHouseBasedOnPhase = function(value) {
+      var nodeID = $('#node').val();
+      var phase = $('#phase').val();
+
+      $.get('/house-end-point/' +nodeID+ '/' +phase)
+        .done (function( data ){
+          var houseIDs = data.map(function(entry, index) {
+            return entry.houseID;
+          });
+
+          $('#HouseID').empty();
+
+          console.log(houseIDs);
+
+          $.each(houseIDs, function(key, value) {
+            $('#HouseID')
+              .append($("<option></option>")
+              .attr("value",key + 1 + nodeID)
+              .text(value));
+          });
+        });
+    };
 
     $('#open').click(function() {
         var URL = '#/houses/multiple-line-chart/',
             slace = '/',
             firstUserEntry = $('#firstForm').val(),
-            secondUserEntry = $('#secondForm').val(),
-            thirdUserEntry = chooseHouseID(secondUserEntry),
-            fourthUserEntry = choosePhase(secondUserEntry);
+            secondUserEntry = $('#node').val(),
+            thirdUserEntry = $('#HouseID').val(),
+            fourthUserEntry = $('#phase').val();
 
             if (firstUserEntry=='Aug 01, 2000') {
               firstUserEntry = '01-08-2000';
