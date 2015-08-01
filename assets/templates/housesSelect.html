@@ -19,7 +19,8 @@
           <label for="exampleInputName1" class="col-sm-2 control-label">Node ID</label>
           <div class="col-sm-10">
             <select class="form-control" id="node" onchange="choosePhase(value)">
-              <option value="611">611</option>
+              <option selected="true" disabled="disabled">Choose Node</option>
+              <option value="611" >611</option>
               <option value="645">645</option>
               <option value="646">646</option>
               <option value="652">652</option>
@@ -34,13 +35,17 @@
         <div class="form-group">
           <label for="exampleInputName1" class="col-sm-2 control-label">Phase</label>
           <div class="col-sm-10">
-            <select class="form-control" id="phase" onchange="changeHouseBasedOnPhase(value)"></select>
+            <select class="form-control" id="phase" onchange="changeHouseBasedOnPhase(value)">
+              <option selected="true" disabled="disabled">Choose Phase</option>
+            </select>
           </div>
         </div>
         <div class="form-group">
           <label for="exampleInputName" class="col-sm-2 control-label">House ID</label>
           <div class="col-sm-10">
-            <select class="form-control" id="HouseID"></select>
+            <select class="form-control" id="HouseID">
+              <option selected="true" disabled="disabled">Choose House</option>
+            </select>
           </div>
         </div>
         <div class="form-group">
@@ -68,14 +73,27 @@
           $.each(phases, function(i, el){
               if($.inArray(el, uniquePhases) === -1) uniquePhases.push(el);
           });
-          $('#phase').empty();
 
+          $('#HouseID').empty();
+          $('#HouseID')
+            .append($("<option></option>")
+            .attr("selected", true)
+            .attr('disabled', 'disabled')
+            .text('Choose House'));
+
+          $('#phase').empty();
+          $('#phase')
+              .append($("<option></option>")
+              .attr("selected", true)
+              .attr('disabled', 'disabled')
+              .text('Choose Phase'));
           $.each(uniquePhases, function(key, value) {
             $('#phase')
               .append($("<option></option>")
               .attr("value",value)
               .text(value));
           });
+          $("#phase option:first-child").attr("selected", true);
         });
     };
 
@@ -90,6 +108,11 @@
           });
 
           $('#HouseID').empty();
+          $('#HouseID')
+            .append($("<option></option>")
+            .attr("selected", true)
+            .attr('disabled', 'disabled')
+            .text('Choose House'));
 
           console.log(houseIDs);
 
