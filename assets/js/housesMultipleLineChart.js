@@ -58,11 +58,17 @@ function housesMultipleLineChart(data) {
                 tickInterval: 4
             },
             yAxis: {
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
+              labels: {
+                  format: '{value} kW'
+              },
+              plotLines: [{
+                  value: 0,
+                  width: 1,
+                  color: '#808080'
+              }],
+              title: {
+                  text: ' ',
+                },
             },
             tooltip: {
                 shared: true
