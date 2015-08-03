@@ -12,7 +12,9 @@
                     datepicker-popup="MMM dd, yyyy"
                     is-open="vm.valuationDatePickerIsOpen"
                     ng-click="vm.valuationDatePickerOpen()"
-                    ng-model="initialDate"/>
+                    ng-model="initialDate"
+                    min-date="startDate"
+                    max-date="endDate" />
               <i class="form-control-feedback glyphicon glyphicon-calendar"></i>
           </div>
         </div>
