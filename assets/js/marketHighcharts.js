@@ -71,7 +71,10 @@ function marketHighcharts(response) {
                     value: 0,
                     width: 1,
                     color: '#808080'
-                }]
+                }],
+                title: {
+                  text: ' ',
+                }
             },
             tooltip: {
                 shared: true
