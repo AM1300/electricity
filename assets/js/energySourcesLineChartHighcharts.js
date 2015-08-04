@@ -1,7 +1,10 @@
-function energySourcesMultipleAxesChart(data) {
-
+function energySourcesLineChartHighcharts(data) {
     var timestamps = data.map(function(entry, index) {
       return moment(entry.timestamp).format('HH:mm');
+    });
+
+    var date = data.map(function(entry, index) {
+      return moment(entry.timestamp).format('MMMM Do YYYY');
     });
 
     var prices = data.map(function(entry) {
@@ -16,101 +19,86 @@ function energySourcesMultipleAxesChart(data) {
       return entry.reactivePower;
     });
 
+    var dateTitle = date[0];
+
     $(function () {
         $('#containerMultipleAxesEnergySources').highcharts({
             chart: {
-                zoomType: 'xy',
-                backgroundColor:'#ECECEC'
+                backgroundColor:'#ECECEC',
+                zoomType: 'x',
+                resetZoomButton: {
+                  position: {
+                    x: -40,
+                    y: -40
+                  },
+                  theme: {
+                      fill: '#E3E3E3',
+                      stroke: '#222',
+                      style: {
+                          color: '#222'
+                      },
+                      r: 3,
+                      states: {
+                          hover: {
+                              fill: 'rgba(137, 137, 132, 0.5)',
+                              stroke: '#222',
+                              style: {
+                                  color: '#222'
+                              }
+                          }
+                      }
+                  }
+                }
             },
             title: {
-                text: 'Real and Reactive Power and Price'
+                text: 'Price, Real & Reactive Power for ' +dateTitle,
             },
-            xAxis: [{
+            subtitle: {
+                text: document.ontouchstart === undefined ?
+                        'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+            },
+            xAxis: {
                 categories: timestamps,
-                crosshair: true
-            }],
-            yAxis: [{ // Primary yAxis
-                labels: {
-                    format: '{value} Watt',
-                    style: {
-                        color: Highcharts.getOptions().colors[0]
-                    }
+                tickInterval: 4
+            },
+            yAxis: {
+              labels: {
+                  format: '{value}'
+              },
+              plotLines: [{
+                  value: 0,
+                  width: 1,
+                  color: '#808080'
+              }],
+              title: {
+                  text: ' ',
                 },
-                title: {
-                    text: 'Reactive Power',
-                    style: {
-                        color: Highcharts.getOptions().colors[0]
-                    }
-                },
-                opposite: true
-
-            }, { // Secondary yAxis
-                gridLineWidth: 0,
-                title: {
-                    text: 'Real Power',
-                    style: {
-                        color: Highcharts.getOptions().colors[2]
-                    }
-                },
-                labels: {
-                    format: '{value} Watt',
-                    style: {
-                        color: Highcharts.getOptions().colors[2]
-                    }
-                }
-
-            }, { // Tertiary yAxis
-                gridLineWidth: 0,
-                title: {
-                    text: 'Price',
-                    style: {
-                        color: Highcharts.getOptions().colors[1]
-                    }
-                },
-                labels: {
-                    format: '{value} ¢',
-                    style: {
-                        color: Highcharts.getOptions().colors[1]
-                    }
-                },
-                opposite: true
-            }],
+            },
             tooltip: {
                 shared: true
             },
             legend: {
-              // labelFormatter: function() {
-              //       return '<span style="color: '+this.color+'">'+ this.name + '</span>';
-              //   },
-                itemStyle: {
-                    color: '#333',
-                },
-                layout: 'vertical',
-                align: 'left',
-                x: 100,
-                verticalAlign: 'top',
-                y: 25,
-                floating: true,
+                align: 'center',
+                verticalAlign: 'bottom',
+                floating: false,
                 backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#ECECEC'
             },
             series: [{
                 name: 'Real Power',
                 color: Highcharts.getOptions().colors[2],
-                type: 'spline',
-                yAxis: 1,
                 data: realPowers,
+                type: 'spline',
                 marker: {
                     enabled: false
                 },
                 tooltip: {
                     valueSuffix: ' Watt'
                 }
-
             }, {
                 name: 'Reactive Power',
                 color: Highcharts.getOptions().colors[0],
-                type: 'spline',
                 data: reactivePowers,
+                type: 'spline',
                 marker: {
                     enabled: false
                 },
@@ -120,14 +108,13 @@ function energySourcesMultipleAxesChart(data) {
             }, {
                 name: 'Price',
                 color: Highcharts.getOptions().colors[1],
-                type: 'spline',
-                yAxis: 2,
                 data: prices,
+                type: 'spline',
                 marker: {
                     enabled: false
                 },
                 tooltip: {
-                    valueSuffix: ' $'
+                    valueSuffix: ' ¢'
                 }
             }],
             navigation: {

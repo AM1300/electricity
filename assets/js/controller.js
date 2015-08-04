@@ -163,6 +163,16 @@ app.config(function($locationProvider, $routeProvider) {
         .when('/transformer-select', {
             templateUrl : '/templates/transformerSelect.html',
             controller  : 'date-picker-controller'
+        })
+
+        .when('/energy-sources/line/:date/:type/:nodeID', {
+            templateUrl : '/templates/energySourcesLineChartHighcharts.html',
+            controller  : 'energy-sources-line-chart-highcharts'
+        })
+
+        .when('/energy-sources/spider/:date/:type/:nodeID', {
+            templateUrl : '/templates/energySourcesSpiderChartHighcharts.html',
+            controller  : 'energy-sources-spider-chart-highcharts'
         });
 
          // $locationProvider.html5Mode({
@@ -796,5 +806,45 @@ app.controller('houses-spider-chart', function($scope, $http, $route, $routePara
     $scope.nodeID = nodeID;
     $scope.houseID = houseID;
     $scope.phase = phase;
+  });
+});
+
+app.controller('energy-sources-line-chart-highcharts', function($scope, $http, $route, $routeParams) {
+  var date = $routeParams.date;
+  var nodeID = $routeParams.nodeID;
+  var type = $routeParams.type;
+
+  $http ({
+    url : '/energy-sources/' + date + '/' + type + '/' + nodeID,
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+    energySourcesLineChartHighcharts(response);
+
+    $scope.data = response;
+    $scope.date = date;
+    $scope.nodeID = nodeID;
+    $scope.type = type;
+  });
+});
+
+app.controller('energy-sources-spider-chart-highcharts', function($scope, $http, $route, $routeParams) {
+  var date = $routeParams.date;
+  var nodeID = $routeParams.nodeID;
+  var type = $routeParams.type;
+
+  $http ({
+    url : '/energy-sources/' + date + '/' + type + '/' + nodeID,
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+    energySourcesSpiderChartHighcharts(response);
+
+    $scope.data = response;
+    $scope.date = date;
+    $scope.nodeID = nodeID;
+    $scope.type = type;
   });
 });
