@@ -58,6 +58,9 @@ function triplexMeterHighcharts(data) {
                 tickInterval: 4
             },
             yAxis: {
+                labels: {
+                    format: '{value} kW'
+                },
                 plotLines: [{
                     value: 0,
                     width: 1,

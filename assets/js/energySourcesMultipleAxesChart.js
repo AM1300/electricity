@@ -23,7 +23,7 @@ function energySourcesMultipleAxesChart(data) {
                 backgroundColor:'#ECECEC'
             },
             title: {
-                text: 'Real and Reactive Power and Price'
+                text: 'Price, Real & Reactive Power '
             },
             xAxis: [{
                 categories: timestamps,
