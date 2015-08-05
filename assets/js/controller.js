@@ -173,6 +173,16 @@ app.config(function($locationProvider, $routeProvider) {
         .when('/energy-sources/spider/:date/:type/:nodeID', {
             templateUrl : '/templates/energySourcesSpiderChartHighcharts.html',
             controller  : 'energy-sources-spider-chart-highcharts'
+        })
+
+        .when('/transformer/line/:date', {
+            templateUrl : '/templates/transformerLineChartHighcharts.html',
+            controller  : 'transformer-line-chart-highcharts'
+        })
+
+        .when('/transformer/spider/:date', {
+            templateUrl : '/templates/transformerSpiderChartHighcharts.html',
+            controller  : 'transformer-spider-chart-highcharts'
         });
 
          // $locationProvider.html5Mode({
@@ -846,5 +856,37 @@ app.controller('energy-sources-spider-chart-highcharts', function($scope, $http,
     $scope.date = date;
     $scope.nodeID = nodeID;
     $scope.type = type;
+  });
+});
+
+app.controller('transformer-line-chart-highcharts', function($scope, $http, $route, $routeParams) {
+  var date = $routeParams.date;
+
+  $http ({
+    url : '/transformer/' + date,
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+    transformerLineChartHighcharts(response);
+
+    $scope.data = response;
+    $scope.date = date;
+  });
+});
+
+app.controller('transformer-spider-chart-highcharts', function($scope, $http, $route, $routeParams) {
+  var date = $routeParams.date;
+
+  $http ({
+    url : '/transformer/' + date,
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+    transformerSpiderChartHighcharts(response);
+
+    $scope.data = response;
+    $scope.date = date;
   });
 });

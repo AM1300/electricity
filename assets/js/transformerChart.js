@@ -16,8 +16,6 @@ function transformerChart(data) {
       labels: timestamps,
       datasets: [{
         label: "Power Out A Real",
-        // fillColor: "rgba(170, 170, 170, 1)",
-        //4strokeColor: "rgba(0, 0, 0, 1)",
         pointColor: "rgba(0, 0, 0, 1)",
         pointStrokeColor: "rgba(170, 170, 170,0.6)",
         pointHighlightFill: "rgba(170, 170, 170, 0.6)",
