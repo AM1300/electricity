@@ -1,5 +1,4 @@
 function transformerChart(data) {
-
     var timestamps = data.map(function(entry, index) {
       return (index % 4 === 0) ? moment(entry.timestamp).format('HH:mm') : '';
     });
