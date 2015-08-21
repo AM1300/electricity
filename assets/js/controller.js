@@ -183,6 +183,11 @@ app.config(function($locationProvider, $routeProvider) {
         .when('/transformer/spider/:date', {
             templateUrl : '/templates/transformerSpiderChartHighcharts.html',
             controller  : 'transformer-spider-chart-highcharts'
+        })
+
+        .when('/nodes/graph', {
+            templateUrl : '/templates/nodesGraph.html',
+            controller  : 'nodes-graph'
         });
 
          // $locationProvider.html5Mode({
@@ -888,5 +893,70 @@ app.controller('transformer-spider-chart-highcharts', function($scope, $http, $r
 
     $scope.data = response;
     $scope.date = date;
+  });
+});
+
+app.controller('nodes-graph', function($scope, $http) {
+
+  $http ({
+    url : '/nodes-all/',
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+    var nodes = new vis.DataSet([
+        {id: 611, label: '611'},
+        {id: 632, label: '632'},
+        {id: 645, label: '645'},
+        {id: 646, label: '646'},
+        {id: 652, label: '652'},
+        {id: 671, label: '671'},
+        {id: 675, label: '675'},
+        {id: 680, label: '680'},
+        {id: 684, label: '684'},
+        {id: 692, label: '692'},
+        {id: 6321, label: '6321'},
+        {id: 6711, label: '6711'}
+    ]);
+
+    var fromNode = response.map(function(entry) {
+      return entry.nodeID;
+    });
+
+    var toNode = response.map(function(entry) {
+      return entry.toNodeID;
+    });
+
+    // create an array with edges
+    var edges = new vis.DataSet([
+        // {from: fromNode, to: toNode},
+        {from: 611, to: null},
+        {from: 632, to: 645},
+        {from: 632, to: 6321},
+        {from: 645, to: 646},
+        {from: 646, to: null},
+        {from: 6321, to: 671},
+        {from: 671, to: 680},
+        {from: 680, to: null},
+        {from: 671, to: 684},
+        {from: 652, to: null},
+        {from: 675, to: null},
+        {from: 692, to: null},
+        {from: 6711, to: null}
+    ]);
+
+    // create a network
+    var container = document.getElementById('mynetwork');
+
+    // provide the data in the vis format
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    var options = {};
+
+    // initialize your network!
+    var network = new vis.Network(container, data, options);
+
   });
 });

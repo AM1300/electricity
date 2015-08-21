@@ -9,6 +9,7 @@ var deviceAllRecords = require(path.join(__dirname, '../api/controllers', 'devic
 var triplexMeterPerDate = require(path.join(__dirname, '../api/controllers', 'triplexMeterPerDate'));
 var houseRecordsPerPhase = require(path.join(__dirname, '../api/controllers', 'housesPerPhaseToFindHouseID'));
 var houseRecordsPerNode = require(path.join(__dirname, '../api/controllers', 'housesPerNodeToFindPhase'));
+var nodeRecords = require(path.join(__dirname, '../api/controllers', 'nodesAll'));
 
 module.exports.routes = {
 
@@ -54,6 +55,10 @@ module.exports.routes = {
 
   'get /house-end-point/:nodeID' : function(req, res, next) {
     houseRecordsPerNode.getHousePerNodeRecords(req, res, next);
+  },
+
+  'get /nodes-all' : function(req, res, next) {
+    nodeRecords.getFromNodeToNodeRecords(req, res, next);
   },
 
 };
