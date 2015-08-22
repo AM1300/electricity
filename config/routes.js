@@ -41,7 +41,7 @@ module.exports.routes = {
     houseDailyRecords.getHousePerHouseIDRecords(req, res, next);
   },
 
-  'get /transformer/:date' : function(req, res, next) {
+  'get /transformer/:date/:time' : function(req, res, next) {
     transformerDailyRecords.getTransformerRecords(req, res, next);
   },
 
