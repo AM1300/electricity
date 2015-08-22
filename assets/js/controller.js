@@ -185,6 +185,11 @@ app.config(function($locationProvider, $routeProvider) {
             controller  : 'transformer-spider-chart-highcharts'
         })
 
+        .when('/transformer/graph/:date/:time', {
+            templateUrl : '/templates/transformerGraph.html',
+            controller  : 'transformer-graphical-representation'
+        })
+
         .when('/nodes/graph', {
             templateUrl : '/templates/nodesGraph.html',
             controller  : 'nodes-graph'
@@ -943,6 +948,49 @@ app.controller('nodes-graph', function($scope, $http) {
         {from: 675, to: null},
         {from: 692, to: null},
         {from: 6711, to: null}
+    ]);
+
+    // create a network
+    var container = document.getElementById('mynetwork');
+
+    // provide the data in the vis format
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    var options = {};
+
+    // initialize your network!
+    var network = new vis.Network(container, data, options);
+
+  });
+});
+
+app.controller('transformer-graphical-representation', function($scope, $http, $route, $routeParams) {
+  var date = $routeParams.date;
+  var time = $routeParams.time;
+  $http ({
+    url : '/transformer/' + date + '/' + time,
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+    var nodes = new vis.DataSet([
+        {id: 611, label: '611'},
+    ]);
+
+    var fromNode = response.map(function(entry) {
+      return entry.nodeID;
+    });
+
+    var toNode = response.map(function(entry) {
+      return entry.toNodeID;
+    });
+
+    // create an array with edges
+    var edges = new vis.DataSet([
+        // {from: fromNode, to: toNode},
+        {from: 611, to: null},
     ]);
 
     // create a network
