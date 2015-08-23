@@ -5,9 +5,14 @@ module.exports = {
     var date = req.param('date');
     var time = req.param('time');
 
+    var hours =  parseInt(time.split(':')[0]);
+    var mins  =  parseInt(time.split(':')[1]);
+
+
     var parsedDate = moment(date, "DD-MM-YYYY");
-    var parsedTime = moment(time, "HH:mm");
-    var formattedDate = parsedDate.format("YYYY-MM-DD").format("HH:mm:ss");
+    parsedDate.add(hours, 'hours');
+    parsedDate.add(mins, 'minutes');
+    var formattedDate = parsedDate.format("YYYY-MM-DD HH:mm:ss");
     // var formattedDateNext = parsedDate.add(1, 'days').format("YYYY-MM-DD HH:mm:ss");
 
     // mySqlConnection.query('SELECT * FROM transformer WHERE timestamp >= "'+formattedDate+'" && timestamp < "'+formattedDateNext+'" ',
