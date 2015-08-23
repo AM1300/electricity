@@ -764,7 +764,7 @@ app.controller('date-picker-controller', ['$scope', function ($scope, $filter) {
       vm.opens.push("valuationDatePickerIsOpen: " + value + " at: " + new Date());
    });
 
-  $scope.initialDate = 'Aug 01, 2000';
+  $scope.initialDate = new Date('Aug 01, 2000');
   $scope.startDate = new Date('Aug 01, 2000');
   $scope.endDate = new Date('Aug 07, 2000');
 

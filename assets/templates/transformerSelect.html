@@ -16,7 +16,7 @@
                     show-button-bar="false"
                     ng-model="initialDate"
                     min-date="startDate"
-                    max-date="endDate" />
+                    max-date="endDate"/>
               <i class="form-control-feedback glyphicon glyphicon-calendar"></i>
           </div>
         </div>
@@ -29,6 +29,12 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="timeSelected" class="col-sm-2 control-label">Time </label>
+          <div class="col-sm-10">
+            <select name="timeSlider" id="timeSlider"></select>
+          </div>
+        </div>
+        <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-default" id="open">Search</button>
           </div>
@@ -37,16 +43,51 @@
   </div>
 
   <script>
+    $(function() {
+        var select = $( "#timeSlider" );
+        var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+          min: 1,
+          max: 96,
+          range: "min",
+          value: select[ 0 ].selectedIndex + 1,
+          slide: function( event, ui ) {
+            select[ 0 ].selectedIndex = ui.value - 1;
+          }
+        });
+        $( "#timeSlider" ).change(function() {
+          slider.slider( "value", this.selectedIndex + 1 );
+        });
+
+        var timeArray = [];
+        var formattedTimeArray = [];
+        var formattedMinute;
+        for(hour = 0; hour < 24; hour++) {
+          hour = ('0' + hour).slice(-2);
+          for (minute = 0; minute < 60; minute = minute + 15) {
+            formattedMinute = minute === 0 ? minute + '0' : minute;
+            timeArray.push(hour+ ':' +formattedMinute);
+          }
+        }
+        console.log (timeArray);
+
+        $('#timeSlider').empty();
+        $.each(timeArray, function(key, value) {
+          $('#timeSlider')
+            .append($("<option></option>")
+            .attr("value", value)
+            .text(value));
+        });
+    });
+
     window.selectTime = function() {
       var timeArray = [];
       var formattedTimeArray = [];
+      var formattedMinute;
       for(hour = 0; hour < 24; hour++) {
         hour = ('0' + hour).slice(-2);
         for (minute = 0; minute < 60; minute = minute + 15) {
-          // if (minute < 15) {
-          //   minute = '0' + minute;
-          // }
-          timeArray.push(hour+ ':' +minute);
+          formattedMinute = minute === 0 ? minute + '0' : minute;
+          timeArray.push(hour+ ':' +formattedMinute);
         }
       }
       console.log (timeArray);
@@ -55,7 +96,7 @@
       $.each(timeArray, function(key, value) {
         $('#time')
           .append($("<option></option>")
-          .attr("value",key)
+          .attr("value", value)
           .text(value));
       });
     };
@@ -64,7 +105,9 @@
         var URL = '#/transformer/graph/',
             slace = '/',
             firstUserEntry = $('#firstForm').val();
-            secondUserEntry = $('#time').val();
+            // secondUserEntry = $('#time').val();
+            secondUserEntry = $('#timeSlider').val();
+
             if (firstUserEntry=='Aug 01, 2000') {
               firstUserEntry = '01-08-2000';
             }
