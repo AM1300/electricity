@@ -21,8 +21,7 @@ module.exports = {
           }
           else {
             var modifiedRows = rows.map(function(row){
-              // sails.log(rows[0].power_in_A_real);
-              // row.phaseAIn = math.complex(1, 2).toString();
+              // sails.log(AInReal);
               row.phaseAIn = math.complex(rows[0].power_in_A_real, rows[0].power_in_A_imag).toString();
               row.phaseAOut = math.complex(rows[0].power_out_A_real, rows[0].power_out_A_imag).toString();
               row.phaseALosses = math.complex(rows[0].power_losses_A_real, rows[0].power_losses_A_imag).toString();

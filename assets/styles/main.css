@@ -325,8 +325,12 @@ a.active-tab-color:focus {
   color:#222;
 }
 
-#mynetwork {
+#networkForPhaseA, #networkForPhaseB, #networkForPhaseC {
+  margin: auto;
   width: 600px;
   height: 400px;
-  border: 1px solid lightgray;
+}
+
+#timeSlider {
+  padding: 2px;
 }
