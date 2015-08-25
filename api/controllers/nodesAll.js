@@ -28,14 +28,11 @@ module.exports = {
         var voltageC611, voltageC632, voltageC645, voltageC646, voltageC652, voltageC671,
             voltageC675, voltageC680, voltageC684, voltageC692, voltageC6321, voltageC6711;
         var currentOutA632_645, currentOutA632_6321, currentOutA645_646, currentOutA6321_671,
-            currentOutA671_680, currentOutA671_6711, currentOutA671_692, currentOutA671_684,
-            currentOutA684_652, currentOutA684_611, currentOutA692_675;
+            currentOutA671_680, currentOutA671_684;
         var currentOutB632_645, currentOutB632_6321, currentOutB645_646, currentOutB6321_671,
-            currentOutB671_680, currentOutB671_6711, currentOutB671_692, currentOutB671_684,
-            currentOutB684_652, currentOutB684_611, currentOutB692_675;
+            currentOutB671_680, currentOutB671_684;
         var currentOutC632_645, currentOutC632_6321, currentOutC645_646, currentOutC6321_671,
-            currentOutC671_680, currentOutC671_6711, currentOutC671_692, currentOutC671_684,
-            currentOutC684_652, currentOutC684_611, currentOutC692_675;
+            currentOutC671_680, currentOutC671_684;
 
 
         for(counter = 0; counter < rows.length; counter++) {
@@ -124,35 +121,10 @@ module.exports = {
             currentOutB671_680 = math.complex(rows[counter].current_out_B_real, rows[counter].current_out_B_imag).toString();
             currentOutC671_680 = math.complex(rows[counter].current_out_C_real, rows[counter].current_out_C_imag).toString();
           }
-          if(rows[counter].nodeID === 671 && rows[counter].toNodeID === 6711) {
-            currentOutA671_6711 = math.complex(rows[counter].current_out_A_real, rows[counter].current_out_A_imag).toString();
-            currentOutB671_6711 = math.complex(rows[counter].current_out_B_real, rows[counter].current_out_B_imag).toString();
-            currentOutC671_6711 = math.complex(rows[counter].current_out_C_real, rows[counter].current_out_C_imag).toString();
-          }
-          if(rows[counter].nodeID === 671 && rows[counter].toNodeID === 692) {
-            currentOutA671_692 = math.complex(rows[counter].current_out_A_real, rows[counter].current_out_A_imag).toString();
-            currentOutB671_692 = math.complex(rows[counter].current_out_B_real, rows[counter].current_out_B_imag).toString();
-            currentOutC671_692 = math.complex(rows[counter].current_out_C_real, rows[counter].current_out_C_imag).toString();
-          }
           if(rows[counter].nodeID === 671 && rows[counter].toNodeID === 684) {
             currentOutA671_684 = math.complex(rows[counter].current_out_A_real, rows[counter].current_out_A_imag).toString();
             currentOutB671_684 = math.complex(rows[counter].current_out_B_real, rows[counter].current_out_B_imag).toString();
             currentOutC671_684 = math.complex(rows[counter].current_out_C_real, rows[counter].current_out_C_imag).toString();
-          }
-          if(rows[counter].nodeID === 684 && rows[counter].toNodeID === 652) {
-            currentOutA684_652 = math.complex(rows[counter].current_out_A_real, rows[counter].current_out_A_imag).toString();
-            currentOutB684_652 = math.complex(rows[counter].current_out_B_real, rows[counter].current_out_B_imag).toString();
-            currentOutC684_652 = math.complex(rows[counter].current_out_C_real, rows[counter].current_out_C_imag).toString();
-          }
-          if(rows[counter].nodeID === 684 && rows[counter].toNodeID === 611) {
-            currentOutA684_611 = math.complex(rows[counter].current_out_A_real, rows[counter].current_out_A_imag).toString();
-            currentOutB684_611 = math.complex(rows[counter].current_out_B_real, rows[counter].current_out_B_imag).toString();
-            currentOutC684_611 = math.complex(rows[counter].current_out_C_real, rows[counter].current_out_C_imag).toString();
-          }
-          if(rows[counter].nodeID === 692 && rows[counter].toNodeID === 675) {
-            currentOutA692_675 = math.complex(rows[counter].current_out_A_real, rows[counter].current_out_A_imag).toString();
-            currentOutB692_675 = math.complex(rows[counter].current_out_B_real, rows[counter].current_out_B_imag).toString();
-            currentOutC692_675 = math.complex(rows[counter].current_out_C_real, rows[counter].current_out_C_imag).toString();
           }
         }
 
@@ -209,24 +181,9 @@ module.exports = {
           row.currentOutA671_680 = currentOutA671_680;
           row.currentOutB671_680 = currentOutB671_680;
           row.currentOutC671_680 = currentOutC671_680;
-          row.currentOutA671_6711 = currentOutA671_6711;
-          row.currentOutB671_6711 = currentOutB671_6711;
-          row.currentOutC671_6711 = currentOutC671_6711;
-          row.currentOutA671_692 = currentOutA671_692;
-          row.currentOutB671_692 = currentOutB671_692;
-          row.currentOutC671_692 = currentOutC671_692;
           row.currentOutA671_684 = currentOutA671_684;
           row.currentOutB671_684 = currentOutB671_684;
           row.currentOutC671_684 = currentOutC671_684;
-          row.currentOutA684_652 = currentOutA684_652;
-          row.currentOutB684_652 = currentOutB684_652;
-          row.currentOutC684_652 = currentOutC684_652;
-          row.currentOutA684_611 = currentOutA684_611;
-          row.currentOutB684_611 = currentOutB684_611;
-          row.currentOutC684_611 = currentOutC684_611;
-          row.currentOutA692_675 = currentOutA692_675;
-          row.currentOutB692_675 = currentOutB692_675;
-          row.currentOutC692_675 = currentOutC692_675;
 
           return row;
         });
