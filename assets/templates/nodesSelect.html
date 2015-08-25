@@ -1,21 +1,104 @@
-<h2 style="text-align:center; vertical-align:middle;">Under Construction!</h2>
-
-<!-- <div class="container">
-  <input id="firstForm"><input id="secondForm">
-  <button id="open">Find</button>
-
-  <div ng-controller="triplex-meter-multiple-axes-chart">
-      <div id="containerMultipleAxesTriplex"></div>
+<div class="container">
+  <div ng-controller="date-picker-controller as vm">
+    <h2>We are in Nodes</h2>
+    <p>Type in the following forms the date
+       and you will see the hierarchical layout of system</p>
+    <form class="form-horizontal">
+        <div class="form-group has-feedback">
+          <label for="exampleInputName2" class="col-sm-2 control-label">Date</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control"
+                    id="firstForm"
+                    datepicker-popup="MMM dd, yyyy"
+                    is-open="vm.valuationDatePickerIsOpen"
+                    ng-click="vm.valuationDatePickerOpen()"
+                    show-button-bar="false"
+                    ng-model="initialDate"
+                    min-date="startDate"
+                    max-date="endDate"/>
+              <i class="form-control-feedback glyphicon glyphicon-calendar"></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="timeSelected" class="col-sm-2 control-label">Time </label>
+          <div class="col-sm-10">
+            <select name="timeSlider" id="timeSlider"></select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" id="open">Search</button>
+          </div>
+        </div>
+    </form>
   </div>
 
   <script>
-    $('#open').click(function() {
-        var URL = '#/triplex-meter/multiple-axes/',
-            slace = '/',
-            firstUserEntry = $('#firstForm').val(),
-            secondUserEntry = $('#secondForm').val();
+    $(function() {
+        var select = $( "#timeSlider" );
+        var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+          min: 1,
+          max: 96,
+          range: "min",
+          value: select[ 0 ].selectedIndex + 1,
+          slide: function( event, ui ) {
+            select[ 0 ].selectedIndex = ui.value - 1;
+          }
+        });
+        $("#timeSlider" ).change(function() {
+          slider.slider( "value", this.selectedIndex + 1 );
+        });
 
-        var newWindow = window.open(URL + firstUserEntry + slace + secondUserEntry, '_blank');
+        var timeArray = [];
+        var formattedTimeArray = [];
+        var formattedMinute;
+        for(hour = 0; hour < 24; hour++) {
+          hour = ('0' + hour).slice(-2);
+          for (minute = 0; minute < 60; minute = minute + 15) {
+            formattedMinute = minute === 0 ? minute + '0' : minute;
+            timeArray.push(hour+ ':' +formattedMinute);
+          }
+        }
+        console.log (timeArray);
+
+        $('#timeSlider').empty();
+        $.each(timeArray, function(key, value) {
+          $('#timeSlider')
+            .append($("<option></option>")
+            .attr("value", value)
+            .text(value));
+        });
+    });
+
+    $('#open').click(function() {
+        var URL = '#/nodes/hierarchical-layout/',
+            slace = '/',
+            firstUserEntry = $('#firstForm').val();
+            secondUserEntry = $('#timeSlider').val();
+
+            if (firstUserEntry=='Aug 01, 2000') {
+              firstUserEntry = '01-08-2000';
+            }
+            if (firstUserEntry=='Aug 02, 2000') {
+              firstUserEntry = '02-08-2000';
+            }
+            if (firstUserEntry=='Aug 03, 2000') {
+              firstUserEntry = '03-08-2000';
+            }
+            if (firstUserEntry=='Aug 04, 2000') {
+              firstUserEntry = '04-08-2000';
+            }
+            if (firstUserEntry=='Aug 05, 2000') {
+              firstUserEntry = '05-08-2000';
+            }
+            if (firstUserEntry=='Aug 06, 2000') {
+              firstUserEntry = '06-08-2000';
+            }
+            if (firstUserEntry=='Aug 07, 2000') {
+              firstUserEntry = '07-08-2000';
+            }
+
+        var newWindow = window.open(URL + firstUserEntry + '/' + secondUserEntry, '_blank');
         newWindow.focus();
     });
   </script>
@@ -23,4 +106,3 @@
 
 
 </div>
- -->
