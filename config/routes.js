@@ -57,7 +57,7 @@ module.exports.routes = {
     houseRecordsPerNode.getHousePerNodeRecords(req, res, next);
   },
 
-  'get /nodes-all' : function(req, res, next) {
+  'get /nodes-all/:date/:time' : function(req, res, next) {
     nodeRecords.getFromNodeToNodeRecords(req, res, next);
   },
 
