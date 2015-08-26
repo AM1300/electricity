@@ -1,4 +1,18 @@
 <div class="container">
+  <h2 class="center-alignment">Unsorted Graph for {{ date }} & {{ time }} </h2>
+  <input type="hidden" name="option" value="" id="btn-input" />
+  <div class="btn-group pull-right" data-toggle="buttons-radio" style="margin-bottom:25px; margin-top:10px;">
+    <a href="#/nodes/hierarchical-layout/{{date}}/{{time}}"
+        class="button btn btn-primary" id="btn-one" type="button" data-toggle="button"
+        name="option" value="1">
+      Hierarchical Layout
+    </a>
+    <a href="#/nodes/graph/{{date}}/{{time}}"
+        class="button btn btn-primary active" id="btn-two" type="button" data-toggle="button"
+        name="option" value="2" checked>
+      Unsorted Graph
+    </a>
+  </div>
   <div ng-controller="nodes-graph">
     <div id="nodesNetwork"></div>
   </div>

@@ -331,11 +331,12 @@ a.active-tab-color:focus {
   height: 400px;
 }
 
-#nodesNetwork {
+#nodesNetwork, #systemNetwork {
   margin: auto;
   width: 80%;
   height: 500px;
   border: 1px solid #fff;
+  margin-top: 80px;
 }
 
 #timeSlider {
