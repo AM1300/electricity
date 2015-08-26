@@ -10,6 +10,7 @@ var triplexMeterPerDate = require(path.join(__dirname, '../api/controllers', 'tr
 var houseRecordsPerPhase = require(path.join(__dirname, '../api/controllers', 'housesPerPhaseToFindHouseID'));
 var houseRecordsPerNode = require(path.join(__dirname, '../api/controllers', 'housesPerNodeToFindPhase'));
 var nodeRecords = require(path.join(__dirname, '../api/controllers', 'nodesAll'));
+var houseRecordsForAllNodes = require(path.join(__dirname, '../api/controllers', 'houseRecordsForAllNodes'));
 
 module.exports.routes = {
 
@@ -59,6 +60,10 @@ module.exports.routes = {
 
   'get /nodes-all/:date/:time' : function(req, res, next) {
     nodeRecords.getFromNodeToNodeRecords(req, res, next);
+  },
+
+  'get /house-system-graph' : function(req, res, next) {
+    houseRecordsForAllNodes.getHouseForAllNodesRecords(req, res, next);
   },
 
 };
