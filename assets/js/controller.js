@@ -1336,6 +1336,16 @@ app.controller('system-graph', function($scope, $http) {
     var housesOf692 = [];
     var housesOf6321 = [];
     var housesOf6711 = [];
+    var parsedEdges = {};
+    var edgesOf611 = [];
+    var edgesOf645 = [];
+    var edgesOf646 = [];
+    var edgesOf652 = [];
+    var edgesOf671 = [];
+    var edgesOf675 = [];
+    var edgesOf692 = [];
+    var edgesOf6321 = [];
+    var edgesOf6711 = [];
 
     for (index = 0; index < response.length; index++) {
       basicNodes.push(response[index].nodeID);
@@ -1345,51 +1355,70 @@ app.controller('system-graph', function($scope, $http) {
         housesIn611.push(response[index].houseID);
         parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
         housesOf611.push(parsedHouses);
+        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
+        edgesOf611.push(parsedEdges);
       }
       if(response[index].nodeID === 645) {
         housesIn645.push(response[index].houseID);
         parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
         housesOf645.push(parsedHouses);
+        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
+        edgesOf645.push(parsedEdges);
       }
       if(response[index].nodeID === 646) {
         housesIn646.push(response[index].houseID);
         parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
         housesOf646.push(parsedHouses);
+        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
+        edgesOf646.push(parsedEdges);
       }
       if(response[index].nodeID === 652) {
         housesIn652.push(response[index].houseID);
         parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
         housesOf652.push(parsedHouses);
+        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
+        edgesOf652.push(parsedEdges);
       }
       if(response[index].nodeID === 671) {
         housesIn671.push(response[index].houseID);
         parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
         housesOf671.push(parsedHouses);
+        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
+        edgesOf671.push(parsedEdges);
       }
       if(response[index].nodeID === 675) {
         housesIn675.push(response[index].houseID);
         parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
         housesOf675.push(parsedHouses);
+        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
+        edgesOf675.push(parsedEdges);
       }
       if(response[index].nodeID === 692) {
         housesIn692.push(response[index].houseID);
         parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
         housesOf692.push(parsedHouses);
+        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
+        edgesOf692.push(parsedEdges);
       }
       if(response[index].nodeID === 6321) {
         housesIn6321.push(response[index].houseID);
         parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
         housesOf6321.push(parsedHouses);
+        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
+        edgesOf6321.push(parsedEdges);
       }
       if(response[index].nodeID === 6711) {
         housesIn6711.push(response[index].houseID);
         parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
         housesOf6711.push(parsedHouses);
+        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
+        edgesOf6711.push(parsedEdges);
       }
     }
 
 
     // console.log('housesFinal OUTSIDE! : ' +JSON.stringify(housesOf611));
+    // console.log('edges! : ' +JSON.stringify(edgesOf671));
 
     basicNodes = _.uniq(basicNodes);
     houseNodes = _.uniq(houseNodes);
@@ -1403,8 +1432,22 @@ app.controller('system-graph', function($scope, $http) {
     housesIn692 = _.uniq(housesIn692);
     housesIn6321 = _.uniq(housesIn6321);
     housesIn6711 = _.uniq(housesIn6711);
+    housesOf671 = UniqueJson(housesOf671);
+    housesOf675 = UniqueJson(housesOf675);
+    housesOf692 = UniqueJson(housesOf692);
+    housesOf6321 = UniqueJson(housesOf6321);
+    housesOf6711 = UniqueJson(housesOf6711);
+    edgesOf671 = UniqueJson(edgesOf671);
+    edgesOf675 = UniqueJson(edgesOf675);
+    edgesOf692 = UniqueJson(edgesOf692);
+    edgesOf6321 = UniqueJson(edgesOf6321);
+    edgesOf6711 = UniqueJson(edgesOf6711);
 
-    var nodes = new vis.DataSet([
+    // console.log('Unique edges :' +JSON.stringify(edgesOf671));
+    // console.log('housesIn6711 are :' +JSON.stringify(housesIn6711));
+    // console.log('Houses:' +JSON.stringify(housesOf645) +JSON.stringify(housesOf646) +JSON.stringify(housesOf652));
+
+    var nodes = [
       {id: '611', label: '611', group: '611'},
       {id: '632', label: '632', group: '632'},
       {id: '645', label: '645', group: '645'},
@@ -1415,18 +1458,10 @@ app.controller('system-graph', function($scope, $http) {
       {id: '692', label: '692', group: '692'},
       {id: '6321', label: '6321', group: '6321'},
       {id: '6711', label: '6711', group: '6711'},
-    ]);
+    ];
 
-    for(var index = 0; index < housesOf611.length; index++) {
-      var shifted = housesOf611.shift();
-      // console.log('shifted is: ' +JSON.stringify(shifted));
-      nodes.push(shifted);
-      // omws de mporw na kanw push sto nodes!! again !!
-    }
-
-// , housesOf645, housesOf646, housesOf652, housesOf671, housesOf675, housesOf692, housesOf6321, housesOf6711
     // create an array with edges
-    var edges = new vis.DataSet([
+    var edges = [
         {from: 632, to: 645},
         {from: 632, to: 6321},
         {from: 645, to: 646},
@@ -1436,7 +1471,71 @@ app.controller('system-graph', function($scope, $http) {
         {from: 671, to: 692},
         {from: 671, to: 6711},
         {from: 692, to: 675},
-    ]);
+    ];
+
+    var edgeLength;
+    var edgesToPush;
+
+    var length;
+    var itemsToPush;
+
+    if (housesOf611[0].group === 611) {
+      length = housesOf611.length;
+      itemsToPush = pushInNodesArray(nodes, housesOf611, length);
+      edgeLength = edgesOf611.length;
+      edgesToPush = pushInNodesArray(edges, edgesOf611, edgeLength);
+    }
+    if (housesOf645[0].group === 645) {
+      length = housesOf645.length;
+      itemsToPush = pushInNodesArray(nodes, housesOf645, length);
+      edgeLength = edgesOf645.length;
+      edgesToPush = pushInNodesArray(edges, edgesOf645, edgeLength);
+    }
+    if (housesOf646[0].group === 646) {
+      length = housesOf646.length;
+      itemsToPush = pushInNodesArray(nodes, housesOf646, length);
+      edgeLength = edgesOf646.length;
+      edgesToPush = pushInNodesArray(edges, edgesOf646, edgeLength);
+    }
+    if (housesOf652[0].group === 652) {
+      length = housesOf652.length;
+      itemsToPush = pushInNodesArray(nodes, housesOf652, length);
+      edgeLength = edgesOf652.length;
+      edgesToPush = pushInNodesArray(edges, edgesOf652, edgeLength);
+    }
+    if (housesOf671[0].group === 671) {
+      length = housesOf671.length;
+      itemsToPush = pushInNodesArray(nodes, housesOf671, length);
+      edgeLength = edgesOf671.length;
+      edgesToPush = pushInNodesArray(edges, edgesOf671, edgeLength);
+    }
+    if (housesOf675[0].group === 675) {
+      length = housesOf675.length;
+      itemsToPush = pushInNodesArray(nodes, housesOf675, length);
+      edgeLength = edgesOf675.length;
+      edgesToPush = pushInNodesArray(edges, edgesOf675, edgeLength);
+    }
+    if (housesOf692[0].group === 692) {
+      length = housesOf692.length;
+      itemsToPush = pushInNodesArray(nodes, housesOf692, length);
+      edgeLength = edgesOf692.length;
+      edgesToPush = pushInNodesArray(edges, edgesOf692, edgeLength);
+    }
+    if (housesOf6321[0].group === 6321) {
+      length = housesOf6321.length;
+      itemsToPush = pushInNodesArray(nodes, housesOf6321, length);
+      edgeLength = edgesOf6321.length;
+      edgesToPush = pushInNodesArray(edges, edgesOf6321, edgeLength);
+    }
+    if (housesOf6711[0].group === 6711) {
+      length = housesOf6711.length;
+      itemsToPush = pushInNodesArray(nodes, housesOf6711, length);
+      edgeLength = edgesOf6711.length;
+      edgesToPush = pushInNodesArray(edges, edgesOf6711, edgeLength);
+    }
+
+    // console.log(JSON.stringify(nodes));
+    // console.log(JSON.stringify(edges));
 
     // // provide the data in the vis format
     var data = {
@@ -1458,7 +1557,6 @@ app.controller('system-graph', function($scope, $http) {
       //     borderWidth:3
       //   },
       // }
-    };
     //   edges: {
     //     arrows: {
     //       to: {enabled: true, scaleFactor:1},
@@ -1471,16 +1569,16 @@ app.controller('system-graph', function($scope, $http) {
     //       align: 'top'
     //     }
     //   },
-    //   layout: {
-    //     randomSeed: 632,
-    //     hierarchical: {
-    //       enabled:true,
-    //       levelSeparation: 150,
-    //       direction: 'UD',   // UD, DU, LR, RL
-    //       sortMethod: 'directed' // hubsize, directed
-    //     },
-    //   }
-    // };
+      // layout: {
+      //   randomSeed: 632,
+      //   hierarchical: {
+      //     enabled:true,
+      //     levelSeparation: 150,
+      //     direction: 'UD',   // UD, DU, LR, RL
+      //     sortMethod: 'directed' // hubsize, directed
+      //   },
+      // }
+    };
 
     // create a network
     var container = document.getElementById('systemNetwork');
@@ -1495,6 +1593,45 @@ app.controller('system-graph', function($scope, $http) {
         label: houseID,
         group: groupNumber
       };
+    }
+
+    function findEdge(houseID, groupNumber){
+
+      return {
+        from: houseID,
+        to: groupNumber
+      };
+    }
+
+    function UniqueJson(givenArray) {
+      var formattedArray = [];
+      givenArray.forEach(function(item) {
+          var unique = true;
+          formattedArray.forEach(function(item2) {
+              if (_.isEqual(item, item2)) {
+                  unique = false;
+              }
+          });
+          if (unique) {
+              formattedArray.push(item);
+          }
+      });
+      return formattedArray;
+    }
+
+    function pushInNodesArray(nodes, housesOfNode, arrayLength) {
+      for(var index = 0; index < arrayLength; index++) {
+        var shifted = housesOfNode.shift();
+        nodes.push(shifted);
+      }
+      return nodes;
+    }
+    function pushInEdgessArray(edges,edgesOfHouse, arrayLength) {
+      for(var index = 0; index < arrayLength; index++) {
+        var shifted = edgesOfHouse.shift();
+        edges.push(shifted);
+      }
+      return edges;
     }
   });
 });
