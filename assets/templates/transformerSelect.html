@@ -60,6 +60,16 @@
           }
         }
         console.log (timeArray);
+        $("#slider")
+            .slider("pips", {
+              labels: timeArray,
+                rest: 'label',
+                step: 8,
+            })
+
+            .slider("float", {
+                labels: timeArray
+            });
 
         $('#timeSlider').empty();
         $.each(timeArray, function(key, value) {

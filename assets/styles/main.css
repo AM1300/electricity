@@ -331,7 +331,7 @@ a.active-tab-color:focus {
   height: 400px;
 }
 
-#nodesNetwork, #systemNetwork {
+#nodesNetwork {
   margin: auto;
   width: 80%;
   height: 500px;
@@ -339,6 +339,24 @@ a.active-tab-color:focus {
   margin-top: 80px;
 }
 
+#systemNetwork {
+  margin: auto;
+  width: 100%;
+  height: 800px;
+  border: 1px solid #fff;
+  margin-top: 80px;
+}
+
 #timeSlider {
   padding: 2px;
+  margin-bottom: 10px;
+}
+
+#slider {
+  height: 20px;
+}
+
+.ui-slider-handle.ui-state-default.ui-corner-all{
+  height: 26px;
+  width: 14px;
 }
