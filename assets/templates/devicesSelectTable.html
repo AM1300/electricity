@@ -1,0 +1,182 @@
+<div class="container">
+  <div ng-controller="date-picker-controller as vm">
+    <h2 style="text-align:center;">Devices Total Table</h2>
+    <p style="text-align:center;">Type in the following forms the type, the nodeID and the houseID
+       and you will see the total table for bid price, bid quantity and consumed load for each device per house</p>
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label for="exampleInputName3" class="col-sm-2 control-label">Type</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="exampleInputName3" placeholder="Air Condition">
+            <option value="Air Condition">Air Condition</option>
+            <option value="Waterheater">Waterheater</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputName1" class="col-sm-2 control-label">Node ID</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="exampleInputName1" placeholder="611" onchange="changeHouse(value)">
+            <option value="611">611</option>
+            <option value="645">645</option>
+            <option value="646">646</option>
+            <option value="652">652</option>
+            <option value="671">671</option>
+            <option value="675">675</option>
+            <option value="692">692</option>
+            <option value="6321">6321</option>
+            <option value="6711">6711</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputName" class="col-sm-2 control-label">House ID</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="house611" placeholder="1611">
+            <option ng-repeat="houseID in range(1,26)" value="{{houseID}}611">{{houseID}}611</option>
+          </select>
+          <select class="form-control" id="house645" placeholder="1645" style="display:none">
+            <option ng-repeat="houseID in range(1,155)" value="{{houseID}}645">{{houseID}}645</option>
+          </select>
+          <select class="form-control" id="house646" placeholder="1646" style="display:none">
+            <option ng-repeat="houseID in range(1,95)" value="{{houseID}}646">{{houseID}}646</option>
+          </select>
+          <select class="form-control" id="house652" placeholder="1652" style="display:none">
+            <option ng-repeat="houseID in range(1,171)" value="{{houseID}}652">{{houseID}}652</option>
+          </select>
+          <select class="form-control" id="house671" placeholder="1671" style="display:none">
+            <option ng-repeat="houseID in range(1,191)" value="{{houseID}}671">{{houseID}}671</option>
+          </select>
+          <select class="form-control" id="house675" placeholder="1675" style="display:none">
+            <option ng-repeat="houseID in range(1,225)" value="{{houseID}}675">{{houseID}}675</option>
+          </select>
+          <select class="form-control" id="house692" placeholder="1692" style="display:none">
+            <option ng-repeat="houseID in range(1,201)" value="{{houseID}}692">{{houseID}}692</option>
+          </select>
+          <select class="form-control" id="house6321" placeholder="16321" style="display:none">
+            <option ng-repeat="houseID in range(1,27)" value="{{houseID}}6321">{{houseID}}6321</option>
+          </select>
+          <select class="form-control" id="house6711" placeholder="16711" style="display:none">
+            <option ng-repeat="houseID in range(1,19)" value="{{houseID}}6711">{{houseID}}6711</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default" id="open">Search</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  function changeHouse(value){
+    if(value=='611') {
+    document.getElementById('house611').style.display='block';
+    }
+    else {
+      document.getElementById('house611').style.display='none';
+    }
+    if(value=='645') {
+     document.getElementById('house645').style.display='block';
+    }
+    else {
+     document.getElementById('house645').style.display='none';
+    }
+    if(value=='646') {
+     document.getElementById('house646').style.display='block';
+    }
+    else {
+     document.getElementById('house646').style.display='none';
+    }
+    if(value=='652') {
+     document.getElementById('house652').style.display='block';
+    }
+    else {
+     document.getElementById('house652').style.display='none';
+    }
+    if(value=='671') {
+     document.getElementById('house671').style.display='block';
+    }
+    else {
+     document.getElementById('house671').style.display='none';
+    }
+    if(value=='675') {
+     document.getElementById('house675').style.display='block';
+    }
+    else {
+     document.getElementById('house675').style.display='none';
+    }
+    if(value=='692') {
+     document.getElementById('house692').style.display='block';
+    }
+    else {
+     document.getElementById('house692').style.display='none';
+   }
+    if(value=='6321') {
+     document.getElementById('house6321').style.display='block';
+    }
+    else {
+     document.getElementById('house6321').style.display='none';
+    }
+    if(value=='6711') {
+     document.getElementById('house6711').style.display='block';
+    }
+    else {
+     document.getElementById('house6711').style.display='none';
+    }
+  }
+
+  function chooseHouseID(value) {
+    var fourthUserEntry;
+
+    if(value=='611') {
+      fourthUserEntry = $('#house611').val();
+    }
+    if(value=='645') {
+      fourthUserEntry = $('#house645').val();
+    }
+    if(value=='646') {
+      fourthUserEntry = $('#house646').val();
+    }
+    if(value=='652') {
+      fourthUserEntry = $('#house652').val();
+    }
+    if(value=='671') {
+      fourthUserEntry = $('#house671').val();
+    }
+    if(value=='675') {
+      fourthUserEntry = $('#house675').val();
+    }
+    if(value=='692') {
+      fourthUserEntry = $('#house692').val();
+    }
+    if(value=='6321') {
+      fourthUserEntry = $('#house6321').val();
+    }
+    if(value=='6711') {
+     fourthUserEntry = $('#house6711').val();
+    }
+    return fourthUserEntry;
+  }
+
+  $('#open').click(function() {
+      var URL = '#/devices/heatmap-price/',
+          slace = '/',
+          secondUserEntry = $('#exampleInputName3').val(),
+          thirdUserEntry = $('#exampleInputName1').val(),
+          fourthUserEntry = chooseHouseID(thirdUserEntry);
+
+          if (secondUserEntry=='Air Condition') {
+            secondUserEntry = 'ac';
+          }
+          if(secondUserEntry=='Waterheater') {
+            secondUserEntry = 'wh';
+          }
+
+      var newWindow = window.open(URL + secondUserEntry
+                          + slace + thirdUserEntry + slace + fourthUserEntry, '_blank');
+      newWindow.focus();
+  });
+</script>
