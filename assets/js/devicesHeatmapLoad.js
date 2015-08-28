@@ -55,8 +55,8 @@ function devicesHeatmapLoad(data) {
             chart: {
               backgroundColor: '#ECECEC',
                 type: 'heatmap',
-                height: 1800,
-                marginTop: 30,
+                height: 2200,
+                marginTop: 80,
                 marginBottom: 30
             },
 
@@ -82,12 +82,15 @@ function devicesHeatmapLoad(data) {
             },
 
             legend: {
-                align: 'right',
-                layout: 'vertical',
-                margin: 0,
                 verticalAlign: 'top',
-                y: 25,
-                symbolHeight: 700
+                padding: 30,
+                align: 'center',
+                symbolWidth: 500
+                // layout: 'vertical',
+                // margin: 0,
+                // verticalAlign: 'top',
+                // y: 25,
+                // symbolHeight: 700
             },
 
             tooltip: {
