@@ -165,6 +165,11 @@ app.config(function($locationProvider, $routeProvider) {
             controller  : 'date-picker-controller'
         })
 
+        .when('/devices-select-table', {
+            templateUrl : '/templates/devicesSelectTable.html',
+            controller  : 'date-picker-controller'
+        })
+
         .when('/energy-sources/line/:date/:type/:nodeID', {
             templateUrl : '/templates/energySourcesLineChartHighcharts.html',
             controller  : 'energy-sources-line-chart-highcharts'
@@ -1213,10 +1218,10 @@ app.controller('transformer-graphical-representation', function($scope, $http, $
     var powerOutPhaseC = response[0].phaseCOut;
 
     var nodesPhaseA = new vis.DataSet([
-        {id: 1 , label: ' A ', x: 10, y: 10, shape: 'box', color: '#e3e3e3', border: '#575757'},
-        {id: 0 , label: 'IN', x: 0, y: 10, shape: 'text'},
-        {id: 2 , label: 'OUT', x: 20, y: 10, shape: 'text'},
-        {id: 3 , label: 'LOSSES', x: 10, y: 20, shape: 'text'}
+        { id: 1 , label: '   A   ', x: 200, y: 200, shape: 'box' },
+        {id: 0 , label: ' IN ', x: 0, y: 200, shape: 'box', color: { border: '#e3e3e3' }},
+        {id: 2 , label: ' OUT ', x: 400, y: 200,  shape: 'box', color: { border: '#e3e3e3' }},
+        {id: 3 , label: 'LOSSES', x: 200, y: 350,  shape: 'box', color: { border: '#e3e3e3' }}
     ]);
 
     // create an array with edges
@@ -1237,9 +1242,9 @@ app.controller('transformer-graphical-representation', function($scope, $http, $
 
 
     var nodesPhaseB = new vis.DataSet([
-        {id: 1 , label: ' B ', x: 10, y: 10, shape: 'box', color: '#e3e3e3', border: '#575757'},
-        {id: 0 , label: 'IN', x: 0, y: 10, shape: 'text'},
-        {id: 2 , label: 'OUT', x: 20, y: 10, shape: 'text'},
+        {id: 1 , label: '   B   ', x: 200, y: 200, shape: 'box'},
+        {id: 0 , label: ' IN ', x: 0, y: 200, shape: 'box', color: { border: '#e3e3e3' }},
+        {id: 2 , label: ' OUT ', x: 400, y: 200, shape: 'box', color: { border: '#e3e3e3' }},
     ]);
 
     // create an array with edges
@@ -1259,9 +1264,9 @@ app.controller('transformer-graphical-representation', function($scope, $http, $
 
 
     var nodesPhaseC = new vis.DataSet([
-        {id: 1 , label: ' C ', x: 10, y: 10, shape: 'box', color: '#e3e3e3', border: '#575757'},
-        {id: 0 , label: 'IN', x: 0, y: 10, shape: 'text'},
-        {id: 2 , label: 'OUT', x: 20, y: 10, shape: 'text'},
+        {id: 1 , label: '   C   ', x: 200, y: 200, shape: 'box'},
+        {id: 0 , label: ' IN ', x: 0, y: 200, shape: 'box', color: { border: '#e3e3e3' }},
+        {id: 2 , label: ' OUT ', x: 400, y: 200, shape: 'box', color: { border: '#e3e3e3' }},
 
     ]);
 
@@ -1282,6 +1287,11 @@ app.controller('transformer-graphical-representation', function($scope, $http, $
 
     var options = {
       nodes: {
+        fixed : {
+          x: true,
+          y: true
+        },
+        color: '#e3e3e3'
       },
       edges: {
         arrows: {
@@ -1289,7 +1299,8 @@ app.controller('transformer-graphical-representation', function($scope, $http, $
         },
         smooth: false,
         font: {
-          align: 'top'
+          align: 'top',
+          size: 12
         }
       }
     };
@@ -1542,43 +1553,7 @@ app.controller('system-graph', function($scope, $http) {
         nodes: nodes,
         edges: edges
     };
-    var options = {
-      // groups: {
-      //   611: {
-      //     color:{
-      //       background:'red'
-      //     },
-      //     borderWidth:3
-      //   },
-      //   645: {
-      //     color:{
-      //       background:'blue'
-      //     },
-      //     borderWidth:3
-      //   },
-      // }
-    //   edges: {
-    //     arrows: {
-    //       to: {enabled: true, scaleFactor:1},
-    //     },
-    //     smooth: {
-    //       type: 'continuous',
-    //       forceDirection: 'none'
-    //     },
-    //     font: {
-    //       align: 'top'
-    //     }
-    //   },
-      // layout: {
-      //   randomSeed: 632,
-      //   hierarchical: {
-      //     enabled:true,
-      //     levelSeparation: 150,
-      //     direction: 'UD',   // UD, DU, LR, RL
-      //     sortMethod: 'directed' // hubsize, directed
-      //   },
-      // }
-    };
+    var options = {};
 
     // create a network
     var container = document.getElementById('systemNetwork');
