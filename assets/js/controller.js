@@ -466,6 +466,9 @@ app.controller('transformer-line-chart', function($scope, $http, $route, $routeP
 });
 
 app.controller('devices-multiple-charts', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var date = $routeParams.date;
   var type = $routeParams.type;
   var nodeID = $routeParams.nodeID;
@@ -522,10 +525,15 @@ app.controller('devices-multiple-charts', function($scope, $http, $route, $route
     $scope.newType = newType;
     $scope.nodeID = nodeID;
     $scope.houseID = houseID;
+
+    hideLoader();
   });
 });
 
 app.controller('devices-multiple-axes-chart', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var date = $routeParams.date;
   var type = $routeParams.type;
   var nodeID = $routeParams.nodeID;
@@ -556,10 +564,15 @@ app.controller('devices-multiple-axes-chart', function($scope, $http, $route, $r
     $scope.newType = newType;
     $scope.nodeID = nodeID;
     $scope.houseID = houseID;
+
+    hideLoader();
   });
 });
 
 app.controller('market-line-highcharts', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var date = $routeParams.date;
 
   $http ({
@@ -573,10 +586,15 @@ app.controller('market-line-highcharts', function($scope, $http, $route, $routeP
 
     $scope.data = response;
     $scope.date = date;
+
+    hideLoader();
   });
 });
 
 app.controller('market-spider-highcharts', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var date = $routeParams.date;
 
   $http ({
@@ -590,11 +608,16 @@ app.controller('market-spider-highcharts', function($scope, $http, $route, $rout
 
     $scope.data = response;
     $scope.date = date;
+
+    hideLoader();
   });
 });
 
 
 app.controller('devices-heatmap-load', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var type = $routeParams.type;
   var nodeID = $routeParams.nodeID;
   var houseID = $routeParams.houseID;
@@ -623,10 +646,14 @@ app.controller('devices-heatmap-load', function($scope, $http, $route, $routePar
     $scope.newType = newType;
     $scope.nodeID = nodeID;
     $scope.houseID = houseID;
+
+    hideLoader();
   });
 });
 
 app.controller('devices-heatmap-price', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
   var type = $routeParams.type;
   var nodeID = $routeParams.nodeID;
   var houseID = $routeParams.houseID;
@@ -655,10 +682,16 @@ app.controller('devices-heatmap-price', function($scope, $http, $route, $routePa
     $scope.newType = newType;
     $scope.nodeID = nodeID;
     $scope.houseID = houseID;
+
+    hideLoader();
+
   });
 });
 
 app.controller('devices-heatmap-quantity', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var type = $routeParams.type;
   var nodeID = $routeParams.nodeID;
   var houseID = $routeParams.houseID;
@@ -687,10 +720,14 @@ app.controller('devices-heatmap-quantity', function($scope, $http, $route, $rout
     $scope.newType = newType;
     $scope.nodeID = nodeID;
     $scope.houseID = houseID;
+
+    hideLoader();
   });
 });
 
 app.controller('energy-sources-multiple-axes-chart', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
 
   var date = $routeParams.date;
   var type = $routeParams.type;
@@ -708,10 +745,16 @@ app.controller('energy-sources-multiple-axes-chart', function($scope, $http, $ro
     $scope.date = date;
     $scope.type = type;
     $scope.nodeID = nodeID;
+
+    hideLoader();
+
   });
 });
 
 app.controller('triplex-meter-multiple-axes-chart', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var date = $routeParams.date;
   var nodeID = $routeParams.nodeID;
 
@@ -726,10 +769,15 @@ app.controller('triplex-meter-multiple-axes-chart', function($scope, $http, $rou
 
     $scope.date = date;
     $scope.nodeID = nodeID;
+
+    hideLoader();
   });
 });
 
 app.controller('triplex-meter-highcharts', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var date = $routeParams.date;
   var nodeID = $routeParams.nodeID;
 
@@ -744,10 +792,15 @@ app.controller('triplex-meter-highcharts', function($scope, $http, $route, $rout
 
     $scope.date = date;
     $scope.nodeID = nodeID;
+
+    hideLoader();
   });
 });
 
 app.controller('triplex-meter-spider-highcharts', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var date = $routeParams.date;
   var nodeID = $routeParams.nodeID;
 
@@ -762,6 +815,9 @@ app.controller('triplex-meter-spider-highcharts', function($scope, $http, $route
 
     $scope.date = date;
     $scope.nodeID = nodeID;
+
+    hideLoader();
+
   });
 });
 
@@ -801,6 +857,9 @@ app.controller('date-picker-controller', ['$scope', function ($scope, $filter) {
 }]);
 
 app.controller('houses-multiple-charts', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var date = $routeParams.date;
   var nodeID = $routeParams.nodeID;
   var houseID = $routeParams.houseID;
@@ -819,10 +878,15 @@ app.controller('houses-multiple-charts', function($scope, $http, $route, $routeP
     $scope.nodeID = nodeID;
     $scope.houseID = houseID;
     $scope.phase = phase;
+
+    hideLoader();
   });
 });
 
 app.controller('houses-spider-chart', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var date = $routeParams.date;
   var nodeID = $routeParams.nodeID;
   var houseID = $routeParams.houseID;
@@ -841,10 +905,15 @@ app.controller('houses-spider-chart', function($scope, $http, $route, $routePara
     $scope.nodeID = nodeID;
     $scope.houseID = houseID;
     $scope.phase = phase;
+
+    hideLoader();
   });
 });
 
 app.controller('energy-sources-line-chart-highcharts', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var date = $routeParams.date;
   var nodeID = $routeParams.nodeID;
   var type = $routeParams.type;
@@ -861,10 +930,15 @@ app.controller('energy-sources-line-chart-highcharts', function($scope, $http, $
     $scope.date = date;
     $scope.nodeID = nodeID;
     $scope.type = type;
+
+    hideLoader();
   });
 });
 
 app.controller('energy-sources-spider-chart-highcharts', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var date = $routeParams.date;
   var nodeID = $routeParams.nodeID;
   var type = $routeParams.type;
@@ -881,10 +955,15 @@ app.controller('energy-sources-spider-chart-highcharts', function($scope, $http,
     $scope.date = date;
     $scope.nodeID = nodeID;
     $scope.type = type;
+
+    hideLoader();
   });
 });
 
 app.controller('transformer-line-chart-highcharts', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var date = $routeParams.date;
 
   $http ({
@@ -897,10 +976,15 @@ app.controller('transformer-line-chart-highcharts', function($scope, $http, $rou
 
     $scope.data = response;
     $scope.date = date;
+
+    hideLoader();
   });
 });
 
 app.controller('transformer-spider-chart-highcharts', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var date = $routeParams.date;
 
   $http ({
@@ -913,10 +997,14 @@ app.controller('transformer-spider-chart-highcharts', function($scope, $http, $r
 
     $scope.data = response;
     $scope.date = date;
+
+    hideLoader();
   });
 });
 
 app.controller('nodes-graph', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
 
   var date = $routeParams.date;
   var time = $routeParams.time;
@@ -1050,10 +1138,13 @@ app.controller('nodes-graph', function($scope, $http, $route, $routeParams) {
     $scope.date = date;
     $scope.time = time;
 
+    hideLoader();
   });
 });
 
 app.controller('nodes-tree', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
 
   var date = $routeParams.date;
   var time = $routeParams.time;
@@ -1197,10 +1288,14 @@ app.controller('nodes-tree', function($scope, $http, $route, $routeParams) {
     $scope.date = date;
     $scope.time = time;
 
+    hideLoader();
   });
 });
 
 app.controller('transformer-graphical-representation', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
   var date = $routeParams.date;
   var time = $routeParams.time;
   $http ({
@@ -1313,11 +1408,15 @@ app.controller('transformer-graphical-representation', function($scope, $http, $
     $scope.date = date;
     $scope.time = time;
 
+    hideLoader();
   });
 });
 
 
 app.controller('system-graph', function($scope, $http) {
+
+  showLoader();
+
   $http ({
     url : '/house-system-graph/',
     method : 'GET'
@@ -1325,235 +1424,80 @@ app.controller('system-graph', function($scope, $http) {
 
   .success(function(response, status, headers, config) {
 
-    var basicNodes = [];
-    var houseNodes = [];
-    var deviceNodes = [];
-    var housesIn611 = [];
-    var housesIn645 = [];
-    var housesIn646 = [];
-    var housesIn652 = [];
-    var housesIn671 = [];
-    var housesIn675 = [];
-    var housesIn692 = [];
-    var housesIn6321 = [];
-    var housesIn6711 = [];
-    var parsedHouses = {};
-    var housesOf611 = [];
-    var housesOf645 = [];
-    var housesOf646 = [];
-    var housesOf652 = [];
-    var housesOf671 = [];
-    var housesOf675 = [];
-    var housesOf692 = [];
-    var housesOf6321 = [];
-    var housesOf6711 = [];
-    var parsedEdges = {};
-    var edgesOf611 = [];
-    var edgesOf645 = [];
-    var edgesOf646 = [];
-    var edgesOf652 = [];
-    var edgesOf671 = [];
-    var edgesOf675 = [];
-    var edgesOf692 = [];
-    var edgesOf6321 = [];
-    var edgesOf6711 = [];
+    var nodes = [];
+    var edges = [];
+    var foundNodeIds = [];
+    var foundHouseIds = [];
 
+    var houseId, nodeId, house, node, edge;
     for (index = 0; index < response.length; index++) {
-      basicNodes.push(response[index].nodeID);
-      houseNodes.push(response[index].houseID);
-      deviceNodes.push(response[index].devID);
-      if(response[index].nodeID === 611) {
-        housesIn611.push(response[index].houseID);
-        parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
-        housesOf611.push(parsedHouses);
-        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
-        edgesOf611.push(parsedEdges);
+      houseId = response[index].houseID;
+      nodeId = response[index].nodeID;
+
+      if (foundHouseIds.indexOf(houseId) === -1) {
+        house = {
+          id: houseId,
+          group: nodeId,
+          label: houseId
+        };
+        nodes.push(house);
+        foundHouseIds.push(houseId);
       }
-      if(response[index].nodeID === 645) {
-        housesIn645.push(response[index].houseID);
-        parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
-        housesOf645.push(parsedHouses);
-        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
-        edgesOf645.push(parsedEdges);
+
+      if (foundNodeIds.indexOf(nodeId) === -1) {
+        node = {
+          id: nodeId,
+          group: nodeId,
+          label: nodeId
+        };
+        nodes.push(node);
+        foundNodeIds.push(nodeId);
       }
-      if(response[index].nodeID === 646) {
-        housesIn646.push(response[index].houseID);
-        parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
-        housesOf646.push(parsedHouses);
-        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
-        edgesOf646.push(parsedEdges);
-      }
-      if(response[index].nodeID === 652) {
-        housesIn652.push(response[index].houseID);
-        parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
-        housesOf652.push(parsedHouses);
-        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
-        edgesOf652.push(parsedEdges);
-      }
-      if(response[index].nodeID === 671) {
-        housesIn671.push(response[index].houseID);
-        parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
-        housesOf671.push(parsedHouses);
-        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
-        edgesOf671.push(parsedEdges);
-      }
-      if(response[index].nodeID === 675) {
-        housesIn675.push(response[index].houseID);
-        parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
-        housesOf675.push(parsedHouses);
-        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
-        edgesOf675.push(parsedEdges);
-      }
-      if(response[index].nodeID === 692) {
-        housesIn692.push(response[index].houseID);
-        parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
-        housesOf692.push(parsedHouses);
-        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
-        edgesOf692.push(parsedEdges);
-      }
-      if(response[index].nodeID === 6321) {
-        housesIn6321.push(response[index].houseID);
-        parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
-        housesOf6321.push(parsedHouses);
-        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
-        edgesOf6321.push(parsedEdges);
-      }
-      if(response[index].nodeID === 6711) {
-        housesIn6711.push(response[index].houseID);
-        parsedHouses = parseArray(response[index].houseID, response[index].nodeID);
-        housesOf6711.push(parsedHouses);
-        parsedEdges = findEdge(response[index].houseID, response[index].nodeID);
-        edgesOf6711.push(parsedEdges);
-      }
+
+      edge = {
+        from: houseId,
+        to: nodeId
+      };
+      edges.push(edge);
     }
 
+    // Fyteytos komvos + akmes tou
+    nodes.push({
+      id: 632,
+      label: 632,
+      group: 632
+    });
 
-    // console.log('housesFinal OUTSIDE! : ' +JSON.stringify(housesOf611));
-    // console.log('edges! : ' +JSON.stringify(edgesOf671));
-
-    basicNodes = _.uniq(basicNodes);
-    houseNodes = _.uniq(houseNodes);
-    deviceNodes = _.uniq(deviceNodes);
-    housesIn611 = _.uniq(housesIn611);
-    housesIn645 = _.uniq(housesIn645);
-    housesIn646 = _.uniq(housesIn646);
-    housesIn652 = _.uniq(housesIn652);
-    housesIn671 = _.uniq(housesIn671);
-    housesIn675 = _.uniq(housesIn675);
-    housesIn692 = _.uniq(housesIn692);
-    housesIn6321 = _.uniq(housesIn6321);
-    housesIn6711 = _.uniq(housesIn6711);
-    housesOf671 = UniqueJson(housesOf671);
-    housesOf675 = UniqueJson(housesOf675);
-    housesOf692 = UniqueJson(housesOf692);
-    housesOf6321 = UniqueJson(housesOf6321);
-    housesOf6711 = UniqueJson(housesOf6711);
-    edgesOf671 = UniqueJson(edgesOf671);
-    edgesOf675 = UniqueJson(edgesOf675);
-    edgesOf692 = UniqueJson(edgesOf692);
-    edgesOf6321 = UniqueJson(edgesOf6321);
-    edgesOf6711 = UniqueJson(edgesOf6711);
-
-    // console.log('Unique edges :' +JSON.stringify(edgesOf671));
-    // console.log('housesIn6711 are :' +JSON.stringify(housesIn6711));
-    // console.log('Houses:' +JSON.stringify(housesOf645) +JSON.stringify(housesOf646) +JSON.stringify(housesOf652));
-
-    var nodes = [
-      {id: '611', label: '611', group: '611'},
-      {id: '632', label: '632', group: '632'},
-      {id: '645', label: '645', group: '645'},
-      {id: '646', label: '646', group: '646'},
-      {id: '652', label: '652', group: '652'},
-      {id: '671', label: '671', group: '671'},
-      {id: '675', label: '675', group: '675'},
-      {id: '692', label: '692', group: '692'},
-      {id: '6321', label: '6321', group: '6321'},
-      {id: '6711', label: '6711', group: '6711'},
+    var fyteytaEdges = [
+      {from: 632, to: 645},
+      {from: 632, to: 6321},
+      {from: 645, to: 646},
+      {from: 6321, to: 671},
+      {from: 671, to: 652},
+      {from: 671, to: 611},
+      {from: 671, to: 692},
+      {from: 671, to: 6711},
+      {from: 692, to: 675},
     ];
 
-    // create an array with edges
-    var edges = [
-        {from: 632, to: 645},
-        {from: 632, to: 6321},
-        {from: 645, to: 646},
-        {from: 6321, to: 671},
-        {from: 671, to: 652},
-        {from: 671, to: 611},
-        {from: 671, to: 692},
-        {from: 671, to: 6711},
-        {from: 692, to: 675},
-    ];
-
-    var edgeLength;
-    var edgesToPush;
-
-    var length;
-    var itemsToPush;
-
-    if (housesOf611[0].group === 611) {
-      length = housesOf611.length;
-      itemsToPush = pushInNodesArray(nodes, housesOf611, length);
-      edgeLength = edgesOf611.length;
-      edgesToPush = pushInNodesArray(edges, edgesOf611, edgeLength);
-    }
-    if (housesOf645[0].group === 645) {
-      length = housesOf645.length;
-      itemsToPush = pushInNodesArray(nodes, housesOf645, length);
-      edgeLength = edgesOf645.length;
-      edgesToPush = pushInNodesArray(edges, edgesOf645, edgeLength);
-    }
-    if (housesOf646[0].group === 646) {
-      length = housesOf646.length;
-      itemsToPush = pushInNodesArray(nodes, housesOf646, length);
-      edgeLength = edgesOf646.length;
-      edgesToPush = pushInNodesArray(edges, edgesOf646, edgeLength);
-    }
-    if (housesOf652[0].group === 652) {
-      length = housesOf652.length;
-      itemsToPush = pushInNodesArray(nodes, housesOf652, length);
-      edgeLength = edgesOf652.length;
-      edgesToPush = pushInNodesArray(edges, edgesOf652, edgeLength);
-    }
-    if (housesOf671[0].group === 671) {
-      length = housesOf671.length;
-      itemsToPush = pushInNodesArray(nodes, housesOf671, length);
-      edgeLength = edgesOf671.length;
-      edgesToPush = pushInNodesArray(edges, edgesOf671, edgeLength);
-    }
-    if (housesOf675[0].group === 675) {
-      length = housesOf675.length;
-      itemsToPush = pushInNodesArray(nodes, housesOf675, length);
-      edgeLength = edgesOf675.length;
-      edgesToPush = pushInNodesArray(edges, edgesOf675, edgeLength);
-    }
-    if (housesOf692[0].group === 692) {
-      length = housesOf692.length;
-      itemsToPush = pushInNodesArray(nodes, housesOf692, length);
-      edgeLength = edgesOf692.length;
-      edgesToPush = pushInNodesArray(edges, edgesOf692, edgeLength);
-    }
-    if (housesOf6321[0].group === 6321) {
-      length = housesOf6321.length;
-      itemsToPush = pushInNodesArray(nodes, housesOf6321, length);
-      edgeLength = edgesOf6321.length;
-      edgesToPush = pushInNodesArray(edges, edgesOf6321, edgeLength);
-    }
-    if (housesOf6711[0].group === 6711) {
-      length = housesOf6711.length;
-      itemsToPush = pushInNodesArray(nodes, housesOf6711, length);
-      edgeLength = edgesOf6711.length;
-      edgesToPush = pushInNodesArray(edges, edgesOf6711, edgeLength);
-    }
-
-    // console.log(JSON.stringify(nodes));
-    // console.log(JSON.stringify(edges));
+    edges = edges.concat(fyteytaEdges);
+    console.log(edges);
 
     // // provide the data in the vis format
     var data = {
         nodes: nodes,
         edges: edges
     };
-    var options = {};
+    var options = {
+      physics : {
+        stabilization : {
+          iterations : 200,
+          updateInterval: 10,
+          onlyDynamicEdges: false,
+          fit: true
+        }
+      }
+    };
 
     // create a network
     var container = document.getElementById('systemNetwork');
@@ -1561,52 +1505,9 @@ app.controller('system-graph', function($scope, $http) {
     // initialize your network!
     var network = new vis.Network(container, data, options);
 
-    function parseArray(houseID, groupNumber){
-
-      return {
-        id: houseID,
-        label: houseID,
-        group: groupNumber
-      };
-    }
-
-    function findEdge(houseID, groupNumber){
-
-      return {
-        from: houseID,
-        to: groupNumber
-      };
-    }
-
-    function UniqueJson(givenArray) {
-      var formattedArray = [];
-      givenArray.forEach(function(item) {
-          var unique = true;
-          formattedArray.forEach(function(item2) {
-              if (_.isEqual(item, item2)) {
-                  unique = false;
-              }
-          });
-          if (unique) {
-              formattedArray.push(item);
-          }
-      });
-      return formattedArray;
-    }
-
-    function pushInNodesArray(nodes, housesOfNode, arrayLength) {
-      for(var index = 0; index < arrayLength; index++) {
-        var shifted = housesOfNode.shift();
-        nodes.push(shifted);
-      }
-      return nodes;
-    }
-    function pushInEdgessArray(edges,edgesOfHouse, arrayLength) {
-      for(var index = 0; index < arrayLength; index++) {
-        var shifted = edgesOfHouse.shift();
-        edges.push(shifted);
-      }
-      return edges;
-    }
+    network.on("afterDrawing", function(ctx) {
+      hideLoader();
+      network.off("afterDrawing");
+    });
   });
 });
