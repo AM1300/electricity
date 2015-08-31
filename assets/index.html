@@ -25,16 +25,17 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Brand</a>
+        <a class="navbar-brand" href="#/">GridLabDVisor</a>
       </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="#">Link <span class="sr-only">(current)</span></a></li>
+          <li><a href="#/">Home</a></li>
         </ul>
-            <ul class="nav navbar-nav navbar-right text-navbar-color">
-              <li><a href="#">Link</a></li>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#/technologies">Used Technologies</a></li>
+              <li><a href="/cv/index.html">About Developer</a></li>
                 <li class="dropdown">
                     <a href="javascript.void(0)" class="dropdown-toggle" data-toggle="dropdown"role="button" aria-expanded="false">Select Table
                       <span class="caret"></span>
@@ -57,25 +58,18 @@
 
   <div ng-view></div>
 
-  <div class="dark">
+  <div id="main-loader" class="hidden">
+    <span class="spinnersText textStyling">The graph you asked for is initializing...</span>
+    <div id="centralizeSpinner"></div>
+    <span class="spinnersWait textStyling">Please Wait</span>
+  </div>
+
   <div class="container-marketing">
     <div class="container">
       <a class="back-to-top btn btn-default pull-right" style="display: inline;" href="#/" role="button">
         Scroll to Top
         <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
       </a>
-
-      <div class="row">
-        <div class="col-md-2">
-          <div class="list-group footer-list-group">
-            <a href="#/"class="active-tab-color list-group-item">Home</a>
-            <a href="" class="active-tab-color list-group-item">Help</a>
-            <a href="#/technologies" class="active-tab-color list-group-item">Used Technologies</a>
-            <a href="/cv/index.html" class="active-tab-color list-group-item">About Developer</a>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -88,6 +82,7 @@
   <script type="text/javascript" src="/js/libs/angular.min.js"></script>
   <script type="text/javascript" src="/js/libs/angular-route.min.js"></script>
   <script type="text/javascript" src="/js/libs/angular-underscore.js"></script>
+  <script type="text/javascript" src="/js/libs/spin.min.js"></script>
   <script type="text/javascript" src="/js/libs/highcharts.js"></script>
   <script type="text/javascript" src="/js/libs/highcharts-more.js" ></script>
   <script type="text/javascript" src="/js/libs/modules/heatmap.js" ></script>
@@ -123,6 +118,8 @@
   <script type="text/javascript" src="/js/triplexMeterHighcharts.js" ></script>
   <script type="text/javascript" src="/js/triplexMeterSpiderHighcharts.js" ></script>
   <script type="text/javascript" src="/js/back-to-top-button.js"></script>
+  <script type="text/javascript" src="/js/showLoader.js"></script>
+  <script type="text/javascript" src="/js/hideLoader.js"></script>
   <script>
     var btns = ['btn-one', 'btn-two', 'btn-three'];
     var input = document.getElementById('btn-input');
