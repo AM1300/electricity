@@ -64,7 +64,7 @@ function marketHighchartsSpider(response) {
 
             tooltip: {
                 shared: true,
-                pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+                // pointFormat: '<span style="color:{series.color}">{series.name}: <b>¢{point.y:,.0f}</b><br/>'
             },
 
            legend: {
@@ -81,24 +81,36 @@ function marketHighchartsSpider(response) {
                 data: clearingPrices,
                 marker: {
                     enabled: false
+                },
+                tooltip: {
+                    valueSuffix: ' ¢'
                 }
             }, {
                 name: 'Clearing Quantity',
                 data: clearingQuantities,
                 marker: {
                     enabled: false
+                },
+                tooltip: {
+                    valueSuffix: ' Watt'
                 }
             }, {
                 name: 'Seller΄s Quantity',
                 data: sellerQuantities,
                 marker: {
                     enabled: false
+                },
+                tooltip: {
+                    valueSuffix: ' Watt'
                 }
             }, {
                 name: 'Buyer΄s Quantity',
                 data: buyerQuantities,
                 marker: {
                     enabled: false
+                },
+                tooltip: {
+                    valueSuffix: ' Watt'
                 }
             }],
             navigation: {

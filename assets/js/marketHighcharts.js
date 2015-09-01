@@ -92,7 +92,7 @@ function marketHighcharts(response) {
                     enabled: false
                 },
                 tooltip: {
-                    valueSuffix: ' $'
+                    valueSuffix: ' ¢'
                 }
             }, {
                 name: 'Clearing Quantity',
