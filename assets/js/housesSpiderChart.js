@@ -1,4 +1,4 @@
-function housesSpiderChart(data) {
+function housesSpiderChart(data, id) {
     var timestamps = data.map(function(entry, index) {
       return moment(entry.timestamp).format('HH:mm');
     });
@@ -19,14 +19,14 @@ function housesSpiderChart(data) {
 
     $(function () {
 
-        $('#containerSpiderTriplex').highcharts({
+        $('#containerSpiderTriplex' +id).highcharts({
 
             chart: {
                 backgroundColor:'#ECECEC',
                 polar: true,
                 type: 'area',
-                margin: [20, 0, 0, 0],
-                spacingTop: 0,
+                margin: [30, 0, 0, 0],
+                spacingTop: 10,
                 spacingBottom: 0,
                 spacingLeft: 0,
                 spacingRight: 0
@@ -38,7 +38,7 @@ function housesSpiderChart(data) {
             },
 
             title: {
-                text: 'Total Load & Reactive Power for ' +dateTitle,
+                text: 'Total Load & Reactive Power for ' +dateTitle+ ' and House ' +id,
             },
             xAxis: {
                 categories: timestamps,

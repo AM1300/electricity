@@ -1,4 +1,5 @@
-function housesMultipleLineChart(data) {
+function housesMultipleLineChart(data, id) {
+
     var timestamps = data.map(function(entry, index) {
       return moment(entry.timestamp).format('HH:mm');
     });
@@ -18,7 +19,7 @@ function housesMultipleLineChart(data) {
     var dateTitle = date[0];
 
     $(function () {
-        $('#containerTriplex').highcharts({
+        $('#containerTriplex' +id).highcharts({
             chart: {
                 backgroundColor:'#ECECEC',
                 zoomType: 'x',
@@ -47,7 +48,7 @@ function housesMultipleLineChart(data) {
                 }
             },
             title: {
-                text: 'Total Load & Reactive Power for ' +dateTitle,
+                text: 'Total Load & Reactive Power for ' +dateTitle+ ' and House ' +id,
             },
             subtitle: {
                 text: document.ontouchstart === undefined ?
