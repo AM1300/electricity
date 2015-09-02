@@ -46,8 +46,8 @@
         <div class="form-group">
           <label for="exampleInputName" class="col-sm-2 control-label">House ID</label>
           <div class="col-sm-10">
-            <select class="form-control" id="HouseID">
-              <option selected="true" disabled="disabled">Choose House</option>
+            <select class="form-control" id="HouseID" multiple="multiple" style="height:150px;">
+              <option id="setBackgroundColor"selected="true" disabled="disabled">Choose House</option>
             </select>
           </div>
         </div>
@@ -117,14 +117,17 @@
             .attr('disabled', 'disabled')
             .text('Choose House'));
 
-          // console.log(houseIDs);
-
           $.each(houseIDs, function(key, value) {
             $('#HouseID')
               .append($("<option></option>")
               .attr("value",key + 1 + nodeID)
               .text(value));
           });
+          // $('#HouseID').multiselect({
+          //   // bincludeSelectAllOption: true,
+          //   checkboxName: 'multiselect[]',
+          //   buttonClass: 'form-control'
+          // });
         });
     };
 
