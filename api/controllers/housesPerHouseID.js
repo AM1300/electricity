@@ -10,7 +10,24 @@ module.exports = {
     var formattedDate = parsedDate.format("YYYY-MM-DD HH:mm:ss");
     var formattedDateNext = parsedDate.add(1, 'days').format("YYYY-MM-DD HH:mm:ss");
 
-    mySqlConnection.query('SELECT * FROM houses WHERE timestamp >= "'+formattedDate+'" && timestamp < "'+formattedDateNext+'" && nodeID= "'+nodeID+'" && houseID= "'+houseID+'" && phase= "'+phase+'" ',
+    var IDs = houseID.split(',');
+    var queryString = 'SELECT * FROM houses WHERE timestamp >= "'+formattedDate+
+                      '" && timestamp < "'+formattedDateNext+
+                      '" && nodeID= "'+nodeID+
+                      '" && phase= "'+phase+
+                      '" && (';
+    for(var index = 0; index < IDs.length; index++ ) {
+      if (index === IDs.length - 1) {
+        queryString += ' houseID = "'+IDs[index]+'" ';
+      }
+      else {
+        queryString += ' houseID = "'+IDs[index]+'" || ';
+      }
+    }
+
+    queryString += ')';
+
+    mySqlConnection.query(queryString ,
       function(err, rows, fields) {
       if (err){
         throw err;
