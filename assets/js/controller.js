@@ -871,13 +871,25 @@ app.controller('houses-multiple-charts', function($scope, $http, $route, $routeP
   })
 
   .success(function(response, status, headers, config) {
-    housesMultipleLineChart(response);
 
-    $scope.data = response;
-    $scope.date = date;
-    $scope.nodeID = nodeID;
-    $scope.houseID = houseID;
-    $scope.phase = phase;
+    var uniqueHouses = houseID.split(',');
+
+    for(var index = 0; index < uniqueHouses.length; index++ ) {
+      var result = response.filter(function(obj) {
+        return obj.houseID == uniqueHouses[index];
+      });
+      // console.log(result);
+      housesMultipleLineChart(result, uniqueHouses[index]);
+
+
+      $scope.data = response;
+      $scope.date = date;
+      $scope.nodeID = nodeID;
+      $scope.houseID = houseID;
+      $scope.phase = phase;
+      $scope.uniqueHouses = uniqueHouses;
+
+    }
 
     hideLoader();
   });
@@ -898,14 +910,24 @@ app.controller('houses-spider-chart', function($scope, $http, $route, $routePara
   })
 
   .success(function(response, status, headers, config) {
-    housesSpiderChart(response);
+    var uniqueHouses = houseID.split(',');
 
-    $scope.data = response;
-    $scope.date = date;
-    $scope.nodeID = nodeID;
-    $scope.houseID = houseID;
-    $scope.phase = phase;
+    for(var index = 0; index < uniqueHouses.length; index++ ) {
+      var result = response.filter(function(obj) {
+        return obj.houseID == uniqueHouses[index];
+      });
+      // console.log(result);
+      housesSpiderChart(result, uniqueHouses[index]);
 
+
+      $scope.data = response;
+      $scope.date = date;
+      $scope.nodeID = nodeID;
+      $scope.houseID = houseID;
+      $scope.phase = phase;
+      $scope.uniqueHouses = uniqueHouses;
+
+    }
     hideLoader();
   });
 });
