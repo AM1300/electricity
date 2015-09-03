@@ -1,0 +1,37 @@
+<div class="container">
+  <h2 class="center-alignment">Hierarchical Layout of system for {{ date }} & {{ time }} & phase A </h2>
+  <input type="hidden" name="option" value="" id="btn-input" />
+  <div class="btn-group pull-right" data-toggle="buttons-radio" style="margin-bottom:25px; margin-top:10px;">
+    <a href="#/nodes/hierarchical-layout/{{date}}/{{time}}/A"
+        class="button btn btn-primary active" id="btn-one" type="button" data-toggle="button"
+        name="option" value="1" checked>
+      Phase A
+    </a>
+    <a href="#/nodes/hierarchical-layout/{{date}}/{{time}}/B"
+        class="button btn btn-primary" id="btn-two" type="button" data-toggle="button"
+        name="option" value="2">
+      Phase B
+    </a>
+    <a href="#/nodes/hierarchical-layout/{{date}}/{{time}}/C"
+        class="button btn btn-primary" id="btn-three" type="button" data-toggle="button"
+        name="option" value="3">
+      Phase C
+    </a>
+    <a href="#/nodes/hierarchical-layout/{{date}}/{{time}}/"
+        class="button btn btn-primary" id="btn-four" type="button" data-toggle="button"
+        name="option" value="4">
+      All Phases
+    </a>
+  </div>
+<!--   <form class="form-horizontal">
+    <div class="form-group">
+      <label for="timeSelected" class="col-sm-2 control-label">Time </label>
+      <div class="col-sm-10">
+        <select name="timeSlider" id="timeSlider"></select>
+      </div>
+    </div>
+  </form> -->
+  <div ng-controller="nodes-tree-phaseA">
+    <div id="nodesNetwork"></div>
+  </div>
+</div>
