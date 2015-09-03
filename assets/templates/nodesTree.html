@@ -13,7 +13,105 @@
       Unsorted Graph
     </a>
   </div>
+<!--   <form class="form-horizontal">
+    <div class="form-group">
+      <label for="timeSelected" class="col-sm-2 control-label">Time </label>
+      <div class="col-sm-10">
+        <select name="timeSlider" id="timeSlider"></select>
+      </div>
+    </div>
+  </form> -->
+  <input type="hidden" name="option" value="" id="btn-input" />
+  <div class="btn-group btn-group-justified" data-toggle="buttons-radio" style="margin-bottom:25px; margin-top:70px;">
+    <a href="#/nodes/hierarchical-layout/{{date}}/{{time}}/A"
+        class="button btn btn-primary" id="btn-one" type="button" data-toggle="button"
+        name="option" value="1">
+      Phase A
+    </a>
+    <a href="#/nodes/hierarchical-layout/{{date}}/{{time}}/B"
+        class="button btn btn-primary" id="btn-two" type="button" data-toggle="button"
+        name="option" value="2">
+      Phase B
+    </a>
+    <a href="#/nodes/hierarchical-layout/{{date}}/{{time}}/C"
+        class="button btn btn-primary" id="btn-three" type="button" data-toggle="button"
+        name="option" value="3">
+      Phase C
+    </a>
+  </div>
   <div ng-controller="nodes-tree">
     <div id="nodesNetwork"></div>
   </div>
 </div>
+
+ <!--  <script>
+    $(function() {
+        var select = $( "#timeSlider" );
+        var initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+        var initialUrl = window.location.href;
+        var arrayOfInputs = initialUrl.split('/');
+        var date = arrayOfInputs[6];
+        // var time; //this 'time' variable i have to pass from slider to url
+
+        var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+          min: 1,
+          max: 96,
+          range: "min",
+          value: select[ 0 ].selectedIndex + 1,
+          slide: function( event, ui ) {
+            select[ 0 ].selectedIndex = ui.value - 1;
+          },
+          stop : function(event, ui) {
+            slideValue = ui.value -1;
+            // var time = select[ 0 ].selectedIndex + 1;
+            console.log('slideValue ' +slideValue);
+            console.log('time ' +time);
+            $.ajax({
+              url : '/nodes-all/' + date + '/' + slideValue,
+              type : "GET",
+              data : {
+                "slideValue" : slideValue
+              },
+              dataType : "json",
+                success : function(response){
+                  console.log(response);
+              }
+            });
+          }
+        });
+
+        var timeArray = [];
+        var formattedTimeArray = [];
+        var formattedMinute;
+        for(hour = 0; hour < 24; hour++) {
+          hour = ('0' + hour).slice(-2);
+          for (minute = 0; minute < 60; minute = minute + 15) {
+            formattedMinute = minute === 0 ? minute + '0' : minute;
+            timeArray.push(hour+ ':' +formattedMinute);
+          }
+        }
+        $("#slider")
+          .slider("pips", {
+            labels: timeArray,
+              rest: 'label',
+              step: 8,
+          })
+
+          .slider("float", {
+              labels: timeArray
+          });
+
+        $("#timeSlider" ).change(function() {
+          slider.slider( "value", this.selectedIndex + 1 );
+        });
+
+        $('#timeSlider').empty();
+        $.each(timeArray, function(key, value) {
+          $('#timeSlider')
+            .append($("<option></option>")
+            .attr("value", value)
+            .text(value));
+        });
+    });
+</script>
+ -->
