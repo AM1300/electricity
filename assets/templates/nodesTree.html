@@ -47,7 +47,6 @@
   <script>
     $(function() {
         var select = $( "#timeSlider" );
-        // var initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
         var initialUrl = window.location.href;
         var arrayOfInputs = initialUrl.split('/');
         var date = arrayOfInputs[6];
@@ -85,8 +84,6 @@
            var initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
            for(i = 1; i < arrayOfObjects.length; i++) {
             if (initialTime === arrayOfObjects[i].timeValue ) {
-                // console.log(arrayOfObjects[i].timeValue);
-                // console.log(arrayOfObjects[i].timeKey);
                 $(this).slider('value', arrayOfObjects[i].timeKey);
             }
            }
@@ -133,17 +130,14 @@
             .text(value));
         });
 
-        // $("#timeSlider").val($("#slider").slider("value") );
-        // $("#timeSlider" ).ready(function() {
-        //  var initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-        //  for(i = 1; i < arrayOfObjects.length; i++) {
-        //     if (initialTime === arrayOfObjects[i].timeValue ) {
-        //       console.log(arrayOfObjects[i].timeValue);
-        //       console.log(arrayOfObjects[i].timeKey);
-        //       slider.slider('value', arrayOfObjects[i].timeKey);
-        //     }
-        //   }
-        // });
+        $("#timeSlider" ).ready(function() {
+         var initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+         for(i = 1; i < arrayOfObjects.length; i++) {
+            if ($("#slider").slider("value") === arrayOfObjects[i].timeKey ) {
+              $("#timeSlider").val(arrayOfObjects[i].timeValue );
+            }
+          }
+        });
     });
 </script>
 

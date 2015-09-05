@@ -120,5 +120,14 @@
             .attr("value", value)
             .text(value));
         });
+
+        $("#timeSlider" ).ready(function() {
+         var initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+         for(i = 1; i < arrayOfObjects.length; i++) {
+            if ($("#slider").slider("value") === arrayOfObjects[i].timeKey ) {
+              $("#timeSlider").val(arrayOfObjects[i].timeValue );
+            }
+          }
+        });
     });
 </script>
