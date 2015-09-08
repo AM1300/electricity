@@ -1,7 +1,19 @@
 <div class="container">
   <div ng-controller="date-picker-controller as vm">
-    <h2 style="text-align:center;">We are in the House</h2>
-    <p style="text-align:center;">Type in the following forms the date and the houseID and you will see the chart</p>
+    <div class="page-header" style="text-align:center;">
+      <h1>Houses</h1>
+    </div>
+    <div class="container marketing">
+      <h4 style="text-align:center; padding-bottom:20px;">
+        In this table you can check the actual Load that inserts into your house and
+        the percentage of this that become Reactive Power and not used as power of house
+        anymore.
+      </h4>
+      <p style="text-align:center; padding-bottom:10px;">
+        Type in the following forms the date, the nodeID, the Phase and the houseID
+        and you will see how the power is flowing through house
+      </p>
+    </div>
     <form class="form-horizontal">
         <div class="form-group has-feedback">
           <label for="exampleInputName2" class="col-sm-2 control-label">Date</label>
@@ -46,8 +58,8 @@
         <div class="form-group">
           <label for="exampleInputName" class="col-sm-2 control-label">House ID</label>
           <div class="col-sm-10">
-            <select class="form-control" id="HouseID" multiple="multiple" style="height:150px;">
-              <option id="setBackgroundColor"selected="true" disabled="disabled">Choose House</option>
+            <select class="form-control selectClass" id="HouseID" multiple="multiple" style="height:35px;">
+              <option id="setBackgroundColor" selected="true" disabled="disabled">Choose House</option>
             </select>
           </div>
         </div>
@@ -61,6 +73,7 @@
 </div>
 
 <script>
+
     window.choosePhase = function (value){
       var nodeID = $('#node').val();
 
@@ -123,11 +136,12 @@
               .attr("value",key + 1 + nodeID)
               .text(value));
           });
-          // $('#HouseID').multiselect({
-          //   // bincludeSelectAllOption: true,
-          //   checkboxName: 'multiselect[]',
-          //   buttonClass: 'form-control'
-          // });
+
+          $('#HouseID').multipleSelect({
+             create: function(){
+              $('#HouseID').multiselect("uncheckAll");
+            },
+          });
         });
     };
 

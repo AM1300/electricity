@@ -1,7 +1,7 @@
 body {
 	background-color: #E3E3E3;
 	font-family: 'Merriweather Sans', sans-serif;
-  padding-top: 55px;
+  padding-top: 85px;
 }
 
 @font-face {
@@ -419,14 +419,47 @@ body {
 
 }
 
-select.multiselect,
+/*select.multiselect,
 select.multiselect + div.btn-group,
 select.multiselect + div.btn-group button.multiselect,
 select.multiselect + div.btn-group.open .multiselect-container{
     width:100% !important;
 }
-
+*/
 
 #setBackgroundColor {
   background-color: #fff !important;
 }
+
+select[disabled]{
+  background-color: #fff;
+}
+
+.ms-choice {
+  padding-top: 10px;
+  border: 0px;
+}
+
+.ms-choice.disabled {
+    background-color: #fff;
+}
+
+option.disabled {
+    background-color: #fff;
+}
+.ms-choice:active.ms-choice:focus.ms-choice:hover {
+  border: 0px;
+}
+
+/*option:disabled, optgroup:disabled {
+    background-color: #fff !important;
+}*/
+
+
+
+/*select:-internal-list-box:disabled option:checked,
+select:-internal-list-box option:checked:disabled {
+    color: #fff;
+}*/
+
+
