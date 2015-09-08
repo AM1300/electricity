@@ -1,16 +1,26 @@
 <div class="container">
-  <h2 class="center-alignment">Unsorted Graph for {{ date }} & {{ time }} </h2>
+  <h2 class="center-alignment">Unsorted Graph for {{ date }} & {{ time }} & phase B </h2>
   <input type="hidden" name="option" value="" id="btn-input" />
   <div class="btn-group pull-right" data-toggle="buttons-radio" style="margin-bottom:25px; margin-top:10px;">
-    <a href="#/nodes/hierarchical-layout/{{date}}/{{time}}"
+    <a href="#/nodes/graph/A/{{date}}/{{time}}"
         class="button btn btn-primary" id="btn-one" type="button" data-toggle="button"
         name="option" value="1">
-      Hierarchical Layout
+      Phase A
     </a>
-    <a href="#/nodes/graph/{{date}}/{{time}}"
+    <a href="#/nodes/graph/B/{{date}}/{{time}}"
         class="button btn btn-primary active" id="btn-two" type="button" data-toggle="button"
         name="option" value="2" checked>
-      Unsorted Graph
+      Phase B
+    </a>
+    <a href="#/nodes/graph/C/{{date}}/{{time}}"
+        class="button btn btn-primary" id="btn-three" type="button" data-toggle="button"
+        name="option" value="3">
+      Phase C
+    </a>
+    <a href="#/nodes/graph/{{date}}/{{time}}/"
+        class="button btn btn-primary" id="btn-four" type="button" data-toggle="button"
+        name="option" value="4">
+      All Phases
     </a>
   </div>
   <form class="form-horizontal">

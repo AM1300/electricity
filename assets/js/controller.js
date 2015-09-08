@@ -200,6 +200,21 @@ app.config(function($locationProvider, $routeProvider) {
             controller  : 'nodes-graph'
         })
 
+        .when('/nodes/graph/A/:date/:time', {
+            templateUrl : '/templates/nodesGraphPhaseA.html',
+            controller  : 'nodes-graph-phaseA'
+        })
+
+        .when('/nodes/graph/B/:date/:time', {
+            templateUrl : '/templates/nodesGraphPhaseB.html',
+            controller  : 'nodes-graph-phaseB'
+        })
+
+        .when('/nodes/graph/C/:date/:time', {
+            templateUrl : '/templates/nodesGraphPhaseC.html',
+            controller  : 'nodes-graph-phaseC'
+        })
+
         .when('/nodes/hierarchical-layout/:date/:time', {
             templateUrl : '/templates/nodesTree.html',
             controller  : 'nodes-tree'
@@ -1172,8 +1187,666 @@ app.controller('nodes-graph', function($scope, $http, $route, $routeParams) {
     // initialize your network!
     var network = new vis.Network(container, data, options);
 
+    var select = $( "#timeSlider" );
+    var initialUrl = window.location.href;
+    var initialTime;
+    var newUrl;
+    var arrayOfInputs = initialUrl.split('/');
+    var date = arrayOfInputs[6];
+    var timeAppendToUrl;
+    var timeArray = [];
+    var formattedTimeArray = [];
+    var formattedMinute;
+    var arrayOfObjects = [];
+    var timeArrayCopy = [];
+    var timeObject = {};
+
+    for(hour = 0; hour < 24; hour++) {
+      hour = ('0' + hour).slice(-2);
+      for (minute = 0; minute < 60; minute = minute + 15) {
+        formattedMinute = minute === 0 ? minute + '0' : minute;
+        timeArray.push(hour+ ':' +formattedMinute);
+        timeArrayCopy.push(hour+ ':' +formattedMinute);
+      }
+    }
+
+    for(index = 1; index <= 96; index++ ){
+      var shiftedTime = timeArrayCopy.shift();
+      timeObject = {
+        timeValue : shiftedTime,
+        timeKey   : index
+      };
+      arrayOfObjects.push(timeObject);
+    }
+
+    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+      min: 1,
+      max: 96,
+      range: "min",
+      value: select[ 0 ].selectedIndex +1,
+      create: function(event, ui) {
+       initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+       for(i = 1; i < arrayOfObjects.length; i++) {
+        if (initialTime === arrayOfObjects[i].timeValue ) {
+            $(this).slider('value', arrayOfObjects[i].timeKey);
+        }
+       }
+      },
+      slide: function(event, ui ) {
+        select[ 0 ].selectedIndex = ui.value - 1;
+      },
+    });
+
+    $("#slider")
+      .slider("pips", {
+        labels: timeArray,
+          rest: 'label',
+          step: 8,
+      })
+
+      .slider("float", {
+          labels: timeArray
+      });
+
+    $("#timeSlider" ).change(function() {
+      slider.slider( "value", this.selectedIndex + 1 );
+    });
+
+    $("#slider").slider({
+      change: function( event, ui ) {
+        timeAppendToUrl = timeSlider.value;
+        newUrl = initialUrl.replace(initialTime,timeAppendToUrl);
+        window.location.href = newUrl;
+      }
+    });
+
+    $('#timeSlider').empty();
+    $.each(timeArray, function(key, value) {
+      $('#timeSlider')
+        .append($("<option></option>")
+        .attr("value", value)
+        .text(value));
+    });
+
+    $("#timeSlider" ).ready(function() {
+     var initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+     for(i = 1; i < arrayOfObjects.length; i++) {
+        if ($("#slider").slider("value") === arrayOfObjects[i].timeKey ) {
+          $("#timeSlider").val(arrayOfObjects[i].timeValue );
+          timeAppendToUrl = timeSlider.value;
+        }
+      }
+    });
+
     $scope.date = date;
-    $scope.time = time;
+    $scope.time = timeAppendToUrl;
+
+    hideLoader();
+  });
+});
+
+app.controller('nodes-graph-phaseA', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
+  var date = $routeParams.date;
+  var time = $routeParams.time;
+
+  $http ({
+    url : '/nodes-all/' + date + '/' + time,
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+
+    var voltageA611 = response[0].voltageA611;
+    var voltageA632 = response[0].voltageA632;
+    var voltageA645 = response[0].voltageA645;
+    var voltageA646 = response[0].voltageA646;
+    var voltageA652 = response[0].voltageA652;
+    var voltageA671 = response[0].voltageA671;
+    var voltageA675 = response[0].voltageA675;
+    var voltageA680 = response[0].voltageA680;
+    var voltageA684 = 0;
+    var voltageA692 = response[0].voltageA692;
+    var voltageA6321 = response[0].voltageA6321;
+    var voltageA6711 = response[0].voltageA6711;
+
+    var currentOutA632_645 = response[0].currentOutA632_645;
+    var currentOutA632_6321 = response[0].currentOutA632_6321;
+    var currentOutA645_646 = response[0].currentOutA645_646;
+    var currentOutA6321_671 = response[0].currentOutA6321_671;
+    var currentOutA671_680 = response[0].currentOutA671_680;
+    var currentOutA671_684 = response[0].currentOutA671_684;
+
+    var nodes = new vis.DataSet([
+        {id: 611, label: '611', title: 'A : ' +voltageA611},
+        {id: 632, label: '632', title: 'A : ' +voltageA632},
+        {id: 645, label: '645', title: 'A : ' +voltageA645},
+        {id: 646, label: '646', title: 'A : ' +voltageA646},
+        {id: 652, label: '652', title: 'A : ' +voltageA652},
+        {id: 671, label: '671', title: 'A : ' +voltageA671},
+        {id: 675, label: '675', title: 'A : ' +voltageA675},
+        {id: 680, label: '680', title: 'A : ' +voltageA680},
+        {id: 684, label: '684', title: 'A : ' +voltageA684},
+        {id: 692, label: '692', title: 'A : ' +voltageA692},
+        {id: 6321, label: '6321', title: 'A : ' +voltageA6321},
+        {id: 6711, label: '6711', title: 'A : ' +voltageA6711}
+    ]);
+
+    // create an array with edges
+    var edges = new vis.DataSet([
+        {from: 611, to: null},
+        {from: 632, to: 645, title: 'A : ' +currentOutA632_645},
+        {from: 632, to: 6321, title: 'A : ' +currentOutA632_6321},
+        {from: 645, to: 646, title: 'A : ' +currentOutA645_646},
+        {from: 6321, to: 671, title: 'A : ' +currentOutA6321_671},
+        {from: 671, to: 680, title: 'A : ' +currentOutA671_680},
+        {from: 671, to: 684, title: 'A : ' +currentOutA671_684},
+        {from: 671, to: 6711, title: 'A : 0'},
+        {from: 671, to: 692, title: 'A : 0'},
+        {from: 692, to: 675, title: 'A : 0'},
+        {from: 684, to: 652, title: 'A : 0'},
+        {from: 684, to: 611, title: 'A : 0'},
+    ]);
+
+    // create a network
+    var container = document.getElementById('nodesNetwork');
+
+    // provide the data in the vis format
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    var options = {
+      edges: {
+        arrows: {
+          to: {enabled: true, scaleFactor:1},
+        },
+        smooth: {
+          type: 'continuous',
+          forceDirection: 'none'
+        },
+        font: {
+          align: 'top'
+        }
+      }
+    };
+
+    // initialize your network!
+    var network = new vis.Network(container, data, options);
+
+    var select = $( "#timeSlider" );
+    var initialUrl = window.location.href;
+    var initialTime;
+    var newUrl;
+    var arrayOfInputs = initialUrl.split('/');
+    var date = arrayOfInputs[7];
+    var timeAppendToUrl;
+    var timeArray = [];
+    var formattedTimeArray = [];
+    var formattedMinute;
+    var arrayOfObjects = [];
+    var timeArrayCopy = [];
+    var timeObject = {};
+
+    for(hour = 0; hour < 24; hour++) {
+      hour = ('0' + hour).slice(-2);
+      for (minute = 0; minute < 60; minute = minute + 15) {
+        formattedMinute = minute === 0 ? minute + '0' : minute;
+        timeArray.push(hour+ ':' +formattedMinute);
+        timeArrayCopy.push(hour+ ':' +formattedMinute);
+      }
+    }
+
+    for(index = 1; index <= 96; index++ ){
+      var shiftedTime = timeArrayCopy.shift();
+      timeObject = {
+        timeValue : shiftedTime,
+        timeKey   : index
+      };
+      arrayOfObjects.push(timeObject);
+    }
+
+    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+      min: 1,
+      max: 96,
+      range: "min",
+      value: select[ 0 ].selectedIndex +1,
+      create: function(event, ui) {
+       initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+       for(i = 1; i < arrayOfObjects.length; i++) {
+        if (initialTime === arrayOfObjects[i].timeValue ) {
+            $(this).slider('value', arrayOfObjects[i].timeKey);
+        }
+       }
+      },
+      slide: function(event, ui ) {
+        select[ 0 ].selectedIndex = ui.value - 1;
+      },
+    });
+
+    $("#slider")
+      .slider("pips", {
+        labels: timeArray,
+          rest: 'label',
+          step: 8,
+      })
+
+      .slider("float", {
+          labels: timeArray
+      });
+
+    $("#timeSlider" ).change(function() {
+      slider.slider( "value", this.selectedIndex + 1 );
+    });
+
+    $("#slider").slider({
+      change: function( event, ui ) {
+        timeAppendToUrl = timeSlider.value;
+        newUrl = initialUrl.replace(initialTime,timeAppendToUrl);
+        window.location.href = newUrl;
+      }
+    });
+
+    $('#timeSlider').empty();
+    $.each(timeArray, function(key, value) {
+      $('#timeSlider')
+        .append($("<option></option>")
+        .attr("value", value)
+        .text(value));
+    });
+
+    $("#timeSlider" ).ready(function() {
+     var initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+     for(i = 1; i < arrayOfObjects.length; i++) {
+        if ($("#slider").slider("value") === arrayOfObjects[i].timeKey ) {
+          $("#timeSlider").val(arrayOfObjects[i].timeValue );
+          timeAppendToUrl = timeSlider.value;
+        }
+      }
+    });
+
+    $scope.date = date;
+    $scope.time = timeAppendToUrl;
+
+    hideLoader();
+  });
+});
+
+app.controller('nodes-graph-phaseB', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
+  var date = $routeParams.date;
+  var time = $routeParams.time;
+
+  $http ({
+    url : '/nodes-all/' + date + '/' + time,
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+
+    var voltageB611 = response[0].voltageB611;
+    var voltageB632 = response[0].voltageB632;
+    var voltageB645 = response[0].voltageB645;
+    var voltageB646 = response[0].voltageB646;
+    var voltageB652 = response[0].voltageB652;
+    var voltageB671 = response[0].voltageB671;
+    var voltageB675 = response[0].voltageB675;
+    var voltageB680 = response[0].voltageB680;
+    var voltageB684 = 0;
+    var voltageB692 = response[0].voltageB692;
+    var voltageB6321 = response[0].voltageB6321;
+    var voltageB6711 = response[0].voltageB6711;
+
+    var currentOutB632_645 = response[0].currentOutB632_645;
+    var currentOutB632_6321 = response[0].currentOutB632_6321;
+    var currentOutB645_646 = response[0].currentOutB645_646;
+    var currentOutB6321_671 = response[0].currentOutB6321_671;
+    var currentOutB671_680 = response[0].currentOutB671_680;
+    var currentOutB671_684 = response[0].currentOutB671_684;
+
+    var nodes = new vis.DataSet([
+        {id: 611, label: '611', title: 'B : ' +voltageB611},
+        {id: 632, label: '632', title: 'B : ' +voltageB632},
+        {id: 645, label: '645', title: 'B : ' +voltageB645},
+        {id: 646, label: '646', title: 'B : ' +voltageB646},
+        {id: 652, label: '652', title: 'B : ' +voltageB652},
+        {id: 671, label: '671', title: 'B : ' +voltageB671},
+        {id: 675, label: '675', title: 'B : ' +voltageB675},
+        {id: 680, label: '680', title: 'B : ' +voltageB680},
+        {id: 684, label: '684', title: 'B : ' +voltageB684},
+        {id: 692, label: '692', title: 'B : ' +voltageB692},
+        {id: 6321, label: '6321', title: 'B : ' +voltageB6321},
+        {id: 6711, label: '6711', title: 'B : ' +voltageB6711}
+    ]);
+
+    // create an array with edges
+    var edges = new vis.DataSet([
+        {from: 611, to: null},
+        {from: 632, to: 645, title: 'B : ' +currentOutB632_645, label: '632 -> 645'},
+        {from: 632, to: 6321, title: 'B : ' +currentOutB632_6321, label: '632 -> 6321'},
+        {from: 645, to: 646, title: 'B : ' +currentOutB645_646, label: '645 -> 646'},
+        {from: 6321, to: 671, title: 'B : ' +currentOutB6321_671, label: '6321 -> 671'},
+        {from: 671, to: 680, title: 'B : ' +currentOutB671_680, label: '671 -> 680'},
+        {from: 671, to: 684, title: 'B : ' +currentOutB671_684, label: '671 -> 684'},
+        {from: 671, to: 6711, title: 'B : 0'},
+        {from: 671, to: 692, title: 'B : 0'},
+        {from: 692, to: 675, title: 'B : 0'} ,
+        {from: 684, to: 652, title: 'B : 0'},
+        {from: 684, to: 611, title: 'B : 0'},
+    ]);
+
+    // create a network
+    var container = document.getElementById('nodesNetwork');
+
+    // provide the data in the vis format
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    var options = {
+      edges: {
+        arrows: {
+          to: {enabled: true, scaleFactor:1},
+        },
+        smooth: {
+          type: 'continuous',
+          forceDirection: 'none'
+        },
+        font: {
+          align: 'top'
+        }
+      }
+    };
+
+    // initialize your network!
+    var network = new vis.Network(container, data, options);
+
+    var select = $( "#timeSlider" );
+    var initialUrl = window.location.href;
+    var initialTime;
+    var newUrl;
+    var arrayOfInputs = initialUrl.split('/');
+    var date = arrayOfInputs[7];
+    var timeAppendToUrl;
+    var timeArray = [];
+    var formattedTimeArray = [];
+    var formattedMinute;
+    var arrayOfObjects = [];
+    var timeArrayCopy = [];
+    var timeObject = {};
+
+    for(hour = 0; hour < 24; hour++) {
+      hour = ('0' + hour).slice(-2);
+      for (minute = 0; minute < 60; minute = minute + 15) {
+        formattedMinute = minute === 0 ? minute + '0' : minute;
+        timeArray.push(hour+ ':' +formattedMinute);
+        timeArrayCopy.push(hour+ ':' +formattedMinute);
+      }
+    }
+
+    for(index = 1; index <= 96; index++ ){
+      var shiftedTime = timeArrayCopy.shift();
+      timeObject = {
+        timeValue : shiftedTime,
+        timeKey   : index
+      };
+      arrayOfObjects.push(timeObject);
+    }
+
+    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+      min: 1,
+      max: 96,
+      range: "min",
+      value: select[ 0 ].selectedIndex +1,
+      create: function(event, ui) {
+       initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+       for(i = 1; i < arrayOfObjects.length; i++) {
+        if (initialTime === arrayOfObjects[i].timeValue ) {
+            $(this).slider('value', arrayOfObjects[i].timeKey);
+        }
+       }
+      },
+      slide: function(event, ui ) {
+        select[ 0 ].selectedIndex = ui.value - 1;
+      },
+    });
+
+    $("#slider")
+      .slider("pips", {
+        labels: timeArray,
+          rest: 'label',
+          step: 8,
+      })
+
+      .slider("float", {
+          labels: timeArray
+      });
+
+    $("#timeSlider" ).change(function() {
+      slider.slider( "value", this.selectedIndex + 1 );
+    });
+
+    $("#slider").slider({
+      change: function( event, ui ) {
+        timeAppendToUrl = timeSlider.value;
+        newUrl = initialUrl.replace(initialTime,timeAppendToUrl);
+        window.location.href = newUrl;
+      }
+    });
+
+    $('#timeSlider').empty();
+    $.each(timeArray, function(key, value) {
+      $('#timeSlider')
+        .append($("<option></option>")
+        .attr("value", value)
+        .text(value));
+    });
+
+    $("#timeSlider" ).ready(function() {
+     var initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+     for(i = 1; i < arrayOfObjects.length; i++) {
+        if ($("#slider").slider("value") === arrayOfObjects[i].timeKey ) {
+          $("#timeSlider").val(arrayOfObjects[i].timeValue );
+          timeAppendToUrl = timeSlider.value;
+        }
+      }
+    });
+
+    $scope.date = date;
+    $scope.time = timeAppendToUrl;
+
+    hideLoader();
+  });
+});
+
+app.controller('nodes-graph-phaseC', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
+  var date = $routeParams.date;
+  var time = $routeParams.time;
+
+  $http ({
+    url : '/nodes-all/' + date + '/' + time,
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+
+    var voltageC611 = response[0].voltageC611;
+    var voltageC632 = response[0].voltageC632;
+    var voltageC645 = response[0].voltageC645;
+    var voltageC646 = response[0].voltageC646;
+    var voltageC652 = response[0].voltageC652;
+    var voltageC671 = response[0].voltageC671;
+    var voltageC675 = response[0].voltageC675;
+    var voltageC680 = response[0].voltageC680;
+    var voltageC684 = 0;
+    var voltageC692 = response[0].voltageC692;
+    var voltageC6321 = response[0].voltageC6321;
+    var voltageC6711 = response[0].voltageC6711;
+
+    var currentOutC632_645 = response[0].currentOutC632_645;
+    var currentOutC632_6321 = response[0].currentOutC632_6321;
+    var currentOutC645_646 = response[0].currentOutC645_646;
+    var currentOutC6321_671 = response[0].currentOutC6321_671;
+    var currentOutC671_680 = response[0].currentOutC671_680;
+    var currentOutC671_684 = response[0].currentOutC671_684;
+
+    var nodes = new vis.DataSet([
+        {id: 611, label: '611', title: 'C : ' +voltageC611},
+        {id: 632, label: '632', title: 'C : ' +voltageC632},
+        {id: 645, label: '645', title: 'C : ' +voltageC645},
+        {id: 646, label: '646', title: 'C : ' +voltageC646},
+        {id: 652, label: '652', title: 'C : ' +voltageC652},
+        {id: 671, label: '671', title: 'C : ' +voltageC671},
+        {id: 675, label: '675', title: 'C : ' +voltageC675},
+        {id: 680, label: '680', title: 'C : ' +voltageC680},
+        {id: 684, label: '684', title: 'C : ' +voltageC684},
+        {id: 692, label: '692', title: 'C : ' +voltageC692},
+        {id: 6321, label: '6321', title: 'C : ' +voltageC6321},
+        {id: 6711, label: '6711', title: 'C : ' +voltageC6711}
+    ]);
+
+    // create an array with edges
+    var edges = new vis.DataSet([
+        {from: 611, to: null},
+        {from: 632, to: 645, title: 'C : ' +currentOutC632_645, label: '632 -> 645'},
+        {from: 632, to: 6321, title: 'C : ' +currentOutC632_6321, label: '632 -> 6321'},
+        {from: 645, to: 646, title: 'C : ' +currentOutC645_646, label: '645 -> 646'},
+        {from: 6321, to: 671, title: 'C : ' +currentOutC6321_671, label: '6321 -> 671'},
+        {from: 671, to: 680, title: 'C : ' +currentOutC671_680, label: '671 -> 680'},
+        {from: 671, to: 684, title: 'C : ' +currentOutC671_684, label: '671 -> 684'},
+        {from: 671, to: 6711, title: 'C : 0'},
+        {from: 671, to: 692, title: 'C : 0'},
+        {from: 692, to: 675, title: 'C : 0'},
+        {from: 684, to: 652, title: 'C : 0'},
+        {from: 684, to: 611, title: 'C : 0'},
+    ]);
+
+    // create a network
+    var container = document.getElementById('nodesNetwork');
+
+    // provide the data in the vis format
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+    var options = {
+      edges: {
+        arrows: {
+          to: {enabled: true, scaleFactor:1},
+        },
+        smooth: {
+          type: 'continuous',
+          forceDirection: 'none'
+        },
+        font: {
+          align: 'top'
+        }
+      }
+    };
+
+    // initialize your network!
+    var network = new vis.Network(container, data, options);
+
+    var select = $( "#timeSlider" );
+    var initialUrl = window.location.href;
+    var initialTime;
+    var newUrl;
+    var arrayOfInputs = initialUrl.split('/');
+    var date = arrayOfInputs[7];
+    var timeAppendToUrl;
+    var timeArray = [];
+    var formattedTimeArray = [];
+    var formattedMinute;
+    var arrayOfObjects = [];
+    var timeArrayCopy = [];
+    var timeObject = {};
+
+    for(hour = 0; hour < 24; hour++) {
+      hour = ('0' + hour).slice(-2);
+      for (minute = 0; minute < 60; minute = minute + 15) {
+        formattedMinute = minute === 0 ? minute + '0' : minute;
+        timeArray.push(hour+ ':' +formattedMinute);
+        timeArrayCopy.push(hour+ ':' +formattedMinute);
+      }
+    }
+
+    for(index = 1; index <= 96; index++ ){
+      var shiftedTime = timeArrayCopy.shift();
+      timeObject = {
+        timeValue : shiftedTime,
+        timeKey   : index
+      };
+      arrayOfObjects.push(timeObject);
+    }
+
+    var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
+      min: 1,
+      max: 96,
+      range: "min",
+      value: select[ 0 ].selectedIndex +1,
+      create: function(event, ui) {
+       initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+       for(i = 1; i < arrayOfObjects.length; i++) {
+        if (initialTime === arrayOfObjects[i].timeValue ) {
+            $(this).slider('value', arrayOfObjects[i].timeKey);
+        }
+       }
+      },
+      slide: function(event, ui ) {
+        select[ 0 ].selectedIndex = ui.value - 1;
+      },
+    });
+
+    $("#slider")
+      .slider("pips", {
+        labels: timeArray,
+          rest: 'label',
+          step: 8,
+      })
+
+      .slider("float", {
+          labels: timeArray
+      });
+
+    $("#timeSlider" ).change(function() {
+      slider.slider( "value", this.selectedIndex + 1 );
+    });
+
+    $("#slider").slider({
+      change: function( event, ui ) {
+        timeAppendToUrl = timeSlider.value;
+        newUrl = initialUrl.replace(initialTime,timeAppendToUrl);
+        window.location.href = newUrl;
+      }
+    });
+
+    $('#timeSlider').empty();
+    $.each(timeArray, function(key, value) {
+      $('#timeSlider')
+        .append($("<option></option>")
+        .attr("value", value)
+        .text(value));
+    });
+
+    $("#timeSlider" ).ready(function() {
+     var initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+     for(i = 1; i < arrayOfObjects.length; i++) {
+        if ($("#slider").slider("value") === arrayOfObjects[i].timeKey ) {
+          $("#timeSlider").val(arrayOfObjects[i].timeValue );
+          timeAppendToUrl = timeSlider.value;
+        }
+      }
+    });
+
+    $scope.date = date;
+    $scope.time = timeAppendToUrl;
 
     hideLoader();
   });
@@ -1270,25 +1943,17 @@ app.controller('nodes-tree' ,function($scope, $http, $route, $routeParams) {
 
       // create an array with edges
       var edges = new vis.DataSet([
-          {from: 611, to: null},
           {from: 632, to: 645, title: 'A : ' +currentOutA632_645+' '+ 'B : ' +currentOutB632_645+' '+ 'C : ' +currentOutC632_645, label: '632 -> 645'},
           {from: 632, to: 6321, title: 'A : ' +currentOutA632_6321+' '+ 'B : ' +currentOutB632_6321+' '+ 'C : ' +currentOutC632_6321, label: '632 -> 6321'},
           {from: 645, to: 646, title: 'A : ' +currentOutA645_646+' '+ 'B : ' +currentOutB645_646+' '+ 'C : ' +currentOutC645_646, label: '645 -> 646'},
-          {from: 646, to: null},
           {from: 6321, to: 671, title: 'A : ' +currentOutA6321_671+' '+ 'B : ' +currentOutB6321_671+' '+ 'C : ' +currentOutC6321_671, label: '6321 -> 671'},
           {from: 671, to: 680, title: 'A : ' +currentOutA671_680+' '+ 'B : ' +currentOutB671_680+' '+ 'C : ' +currentOutC671_680, label: '671 -> 680'},
-          {from: 680, to: null},
           {from: 671, to: 684, title: 'A : ' +currentOutA671_684+' '+ 'B : ' +currentOutB671_684+' '+ 'C : ' +currentOutC671_684, label: '671 -> 684'},
           {from: 671, to: 6711, title: 'A : 0 B : 0 C : 0'},
           {from: 671, to: 692, title: 'A : 0 B : 0 C : 0'},
           {from: 692, to: 675, title: 'A : 0 B : 0 C : 0'},
           {from: 684, to: 652, title: 'A : 0 B : 0 C : 0'},
           {from: 684, to: 611, title: 'A : 0 B : 0 C : 0'},
-          {from: 652, to: null},
-          {from: 675, to: null},
-          {from: 692, to: null},
-          {from: 6711, to: null},
-
       ]);
 
       // create a network
@@ -1398,10 +2063,6 @@ app.controller('nodes-tree' ,function($scope, $http, $route, $routeParams) {
         timeAppendToUrl = timeSlider.value;
         newUrl = initialUrl.replace(initialTime,timeAppendToUrl);
         window.location.href = newUrl;
-        // console.log('timeisCHANGE ' +timeAppendToUrl);
-        // console.log('initialurl ' +initialUrl);
-        // console.log('initialtime ' +initialTime);
-        // console.log('urlAgain! ' +newUrl);
       }
     });
 
@@ -1484,25 +2145,17 @@ app.controller('nodes-tree-phaseA', function($scope, $http, $route, $routeParams
 
       // create an array with edges
       var edges = new vis.DataSet([
-          {from: 611, to: null},
           {from: 632, to: 645, title: 'A : ' +currentOutA632_645, value: currentOutA632_645},
           {from: 632, to: 6321, title: 'A : ' +currentOutA632_6321, value: currentOutA632_6321},
           {from: 645, to: 646, title: 'A : ' +currentOutA645_646, value: currentOutA645_646},
-          {from: 646, to: null},
           {from: 6321, to: 671, title: 'A : ' +currentOutA6321_671, value: currentOutA6321_671},
           {from: 671, to: 680, title: 'A : ' +currentOutA671_680, value: currentOutA671_680},
-          {from: 680, to: null},
           {from: 671, to: 684, title: 'A : ' +currentOutA671_684, value: currentOutA671_684},
           {from: 671, to: 6711, title: 'A : 0 '},
           {from: 671, to: 692, title: 'A : 0 ' },
           {from: 692, to: 675, title: 'A : 0 '},
           {from: 684, to: 652, title: 'A : 0 ' },
           {from: 684, to: 611, title: 'A : 0 '},
-          {from: 652, to: null},
-          {from: 675, to: null},
-          {from: 692, to: null},
-          {from: 6711, to: null},
-
       ]);
 
       // create a network
@@ -1698,24 +2351,17 @@ app.controller('nodes-tree-phaseB', function($scope, $http, $route, $routeParams
 
       // create an array with edges
       var edges = new vis.DataSet([
-          {from: 611, to: null},
           {from: 632, to: 645, title: 'B : ' +currentOutB632_645, value: currentOutB632_645},
           {from: 632, to: 6321, title: 'B : ' +currentOutB632_6321, value: currentOutB632_6321},
           {from: 645, to: 646, title: 'B : ' +currentOutB645_646, value: currentOutB645_646},
-          {from: 646, to: null},
           {from: 6321, to: 671, title: 'B : ' +currentOutB6321_671, value: currentOutB6321_671},
           {from: 671, to: 680, title: 'B : ' +currentOutB671_680, value: currentOutB671_680},
-          {from: 680, to: null},
           {from: 671, to: 684, title: 'B : ' +currentOutB671_684, value: currentOutB671_684},
           {from: 671, to: 6711, title: 'B : 0 '},
           {from: 671, to: 692, title: 'B : 0 ' },
           {from: 692, to: 675, title: 'B : 0 '},
           {from: 684, to: 652, title: 'B : 0 ' },
           {from: 684, to: 611, title: 'B : 0 '},
-          {from: 652, to: null},
-          {from: 675, to: null},
-          {from: 692, to: null},
-          {from: 6711, to: null},
 
       ]);
 
@@ -1909,24 +2555,17 @@ app.controller('nodes-tree-phaseC', function($scope, $http, $route, $routeParams
 
       // create an array with edges
       var edges = new vis.DataSet([
-          {from: 611, to: null},
           {from: 632, to: 645, title: 'C : ' +currentOutC632_645, value: currentOutC632_645},
           {from: 632, to: 6321, title: 'C : ' +currentOutC632_6321, value: currentOutC632_6321},
           {from: 645, to: 646, title: 'C : ' +currentOutC645_646, value: currentOutC645_646},
-          {from: 646, to: null},
           {from: 6321, to: 671, title: 'C : ' +currentOutC6321_671, value: currentOutC6321_671},
           {from: 671, to: 680, title: 'C : ' +currentOutC671_680, value: currentOutC671_680},
-          {from: 680, to: null},
           {from: 671, to: 684, title: 'C : ' +currentOutC671_684, value: currentOutC671_684},
           {from: 671, to: 6711, title: 'C : 0 '},
           {from: 671, to: 692, title: 'C : 0 ' },
           {from: 692, to: 675, title: 'C : 0 '},
           {from: 684, to: 652, title: 'C : 0 ' },
           {from: 684, to: 611, title: 'C : 0 '},
-          {from: 652, to: null},
-          {from: 675, to: null},
-          {from: 692, to: null},
-          {from: 6711, to: null},
 
       ]);
 
