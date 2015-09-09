@@ -29,9 +29,9 @@
           <p>
             This table contains information about Central Triplex Meter of the System.
             To be more specific contains the values for Real & Reactive Power for each
-            central nodes of the system per day.
+            central node of the system per day.
           </p>
-          <p><a href="#/triplex-meter-select" class="btn btn-default" role="button">Button</a></p>
+          <p><a href="#/triplex-meter-select" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
       </div>
     </div>
@@ -41,11 +41,11 @@
         <div class="caption">
           <h3>Devices</h3>
           <p>
-            In this table you can check how your houses's devices behave according
-            to time. Each device has a Bid Price and a Bid Quantity that beats in
-            the auction and the Consumed Load that actually takes.
+            This table contains information about all Devices located in a house. Each device
+            has a Bid Price and a Bid Quantity that beats in the auction and the Consumed Load
+            that actually takes.
           </p>
-          <p><a href="#/devices-select" class="btn btn-default" role="button">Button</a></p>
+          <p><a href="#/devices-select" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
       </div>
     </div>
@@ -59,7 +59,7 @@
             are divided in three categories. It can informs you about Real & Reactive
             Power for each category per node, as well as the Price that the Energy is selling.
           </p>
-          <p><a href="#/energy-sources-select" class="btn btn-default" role="button">Button</a></p>
+          <p><a href="#/energy-sources-select" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
       </div>
     </div>
@@ -73,7 +73,7 @@
             the percentage of this that become Reactive Power and not used as power of house
             anymore.
           </p>
-          <p><a href="#/houses-select" class="btn btn-default" role="button">Button</a></p>
+          <p><a href="#/houses-select" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
       </div>
     </div>
@@ -86,7 +86,7 @@
             This table contains information about the Market Pool of the System. So watching
             this table you can check how is formed the Market Pool of System per day.
           </p>
-          <p><a href="#/market-pool-select" class="btn btn-default" role="button">Button</a></p>
+          <p><a href="#/market-pool-select" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
       </div>
     </div>
@@ -99,7 +99,7 @@
             In this table you can check how the Voltage and the Current is flowing among the
             Nodes of the System and how the System actually is formed for each day per phase.
           </p>
-          <p><a href="#/nodes-select" class="btn btn-default" role="button">Button</a></p>
+          <p><a href="#/nodes-select" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
       </div>
     </div>
@@ -112,7 +112,7 @@
             In this table you can check the value of the Power that gets in the Transformer
             of the System, as well as the Power that gets out and the Losses per phase.
           </p>
-          <p><a href="#/transformer-select" class="btn btn-default" role="button">Button</a></p>
+          <p><a href="#/transformer-select" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
       </div>
     </div>
@@ -127,15 +127,29 @@
             format. Contains exactly the same information with "Devices" table, but
             with different format.
           </p>
-          <p><a href="#/devices-select-table" class="btn btn-default" role="button">Button</a></p>
+          <p><a href="#/devices-select-table" class="btn btn-default" role="button">Go to graph</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+
+        <img src="/img/charts/system-graph.png" alt="System Graph">
+        <div class="caption">
+          <h3>System Graph</h3>
+          <p>
+            In this table you can watch the topology of our system, ie that
+            you are able to see how the nodes of the system are connected, as well as
+            how many houses are connected to each node.
+          </p>
+          <p><a href="#/system/graph" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
       </div>
     </div>
   </div>
   <div class="light">
-    <div class="container marketing">
-      <div class="row">
-        <div class="col-md-6">
+      <div class="row container">
+        <div class="col-sm-6 col-md-4">
           <div class="photo-padding">
             <div class="my-image" style="background-image: url(/img/gridlab-d.JPG);"></div>
           </div>
@@ -150,22 +164,34 @@
             <a class="light-background btn btn-default" role="button" href="http://www.gridlabd.org/" target="_blank">View details »</a>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-sm-6 col-md-4">
           <div class="photo-padding">
-            <div class="my-image" style="background-image: url(/img/d3.jpg);"></div>
+            <div class="my-image" style="background-image: url(/img/visjs.png);"></div>
           </div>
-          <h2 align="center">D3.js</h2>
+          <h2 align="center">Vis js</h2>
           <p align="center">
-            D3.js (or just D3 for Data-Driven Documents) is a JavaScript library for
-            producing dynamic, interactive data visualizations in web browsers. It makes
-            use of the widely implemented SVG, HTML5, and CSS standards. D3 allows you to
-            bind arbitrary data to a Document Object Model (DOM).
+            Visjs is a dynamic, browser based visualization library. The library is
+            designed to handle large amounts of dynamic data, and to enable manipulation
+            of and interaction with the data.
           </p>
           <div class="button-center-align">
-            <a class="light-background btn btn-default" role="button" href="http://d3js.org/" target="_blank">View details »</a>
+            <a class="light-background btn btn-default" role="button" href="http://visjs.org/" target="_blank">View details »</a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="photo-padding">
+            <div class="my-image" style="background-image: url(/img/highcharts.png);"></div>
+          </div>
+          <h2 align="center">Highcharts</h2>
+          <p align="center">
+            Highcharts is a charting library written in pure JavaScript, offering an easy way
+            of adding interactive charts to your web site or web application.
+            It works in all modern mobile and desktop browsers
+          </p>
+          <div class="button-center-align">
+            <a class="light-background btn btn-default" role="button" href="http://www.highcharts.com/" target="_blank">View details »</a>
           </div>
         </div>
       </div>
-    </div>
   </div>
 </div>
