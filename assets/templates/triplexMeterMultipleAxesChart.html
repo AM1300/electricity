@@ -1,5 +1,14 @@
 <div class="container">
-  <h2 class="center-alignment">Multiple Axes Chart for {{ date }} for Central Triplex Meter of node {{ nodeID }} </h2>
+  <div class="page-header center-alignment">
+    <h2>
+      Multiple Axes Chart for {{ date }} for Central Triplex Meter of node {{ nodeID }}
+    </h2>
+  </div>
+  <div class="center-alignment">
+    You can also see the data for the Central Triplex Meter in Plain Line Diagram or
+    in Spider Diagram, pressing the following buttons.
+  </div>
+  <br>
   <input type="hidden" name="option" value="" id="btn-input" />
   <div class="btn-group pull-right" data-toggle="buttons-radio" style="margin-bottom:25px; margin-top:10px;">
     <a href="#/triplex-meter/multiple-axes/{{date}}/{{nodeID}}"
@@ -18,7 +27,5 @@
       Spider Diagram
     </a>
   </div>
-  <div ng-controller="triplex-meter-multiple-axes-chart">
-      <div id="containerMultipleAxesTriplex"></div>
-  </div>
+  <div id="containerMultipleAxesTriplex"></div>
 </div>

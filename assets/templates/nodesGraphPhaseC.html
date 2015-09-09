@@ -1,7 +1,33 @@
 <div class="container">
-  <h2 class="center-alignment">Unsorted Graph for {{ date }} & {{ time }} & phase B </h2>
+  <div class="page-header center-alignment">
+    <h2>
+      Unsorted Graph of System for Phase C for {{ date }} & {{ time }}
+    </h2>
+  </div>
+  <div class="center-alignment">
+    You can also see the data for Nodes in Hierarchical Layout or per Phase,
+    pressing the following buttons. Or move the needle of the slider to
+    watch how the graph is behave in time.
+  </div>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <div class="col-sm-12">
+        <select name="timeSlider" id="timeSlider"></select>
+      </div>
+    </div>
+  </form>
   <input type="hidden" name="option" value="" id="btn-input" />
-  <div class="btn-group pull-right" data-toggle="buttons-radio" style="margin-bottom:25px; margin-top:10px;">
+  <div class="btn-group btn-group-justified" data-toggle="buttons-radio" style="margin-bottom:25px; margin-top:10px;">
+    <a href="#/nodes/hierarchical-layout/{{date}}/{{time}}"
+        class="button btn btn-primary" id="btn-one" type="button" data-toggle="button"
+        name="option" value="1">
+      Hierarchical Layout
+    </a>
+    <a href="#/nodes/graph/{{date}}/{{time}}"
+        class="button btn btn-primary" id="btn-two" type="button" data-toggle="button"
+        name="option" value="2">
+      Unsorted Graph
+    </a>
     <a href="#/nodes/graph/A/{{date}}/{{time}}"
         class="button btn btn-primary" id="btn-one" type="button" data-toggle="button"
         name="option" value="1">
@@ -17,18 +43,7 @@
         name="option" value="3" checked>
       Phase C
     </a>
-    <a href="#/nodes/graph/{{date}}/{{time}}/"
-        class="button btn btn-primary" id="btn-four" type="button" data-toggle="button"
-        name="option" value="4">
-      All Phases
-    </a>
   </div>
-  <form class="form-horizontal">
-    <div class="form-group">
-      <div class="col-sm-12">
-        <select name="timeSlider" id="timeSlider"></select>
-      </div>
-    </div>
-  </form>
   <div id="nodesNetwork"></div>
 </div>
+

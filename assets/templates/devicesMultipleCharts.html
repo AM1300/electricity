@@ -1,5 +1,13 @@
 <div class="container">
-  <h2 class="center-alignment">Synchronized Charts for {{ date }} for {{ newType }} which belongs to node {{ nodeID }}</h2>
+  <div class="page-header center-alignment">
+    <h2>
+      Synchronized Charts for {{ date }} for {{ newType }} which belongs to node {{ nodeID }}
+    </h2>
+  </div>
+  <div class="center-alignment">
+    You can also see the data for the Devices in Multiple Line Diagram, pressing the button below.
+  </div>
+  <br>
   <input type="hidden" name="option" value="" id="btn-input" />
   <div class="btn-group pull-right" data-toggle="buttons-radio" style="margin-bottom:25px; margin-top:10px;">
     <a href="#/devices/multiple-line-chart/{{date}}/{{type}}/{{nodeID}}/{{houseID}}"
@@ -13,8 +21,5 @@
       Multiple Axes Diagram
     </a>
   </div>
-
-  <div ng-controller="devices-multiple-charts">
-    <div id="containerMultipleCharts"></div>
-  </div>
+  <div id="containerMultipleCharts"></div>
 </div>

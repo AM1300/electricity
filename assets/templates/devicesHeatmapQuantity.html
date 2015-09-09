@@ -1,5 +1,14 @@
 <div class="container">
-  <h2 class="center-alignment"> Bid Quantity for {{ newType }} which belongs to node {{ nodeID }}</h2>
+  <div class="page-header center-alignment">
+    <h2>
+       Bid Quantity for {{ newType }} of house {{houseID}} which belongs to node {{ nodeID }}
+    </h2>
+  </div>
+  <div class="center-alignment">
+    Pressing the following buttons you can also see the Bid Price & the Consumed Load
+    for {{ newType }} in node {{ nodeID }}.
+  </div>
+  <br>
   <input type="hidden" name="option" value="" id="btn-input" />
   <div class="btn-group pull-right" data-toggle="buttons-radio" style="margin-bottom:25px; margin-top:10px;">
     <a href="#/devices/heatmap-price/{{type}}/{{nodeID}}/{{houseID}}"

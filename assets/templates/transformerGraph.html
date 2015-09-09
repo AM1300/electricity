@@ -1,11 +1,25 @@
 <div class="container">
-  <div ng-controller="transformer-graphical-representation">
-    <h2>Transformer has the following values per phase in {{date}} at {{time}}</h2>
-    <h4 style="text-align:center;"> Phase A of Transformer</h4>
-    <div id="networkForPhaseA"></div>
-    <h4 style="text-align:center;"> Phase B of Transformer</h4>
-    <div id="networkForPhaseB"></div>
-    <h4 style="text-align:center;"> Phase C of Transformer</h4>
-    <div id="networkForPhaseC"></div>
+  <div class="page-header center-alignment">
+    <h2>
+      Transformer's values per phase in {{date}} at {{time}}
+    </h2>
   </div>
+  <div class="center-alignment">
+    In the following graphs you can see the power flowing through transformer per phase.
+    Each graph represents the power enters the system, the power that comes out of the system
+    and the power losses of the system.
+  </div>
+  <br>
+    <h3 style="text-align:center; padding-top:20px;">
+      Phase A of Transformer in {{date}} at {{time}}
+    </h3>
+    <div id="networkForPhaseA"></div>
+    <h3 style="text-align:center; padding-top:60px;">
+      Phase B of Transformer in {{date}} at {{time}}
+    </h3>
+    <div id="networkForPhaseB"></div>
+    <h3 style="text-align:center; padding-top:60px;">
+      Phase C of Transformer in {{date}} at {{time}}
+    </h3>
+    <div id="networkForPhaseC"></div>
 </div>
