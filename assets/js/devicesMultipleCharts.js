@@ -33,19 +33,15 @@ function devicesMultipleCharts (activity, timestampActivity) {
 
     $.each(activity.datasets, function (i, dataset) {
 
-      // console.log(JSON.stringify(activity.datasets));
-
       // Add X values
       dataset.data = Highcharts.map(dataset.data, function (val, i) {
           return [timestampActivity[i], val];
       });
-      // console.log(JSON.stringify(dataset.data));
 
       var timestampsNew = timestampActivity.map(function(entry, index) {
         return (index % 4 === 0) ? moment(entry).format('HH:mm') : '';
       });
 
-      // console.log(timestampsNew);
       $('<div class="chart">')
         .appendTo('#containerMultipleCharts')
         .highcharts({
@@ -75,9 +71,6 @@ function devicesMultipleCharts (activity, timestampActivity) {
                     setExtremes: syncExtremes
                 },
                 categories: timestampsNew,
-                // labels: {
-                //   padding: 0
-                // }
             },
             yAxis: {
                 labels: {

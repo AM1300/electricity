@@ -772,7 +772,20 @@ app.controller('energy-sources-multiple-axes-chart', function($scope, $http, $ro
 
     energySourcesMultipleAxesChart(response);
 
+    var typeNew;
+
+    if(type === 'dieseltown') {
+      typeNew = 'Diesel';
+    }
+    if(type === 'windtown') {
+      typeNew = 'Wind';
+    }
+    if(type === 'solar') {
+      typeNew = 'Solar';
+    }
+
     $scope.date = date;
+    $scope.typeNew = typeNew;
     $scope.type = type;
     $scope.nodeID = nodeID;
 
@@ -978,6 +991,19 @@ app.controller('energy-sources-line-chart-highcharts', function($scope, $http, $
   .success(function(response, status, headers, config) {
     energySourcesLineChartHighcharts(response);
 
+    var typeNew;
+
+    if(type === 'dieseltown') {
+      typeNew = 'Diesel';
+    }
+    if(type === 'windtown') {
+      typeNew = 'Wind';
+    }
+    if(type === 'solar') {
+      typeNew = 'Solar';
+    }
+
+    $scope.typeNew = typeNew;
     $scope.data = response;
     $scope.date = date;
     $scope.nodeID = nodeID;
@@ -1003,6 +1029,19 @@ app.controller('energy-sources-spider-chart-highcharts', function($scope, $http,
   .success(function(response, status, headers, config) {
     energySourcesSpiderChartHighcharts(response);
 
+    var typeNew;
+
+    if(type === 'dieseltown') {
+      typeNew = 'Diesel';
+    }
+    if(type === 'windtown') {
+      typeNew = 'Wind';
+    }
+    if(type === 'solar') {
+      typeNew = 'Solar';
+    }
+
+    $scope.typeNew = typeNew;
     $scope.data = response;
     $scope.date = date;
     $scope.nodeID = nodeID;

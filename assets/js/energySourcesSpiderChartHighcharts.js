@@ -29,8 +29,8 @@ function energySourcesSpiderChartHighcharts(data) {
                 backgroundColor:'#ECECEC',
                 polar: true,
                 type: 'area',
-                margin: [20, 0, 0, 0],
-                spacingTop: 0,
+                margin: [30, 0, 0, 0],
+                spacingTop: 10,
                 spacingBottom: 0,
                 spacingLeft: 0,
                 spacingRight: 0
