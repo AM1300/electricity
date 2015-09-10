@@ -128,7 +128,7 @@
   <script type="text/javascript" src="/js/showLoader.js"></script>
   <script type="text/javascript" src="/js/hideLoader.js"></script>
   <script>
-    var btns = ['btn-one', 'btn-two', 'btn-three', 'btn-four', 'btn-five'];
+    var btns = ['btn-one', 'btn-two', 'btn-three', 'btn-four'];
     var input = document.getElementById('btn-input');
     for(var i = 0; i < btns.length; i++) {
       document.getElementById(btns[i]).addEventListener('click', function() {
@@ -136,16 +136,5 @@
       });
     }
   </script>
-<!--   <script>
-    $('#open').click(function() {
-        var URLToBackend = '/triplex-meter/',
-            slace = '/',
-            firstUserEntry = $('#firstForm').val(),
-            secondUserEntry = $('#secondForm').val();
-
-        var newWindow = window.open(URLToBackend + firstUserEntry + slace + secondUserEntry, '_blank');
-        newWindow.focus();
-    });
-  </script> -->
 </body>
 </html>
