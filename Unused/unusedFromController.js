@@ -44,6 +44,16 @@
             controller  : 'transformer-line-chart'
         })
 
+        .when('/transformer/line/:date', {
+            templateUrl : '/templates/transformerLineChartHighcharts.html',
+            controller  : 'transformer-line-chart-highcharts'
+        })
+
+        .when('/transformer/spider/:date/:time', {
+            templateUrl : '/templates/transformerSpiderChartHighcharts.html',
+            controller  : 'transformer-spider-chart-highcharts'
+        })
+
         app.controller('market-line-chart', function($scope, $http, $route, $routeParams) {
   var date = $routeParams.date;
 
@@ -290,5 +300,48 @@ app.controller('transformer-line-chart', function($scope, $http, $route, $routeP
 
     $scope.rows = data;
     $scope.date = date;
+  });
+});
+
+app.controller('transformer-line-chart-highcharts', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
+  var date = $routeParams.date;
+
+  $http ({
+    url : '/transformer/' + date,
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+    transformerLineChartHighcharts(response);
+
+    $scope.data = response;
+    $scope.date = date;
+
+    hideLoader();
+  });
+});
+
+app.controller('transformer-spider-chart-highcharts', function($scope, $http, $route, $routeParams) {
+
+  showLoader();
+
+  var date = $routeParams.date;
+  var time = $routeParams.time;
+
+  $http ({
+    url : '/transformer/' + date + '/' + time,
+    method : 'GET'
+  })
+
+  .success(function(response, status, headers, config) {
+    transformerSpiderChartHighcharts(response);
+
+    $scope.data = response;
+    $scope.date = date;
+
+    hideLoader();
   });
 });
