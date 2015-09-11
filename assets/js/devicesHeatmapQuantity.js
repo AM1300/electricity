@@ -86,18 +86,12 @@ function devicesHeatmapQuantity(data) {
                 padding: 30,
                 align: 'center',
                 symbolWidth: 500
-                // align: 'right',
-                // layout: 'vertical',
-                // margin: 0,
-                // verticalAlign: 'top',
-                // y: 25,
-                // symbolHeight: 700
             },
 
             tooltip: {
                 formatter: function () {
                     return '<b> On ' + this.series.xAxis.categories[this.point.x] + '</b> at  <br><b>' +
-                        this.series.yAxis.categories[this.point.y] + '</b> bid quantity was <br><b>' + this.point.value + ' ¢</b>' ;
+                        this.series.yAxis.categories[this.point.y] + '</b> bid quantity was <br><b>' + this.point.value + ' kWatt</b>' ;
                 }
             },
 
