@@ -59,7 +59,7 @@
           <label for="exampleInputName" class="col-sm-2 control-label">House ID</label>
           <div class="col-sm-10">
             <select class="form-control selectClass" id="HouseID" multiple="multiple" style="height:35px;">
-              <option id="setBackgroundColor" selected="true" disabled="disabled">Choose House</option>
+              <option id="setBackgroundColor" disabled="disabled">Choose House</option>
             </select>
           </div>
         </div>
@@ -73,7 +73,6 @@
 </div>
 
 <script>
-
     window.choosePhase = function (value){
       var nodeID = $('#node').val();
 
@@ -91,9 +90,9 @@
           });
 
           $('#HouseID').empty();
+          $('#HouseID').multiselect('destroy');
           $('#HouseID')
             .append($("<option></option>")
-            .attr("selected", true)
             .attr('disabled', 'disabled')
             .text('Choose House'));
 
@@ -126,7 +125,6 @@
           $('#HouseID').empty();
           $('#HouseID')
             .append($("<option></option>")
-            .attr("selected", true)
             .attr('disabled', 'disabled')
             .text('Choose House'));
 
@@ -138,9 +136,11 @@
           });
 
           $('#HouseID').multipleSelect({
-             create: function(){
-              $('#HouseID').multiselect("uncheckAll");
-            },
+              placeholder: 'Choose one or more houses from the list below',
+              minimumCountSelected: 7,
+              // create: function(){
+              //   $('#HouseID').multiselect("uncheckAll");
+              // },
           });
         });
     };
