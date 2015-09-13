@@ -58,7 +58,7 @@
         <div class="form-group">
           <label for="exampleInputName" class="col-sm-2 control-label">House ID</label>
           <div class="col-sm-10">
-            <select class="form-control selectClass" id="HouseID" multiple="multiple" style="height:35px;">
+            <select class="form-control selectpicker" id="HouseID" multiple="multiple" title='Choose House'>
               <option id="setBackgroundColor" disabled="disabled">Choose House</option>
             </select>
           </div>
@@ -73,6 +73,9 @@
 </div>
 
 <script>
+
+    $('#HouseID').selectpicker();
+
     window.choosePhase = function (value){
       var nodeID = $('#node').val();
 
@@ -90,16 +93,16 @@
           });
 
           $('#HouseID').empty();
-          $('#HouseID').multiselect('destroy');
+          $('#HouseID').selectpicker('refresh');
           $('#HouseID')
             .append($("<option></option>")
+            .attr("selected", true)
             .attr('disabled', 'disabled')
             .text('Choose House'));
 
           $('#phase').empty();
           $('#phase')
               .append($("<option></option>")
-              .attr("selected", true)
               .attr('disabled', 'disabled')
               .text('Choose Phase'));
           $.each(uniquePhases, function(key, value) {
@@ -123,6 +126,7 @@
           });
 
           $('#HouseID').empty();
+          $('#HouseID').selectpicker('refresh');
           $('#HouseID')
             .append($("<option></option>")
             .attr('disabled', 'disabled')
@@ -135,13 +139,8 @@
               .text(value));
           });
 
-          $('#HouseID').multipleSelect({
-              placeholder: 'Choose one or more houses from the list below',
-              minimumCountSelected: 7,
-              // create: function(){
-              //   $('#HouseID').multiselect("uncheckAll");
-              // },
-          });
+          $('#HouseID').selectpicker('refresh');
+
         });
     };
 
