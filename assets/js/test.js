@@ -105,14 +105,6 @@ app.controller('sync-diagrams', function($scope, $http, $route, $routeParams) {
                         },
                         series: [{
                             data: data.loadNew,
-
-                            // name: data.name,
-                            // type: data.type,
-                            // color: Highcharts.getOptions().colors[i],
-                            // fillOpacity: 0.3,
-                            // tooltip: {
-                            //     valueSuffix: ' ' + data.unit
-                            // }
                         }]
                     });
             });

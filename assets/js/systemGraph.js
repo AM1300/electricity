@@ -56,7 +56,6 @@ function systemGraph(response){
     ];
 
     edges = edges.concat(fyteytaEdges);
-    // console.log(edges);
 
     // // provide the data in the vis format
     var data = {
@@ -79,9 +78,4 @@ function systemGraph(response){
 
     // initialize your network!
     var network = new vis.Network(container, data, options);
-
-    // network.on("afterDrawing", function(ctx) {
-    //   hideLoader();
-    //   network.off("afterDrawing");
-    // });
 }

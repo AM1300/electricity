@@ -59,9 +59,6 @@ function nodesTreePhaseC(response){
     };
     var options = {
       edges: {
-        // arrows: {
-        //   to: {enabled: true, scaleFactor:1},
-        // },
         smooth: {
           type: 'continuous',
           forceDirection: 'none'

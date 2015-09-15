@@ -51,7 +51,6 @@ function housesSpiderChart(data, id) {
             },
 
             yAxis: {
-                // gridLineInterpolation: 'polygon',
                 lineWidth: 0,
                 min: 0
             },

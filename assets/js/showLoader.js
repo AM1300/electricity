@@ -1,5 +1,4 @@
 function showLoader() {
-    // alert('I m in the show loader and render start!');
     $('#main-loader').removeClass('hidden');
     var opts = {
       lines: 13, // The number of lines to draw

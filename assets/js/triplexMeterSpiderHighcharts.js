@@ -51,7 +51,6 @@ function triplexMeterSpiderHighcharts(data) {
             },
 
             yAxis: {
-                // gridLineInterpolation: 'polygon',
                 lineWidth: 0,
                 min: 0
             },
@@ -77,7 +76,6 @@ function triplexMeterSpiderHighcharts(data) {
                 marker: {
                     enabled: false
                 },
-                // pointPlacement: 'on'
             }, {
                 name: 'Reactive Power',
                 color: Highcharts.getOptions().colors[0],
@@ -85,7 +83,6 @@ function triplexMeterSpiderHighcharts(data) {
                 marker: {
                     enabled: false
                 },
-                // pointPlacement: 'on'
             }],
             navigation: {
                 buttonOptions: {

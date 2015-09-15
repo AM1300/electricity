@@ -14,9 +14,6 @@ function createBatches(data) {
     }
 
     read = read + altData[batch].length;
-    // console.log('originalData = ' +originalData);
-    // console.log('altData[batch] =' +altData[batch]);
-    // console.log('altData.length =' +altData[batch].length);
     batch++;
   }
   return altData[batch-1];

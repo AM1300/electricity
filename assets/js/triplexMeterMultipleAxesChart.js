@@ -92,9 +92,6 @@ function triplexMeterMultipleAxesChart(data) {
                 shared: true
             },
             legend: {
-              // labelFormatter: function() {
-              //       return '<span style="color: '+this.color+'">'+ this.name + '</span>';
-              //   },
                 itemStyle: {
                     color: '#333',
                 },

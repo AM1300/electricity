@@ -612,7 +612,6 @@ app.controller('houses-multiple-charts', function($scope, $http, $route, $routeP
       var result = response.filter(function(obj) {
         return obj.houseID == uniqueHouses[index];
       });
-      // console.log(result);
       housesMultipleLineChart(result, uniqueHouses[index]);
 
 
@@ -650,7 +649,6 @@ app.controller('houses-spider-chart', function($scope, $http, $route, $routePara
       var result = response.filter(function(obj) {
         return obj.houseID == uniqueHouses[index];
       });
-      // console.log(result);
       housesSpiderChart(result, uniqueHouses[index]);
 
 
