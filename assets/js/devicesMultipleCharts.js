@@ -47,7 +47,7 @@ function devicesMultipleCharts (activity, timestampActivity) {
         .highcharts({
             chart: {
                 backgroundColor:'#ECECEC',
-                marginLeft: 40, // Keep all charts left aligned
+                marginLeft: 60, // Keep all charts left aligned
                 spacingTop: 20,
                 spacingBottom: 20
             },
