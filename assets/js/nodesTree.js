@@ -72,12 +72,12 @@ function nodesTree(response){
 
     // create an array with edges
     var edges = new vis.DataSet([
-        {from: 632, to: 645, title: 'Current per Phase A : ' +currentOutA632_645+' '+ 'B : ' +currentOutB632_645+' '+ 'C : ' +currentOutC632_645, label: '632 -> 645'},
-        {from: 632, to: 6321, title: 'Current per Phase A : ' +currentOutA632_6321+' '+ 'B : '  +currentOutB632_6321+' '+ 'C : ' +currentOutC632_6321, label: '632 -> 6321'},
-        {from: 645, to: 646, title: 'Current per Phase A : ' +currentOutA645_646+' '+ 'B : ' +currentOutB645_646+' '+ 'C : ' +currentOutC645_646, label: '645 -> 646'},
-        {from: 6321, to: 671, title: 'Current per Phase A : ' +currentOutA6321_671+' '+ 'B : ' +currentOutB6321_671+' '+ 'C : ' +currentOutC6321_671, label: '6321 -> 671'},
-        {from: 671, to: 680, title: 'Current per Phase A : ' +currentOutA671_680+' '+ 'B : ' +currentOutB671_680+' '+ 'C : ' +currentOutC671_680, label: '671 -> 680'},
-        {from: 671, to: 684, title: 'Current per Phase A : ' +currentOutA671_684+' '+ 'B : ' +currentOutB671_684+' '+ 'C : ' +currentOutC671_684, label: '671 -> 684'},
+        {from: 632, to: 645, title: 'Current per Phase A : ' +currentOutA632_645+' '+ 'B : ' +currentOutB632_645+' '+ 'C : ' +currentOutC632_645},
+        {from: 632, to: 6321, title: 'Current per Phase A : ' +currentOutA632_6321+' '+ 'B : '  +currentOutB632_6321+' '+ 'C : ' +currentOutC632_6321},
+        {from: 645, to: 646, title: 'Current per Phase A : ' +currentOutA645_646+' '+ 'B : ' +currentOutB645_646+' '+ 'C : ' +currentOutC645_646},
+        {from: 6321, to: 671, title: 'Current per Phase A : ' +currentOutA6321_671+' '+ 'B : ' +currentOutB6321_671+' '+ 'C : ' +currentOutC6321_671},
+        {from: 671, to: 680, title: 'Current per Phase A : ' +currentOutA671_680+' '+ 'B : ' +currentOutB671_680+' '+ 'C : ' +currentOutC671_680},
+        {from: 671, to: 684, title: 'Current per Phase A : ' +currentOutA671_684+' '+ 'B : ' +currentOutB671_684+' '+ 'C : ' +currentOutC671_684},
         {from: 671, to: 6711, title: 'Current per Phase A : 0 B : 0 C : 0'},
         {from: 671, to: 692, title: 'Current per Phase A : 0 B : 0 C : 0'},
         {from: 692, to: 675, title: 'Current per Phase A : 0 B : 0 C : 0'},

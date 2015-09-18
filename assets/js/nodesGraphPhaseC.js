@@ -1,23 +1,23 @@
 function nodesGraphPhaseC(response) {
-   var voltageC611 = response[0].voltageC611;
-    var voltageC632 = response[0].voltageC632;
-    var voltageC645 = response[0].voltageC645;
-    var voltageC646 = response[0].voltageC646;
-    var voltageC652 = response[0].voltageC652;
-    var voltageC671 = response[0].voltageC671;
-    var voltageC675 = response[0].voltageC675;
-    var voltageC680 = response[0].voltageC680;
+    var voltageC611 = response[0].voltageRealC611;
+    var voltageC632 = response[0].voltageRealC632;
+    var voltageC645 = response[0].voltageRealC645;
+    var voltageC646 = response[0].voltageRealC646;
+    var voltageC652 = response[0].voltageRealC652;
+    var voltageC671 = response[0].voltageRealC671;
+    var voltageC675 = response[0].voltageRealC675;
+    var voltageC680 = response[0].voltageRealC680;
     var voltageC684 = 0;
-    var voltageC692 = response[0].voltageC692;
-    var voltageC6321 = response[0].voltageC6321;
-    var voltageC6711 = response[0].voltageC6711;
+    var voltageC692 = response[0].voltageRealC692;
+    var voltageC6321 = response[0].voltageRealC6321;
+    var voltageC6711 = response[0].voltageRealC6711;
 
-    var currentOutC632_645 = response[0].currentOutC632_645;
-    var currentOutC632_6321 = response[0].currentOutC632_6321;
-    var currentOutC645_646 = response[0].currentOutC645_646;
-    var currentOutC6321_671 = response[0].currentOutC6321_671;
-    var currentOutC671_680 = response[0].currentOutC671_680;
-    var currentOutC671_684 = response[0].currentOutC671_684;
+    var currentOutC632_645 = response[0].currentC632_645;
+    var currentOutC632_6321 = response[0].currentC632_6321;
+    var currentOutC645_646 = response[0].currentC645_646;
+    var currentOutC6321_671 = response[0].currentC6321_671;
+    var currentOutC671_680 = response[0].currentC671_680;
+    var currentOutC671_684 = response[0].currentC671_684;
 
     var nodes = new vis.DataSet([
         {id: 611, label: '611', title: 'Voltage of Node 611 in Phase C : ' +voltageC611, value: voltageC611},
@@ -59,9 +59,6 @@ function nodesGraphPhaseC(response) {
     };
     var options = {
       edges: {
-        arrows: {
-          to: {enabled: true, scaleFactor:1},
-        },
         smooth: {
           type: 'continuous',
           forceDirection: 'none'
