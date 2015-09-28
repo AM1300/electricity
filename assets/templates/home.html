@@ -6,17 +6,17 @@
         and uses javascript libraries to represent these data in forms and
         diagrams which are useful and understandable for users.
     </p>
-    <p>
+<!--     <p>
       <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </p>
+    </p> -->
   </div>
 </div>
 <div class="container marketing" style="padding-bottom: 20px;">
   <h4>
     To start the navigation in the application choose the table that you are
     interested in, from the following list. You can also find the tables from
-    the bar to the top of the page, by clicking at "Select Table" selection and
-    choosing the table that you are interested in.
+    the navigation bar on the top of the page, by clicking on "Select Table" selection and
+    choosing the table that you desire.
   </h4>
 </div>
 <div class="container">
@@ -26,8 +26,8 @@
         <img src="/img/charts/central_triplex_meter_line.jpeg" alt="Central Triplex Meter">
         <div class="caption">
           <h3>Central Triplex Meter</h3>
-          <p>
-            This table contains information about Central Triplex Meter of the System.
+          <p class="fixParagraphsHeight">
+            This table contains information about the unique Central Triplex Meter of the System.
             To be more specific contains the values for Real & Reactive Power for each
             central node of the system per day.
           </p>
@@ -40,10 +40,10 @@
         <img src="/img/charts/devices.jpeg" alt="Devices">
         <div class="caption">
           <h3>Devices</h3>
-          <p>
-            This table contains information about all Devices located in a house. Each device
+          <p class="fixParagraphsHeight">
+            This table contains information about all Devices belonging to a house. Each device
             has a Bid Price and a Bid Quantity that beats in the auction and the Consumed Load
-            that actually takes.
+            that actually consumes.
           </p>
           <p><a href="#/devices-select" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
@@ -54,10 +54,10 @@
         <img src="/img/charts/energy_sources.jpeg" alt="Energy Sources">
         <div class="caption">
           <h3>Energy Sources</h3>
-          <p>
+          <p class="fixParagraphsHeight">
             This table contains information about Energy Sources of the System, which
-            are divided in three categories. It can informs you about Real & Reactive
-            Power for each category per node, as well as the Price that the Energy is selling.
+            are divided in three categories. It contains information about Real & Reactive
+            Power per node, as well as the Price that the Energy is selling.
           </p>
           <p><a href="#/energy-sources-select" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
@@ -68,10 +68,10 @@
         <img src="/img/charts/houses.jpeg" alt="Houses">
         <div class="caption">
           <h3>Houses</h3>
-          <p>
-            In this table you can check the actual Load that inserts into your house and
-            the percentage of this that become Reactive Power and not used as power of house
-            anymore.
+          <p class="fixParagraphsHeight">
+            In this table you can view the total load each house of the System consumed per
+            day and how much of this load turns into Reactive Power. You can select one or
+            more houses from the resulting list.
           </p>
           <p><a href="#/houses-select" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
@@ -82,9 +82,10 @@
         <img src="/img/charts/market_pool.jpeg"alt="Market Pool">
         <div class="caption">
           <h3>Market Pool</h3>
-          <p>
-            This table contains information about the Market Pool of the System. So watching
-            this table you can check how is formed the Market Pool of System per day.
+          <p class="fixParagraphsHeight">
+            This table contains information about the Market Pool of the System. Specifically,
+            it contains information about how the values of price and load change over time
+            and per each day.
           </p>
           <p><a href="#/market-pool-select" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
@@ -95,9 +96,10 @@
         <img src="/img/charts/nodes.png" alt="Nodes">
         <div class="caption">
           <h3>Nodes</h3>
-          <p>
-            In this table you can check how the Voltage and the Current is flowing among the
-            Nodes of the System and how the System actually is formed for each day per phase.
+          <p class="fixParagraphsHeight">
+            In this table you can view how the Voltage belonging to each node and the Current is
+            flowing among the Nodes of the System, as well as the System's behavior for each time
+            quarter of a specific day.
           </p>
           <p><a href="#/nodes-select" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
@@ -108,9 +110,11 @@
         <img src="../img/charts/transformer.png" alt="Transformer">
         <div class="caption">
           <h3>Transformer</h3>
-          <p>
-            In this table you can check the value of the Power that gets in the Transformer
-            of the System, as well as the Power that gets out and the Losses per phase.
+          <p class="fixParagraphsHeight">
+            In this table you can view the value of the Power that flows into the transformer,
+            the power that flows out of it and the power losses it probably has. This information
+            is different for each phase of the system.
+
           </p>
           <p><a href="#/transformer-select" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
@@ -122,10 +126,10 @@
         <img src="/img/charts/devices_total_table.jpeg" alt="Devices Total Table">
         <div class="caption">
           <h3>Devices Total Table</h3>
-          <p>
-            This is a table that contains all the information about Devices in table
-            format. Contains exactly the same information with "Devices" table, but
-            with different format.
+          <p class="fixParagraphsHeight">
+            This is a table that contains information about Devices in table format. It includes
+            exactly the same information with the “Devices” table, but in different form. We used
+            the heatmap format for each factor of this table.
           </p>
           <p><a href="#/devices-select-table" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
@@ -137,10 +141,10 @@
         <img src="/img/charts/system-graph.png" alt="System Graph">
         <div class="caption">
           <h3>System Graph</h3>
-          <p>
-            In this table you can watch the topology of our system, ie that
-            you are able to see how the nodes of the system are connected, as well as
-            how many houses are connected to each node.
+          <p class="fixParagraphsHeight">
+            In this table you can view the graphic topology of our whole System. It is a global
+            diagram and it shows the connection among the nodes of the system, as well as all the
+            houses containing by each node.
           </p>
           <p><a href="#/system/graph" class="btn btn-default" role="button">Go to graph</a></p>
         </div>
@@ -154,8 +158,8 @@
             <div class="my-image" style="background-image: url(/img/gridlab-d.JPG);"></div>
           </div>
           <h2 align="center">GridLAB-D</h2>
-          <p align="center">
-            GridLAB-D™ is a new power distribution system simulation and analysis tool
+          <p class="fixHeight" align="center">
+            GridLAB-D™ is a power distribution system simulation and analysis tool
             that provides valuable information to users who design and operate distribution
             systems, and to utilities that wish to take advantage of the latest energy
             technologies.
@@ -169,7 +173,7 @@
             <div class="my-image" style="background-image: url(/img/visjs.png);"></div>
           </div>
           <h2 align="center">Vis js</h2>
-          <p align="center">
+          <p class="fixHeight" align="center">
             Visjs is a dynamic, browser based visualization library. The library is
             designed to handle large amounts of dynamic data, and to enable manipulation
             of and interaction with the data.
@@ -183,7 +187,7 @@
             <div class="my-image" style="background-image: url(/img/highcharts.png);"></div>
           </div>
           <h2 align="center">Highcharts</h2>
-          <p align="center">
+          <p class="fixHeight" align="center">
             Highcharts is a charting library written in pure JavaScript, offering an easy way
             of adding interactive charts to your web site or web application.
             It works in all modern mobile and desktop browsers

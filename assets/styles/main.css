@@ -439,3 +439,33 @@ body {
   top: 3px;
   left: 8px;
 }
+
+.fixHeight {
+    height: 100px;
+  }
+
+@media(max-width: 1200px) {
+  .fixHeight {
+    height: 140px;
+  }
+  .fixParagraphsHeight {
+    height: 133.636px;
+  }
+}
+@media(max-width: 992px) {
+  .fixHeight {
+    height: 110px;
+  }
+}
+@media(max-width: 768px) {
+  .fixHeight {
+    height: 80px;
+  }
+}
+@media(max-width: 480px) {
+  .fixHeight {
+    height: 100px;
+  }
+}
+
+
