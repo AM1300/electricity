@@ -1,12 +1,13 @@
 <div class="container">
   <div class="page-header center-alignment">
     <h2>
-      Spider Chart for {{ date }} for Central Triplex Meter of node {{ nodeID }}
+      Spider Chart of Node {{nodeID}} of Central Triplex Meter at {{ date }}
     </h2>
   </div>
-  <div class="center-alignment">
-    You can also see the data for the Central Triplex Meter in Multiple Axes Line Diagram or
-    in Plain Line Diagram, pressing the following buttons.
+  <div>
+    Spider Diagram can easily present the pattern of the data producing a clear and appealing result.
+    You can also view the data for the Central Triplex Meter either in Multiple Axes Line Diagram or
+    in Plain Line Diagram by clicking on the following buttons.
   </div>
   <br>
   <input type="hidden" name="option" value="" id="btn-input" />
@@ -14,7 +15,7 @@
     <a href="#/triplex-meter/multiple-axes/{{date}}/{{nodeID}}"
         class="button btn btn-primary" id="btn-one" type="button" data-toggle="button"
         name="option" value="1">
-      Multiple Axes Diagrams
+      Multiple Axes Diagram
     </a>
     <a href="#/triplex-meter/highcharts/{{date}}/{{nodeID}}"
         class="button btn btn-primary" id="btn-two" type="button" data-toggle="button"

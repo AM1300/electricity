@@ -1,12 +1,14 @@
 <div class="container">
   <div class="page-header center-alignment">
     <h2>
-      Multiple Axes Chart for {{ date }} for Central Triplex Meter of node {{ nodeID }}
+      Multiple Axes Chart of Node {{nodeID}} of Central Triplex Meter at {{ date }}
     </h2>
   </div>
-  <div class="center-alignment">
-    You can also see the data for the Central Triplex Meter in Plain Line Diagram or
-    in Spider Diagram, pressing the following buttons.
+  <div>
+    A multiple axes diagram, has a separate y-axis for each variable showed. We used
+    a multiple axes diagram, since it is very accurate because of the number of its axes.
+    You can also view the data for the Central Triplex Meter either in Plain Line Diagram or
+    in Spider Diagram by clicking on the following buttons.
   </div>
   <br>
   <input type="hidden" name="option" value="" id="btn-input" />
@@ -14,7 +16,7 @@
     <a href="#/triplex-meter/multiple-axes/{{date}}/{{nodeID}}"
         class="button btn btn-primary active" id="btn-one" type="button" data-toggle="button"
         name="option" value="1" checked>
-      Multiple Axes Diagrams
+      Multiple Axes Diagram
     </a>
     <a href="#/triplex-meter/highcharts/{{date}}/{{nodeID}}"
         class="button btn btn-primary" id="btn-two" type="button" data-toggle="button"
