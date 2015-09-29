@@ -4,6 +4,10 @@ function energySourcesMultipleAxesChart(data) {
       return moment(entry.timestamp).format('HH:mm');
     });
 
+    var date = data.map(function(entry, index) {
+      return moment(entry.timestamp).format('MMMM Do YYYY');
+    });
+
     var prices = data.map(function(entry) {
       return entry.price;
     });
@@ -16,6 +20,9 @@ function energySourcesMultipleAxesChart(data) {
       return entry.reactivePower;
     });
 
+    var dateTitle = date[0];
+
+
     $(function () {
         $('#containerMultipleAxesEnergySources').highcharts({
             chart: {
@@ -23,7 +30,7 @@ function energySourcesMultipleAxesChart(data) {
                 backgroundColor:'#ECECEC'
             },
             title: {
-                text: 'Price, Real & Reactive Power '
+                text: 'Price, Real & Reactive Power for ' +dateTitle,
             },
             xAxis: [{
                 categories: timestamps,
@@ -87,7 +94,7 @@ function energySourcesMultipleAxesChart(data) {
                 },
                 layout: 'vertical',
                 align: 'left',
-                x: 100,
+                x: 110,
                 verticalAlign: 'top',
                 y: 25,
                 floating: true,

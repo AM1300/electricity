@@ -55,7 +55,7 @@ function marketHighcharts(response) {
                 }
             },
             title: {
-                text: 'Market Pool for ' +dateTitle,
+                text: 'Market Pool on ' +dateTitle,
             },
             subtitle: {
                 text: document.ontouchstart === undefined ?

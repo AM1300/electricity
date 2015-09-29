@@ -46,7 +46,7 @@ function marketHighchartsSpider(response) {
             },
 
             title: {
-                text: 'Market Pool for ' +dateTitle,
+                text: 'Market Pool on ' +dateTitle,
             },
 
             xAxis: {

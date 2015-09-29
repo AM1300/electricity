@@ -48,7 +48,7 @@ function housesMultipleLineChart(data, id) {
                 }
             },
             title: {
-                text: 'Total Load & Reactive Power for ' +dateTitle+ ' and House ' +id,
+                text: 'Total Load & Reactive Power for House ' +id+ ' on ' +dateTitle,
             },
             subtitle: {
                 text: document.ontouchstart === undefined ?
