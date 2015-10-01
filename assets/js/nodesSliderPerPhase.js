@@ -23,7 +23,7 @@ function nodesSliderPerPhase() {
       }
     }
 
-    for(index = 1; index <= 96; index++ ){
+    for(index = 0; index <= 95; index++ ){
       var shiftedTime = timeArrayCopy.shift();
       timeObject = {
         timeValue : shiftedTime,
@@ -33,20 +33,20 @@ function nodesSliderPerPhase() {
     }
 
     var slider = $( "<div id='slider'></div>" ).insertAfter( select ).slider({
-      min: 1,
-      max: 96,
+      min: 0,
+      max: 95,
       range: "min",
-      value: select[ 0 ].selectedIndex +1,
+      value: select[ 0 ].selectedIndex,
       create: function(event, ui) {
        initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-       for(i = 1; i < arrayOfObjects.length; i++) {
+       for(i = 0; i < arrayOfObjects.length; i++) {
         if (initialTime === arrayOfObjects[i].timeValue ) {
             $(this).slider('value', arrayOfObjects[i].timeKey);
         }
        }
       },
       slide: function(event, ui ) {
-        select[ 0 ].selectedIndex = ui.value - 1;
+        select[ 0 ].selectedIndex = ui.value;
       },
     });
 
@@ -62,7 +62,7 @@ function nodesSliderPerPhase() {
       });
 
     $("#timeSlider" ).change(function() {
-      slider.slider( "value", this.selectedIndex + 1 );
+      slider.slider( "value", this.selectedIndex );
     });
 
     $("#slider").slider({
@@ -83,7 +83,7 @@ function nodesSliderPerPhase() {
 
     $("#timeSlider" ).ready(function() {
      var initialTime = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-     for(i = 1; i < arrayOfObjects.length; i++) {
+     for(i = 0; i < arrayOfObjects.length; i++) {
         if ($("#slider").slider("value") === arrayOfObjects[i].timeKey ) {
           $("#timeSlider").val(arrayOfObjects[i].timeValue );
           timeAppendToUrl = timeSlider.value;
