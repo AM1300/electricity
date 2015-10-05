@@ -40,6 +40,9 @@ function triplexMeterSpiderHighcharts(data) {
             title: {
                 text: 'Central Triplex Meter for ' +dateTitle,
             },
+            credits: {
+                enabled: false
+            },
             xAxis: {
                 categories: timestamps,
                 tickmarkPlacement: 'on',

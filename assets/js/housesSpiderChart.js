@@ -40,6 +40,9 @@ function housesSpiderChart(data, id) {
             title: {
                 text: 'Total Load & Reactive Power for House ' +id+ ' on ' +dateTitle,
             },
+            credits: {
+                enabled: false
+            },
             xAxis: {
                 categories: timestamps,
                 tickmarkPlacement: 'on',

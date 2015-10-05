@@ -44,6 +44,9 @@ function energySourcesSpiderChartHighcharts(data) {
             title: {
                 text: 'Price, Real & Reactive Power for ' +dateTitle,
             },
+            credits: {
+                enabled: false
+            },
             xAxis: {
                 categories: timestamps,
                 tickmarkPlacement: 'on',

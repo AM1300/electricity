@@ -65,6 +65,10 @@ function devicesHeatmapLoad(data) {
                 text: 'Consumed Load for ' +devType+ ' of house ' +houseID
             },
 
+            credits: {
+                enabled: false
+            },
+
             xAxis: {
                 categories: timestampForXAxis,
                 title: 'Date'

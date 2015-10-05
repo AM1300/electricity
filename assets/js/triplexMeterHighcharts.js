@@ -53,6 +53,9 @@ function triplexMeterHighcharts(data) {
                 text: document.ontouchstart === undefined ?
                         'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
             },
+            credits: {
+                enabled: false
+            },
             xAxis: {
                 categories: timestamps,
                 tickInterval: 4

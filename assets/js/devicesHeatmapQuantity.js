@@ -65,6 +65,10 @@ function devicesHeatmapQuantity(data) {
                 text: 'Bid Quantity for ' +devType+ ' of house ' +houseID
             },
 
+            credits: {
+                enabled: false
+            },
+
             xAxis: {
                 categories: timestampForXAxis,
                 title: 'Date'

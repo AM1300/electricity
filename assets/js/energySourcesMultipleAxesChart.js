@@ -32,6 +32,9 @@ function energySourcesMultipleAxesChart(data) {
             title: {
                 text: 'Price, Real & Reactive Power for ' +dateTitle,
             },
+            credits: {
+                enabled: false
+            },
             xAxis: [{
                 categories: timestamps,
                 crosshair: true

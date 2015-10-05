@@ -48,7 +48,9 @@ function marketHighchartsSpider(response) {
             title: {
                 text: 'Market Pool on ' +dateTitle,
             },
-
+            credits: {
+                enabled: false
+            },
             xAxis: {
                 categories: timestamps,
                 // tickmarkPlacement: 'on',
