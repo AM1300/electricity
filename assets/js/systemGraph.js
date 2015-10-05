@@ -75,6 +75,8 @@ function systemGraph(response){
 
     // create a network
     var container = document.getElementById('systemNetwork');
+    var zoom_in = document.getElementById('btn-one');
+    var zoom_out = document.getElementById('btn-two');
 
     // initialize your network!
     var network = new vis.Network(container, data, options);

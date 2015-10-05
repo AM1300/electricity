@@ -11,6 +11,32 @@
     number of houses. In our graph we also show all the houses contained by each node.
   </div>
   <br>
-    <div id="systemNetwork"></div>
+  <input type="hidden" name="option" value="" id="btn-input" />
+  <div class="btn-group pull-right" data-toggle="buttons-radio" style="margin-top:10px;">
+    <a  class="button btn btn-primary" id="btn-one" type="button" data-toggle="button"
+        name="option" value="1">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
+    <a  class="button btn btn-primary" id="btn-two" type="button" data-toggle="button"
+        name="option" value="2" >
+      <span class="glyphicon glyphicon-minus"></span>
+    </a>
   </div>
+  <div id="systemNetwork"></div>
 </div>
+
+<script>
+
+  $(document).ready(function () {
+    // zoom-in
+    $('#btn-one').click(function () {
+        $('#systemNetwork canvas').width($('#systemNetwork canvas').width()*1.2);
+        $('#systemNetwork canvas').height($('#systemNetwork canvas').height()*1.2);
+    });
+    // zoom-out
+    $('#btn-two').click(function () {
+        $('#systemNetwork canvas').width($('#systemNetwork canvas').width()/1.2);
+        $('#systemNetwork canvas').height($('#systemNetwork canvas').height()/1.2);
+    });
+  });
+</script>
